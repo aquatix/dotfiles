@@ -1,0 +1,10 @@
+#!/bin/bash
+if test -z "$1"
+then
+	echo "Usage: wav2mp3 source.wav destination.mp3"
+elif test -z "$2"
+then
+	echo "Missing destination.mp3"
+else
+	lame -m s --cbr --preset insane "$1" "$2"
+fi

@@ -1,0 +1,6 @@
+#!/bin/bash
+#ls -lR $1 > /tmp/diff_01
+#ls -lR $2 > /tmp/diff_02
+ls -logR $1 > /tmp/diff_01
+ls -logR $2 > /tmp/diff_02
+diff /tmp/diff_01 /tmp/diff_02 |less
