@@ -1,0 +1,11 @@
+[ui]
+username = Michiel Scholten <michiel@aquariusoft.org>
+
+[extensions]
+graphlog = 
+mercurial_keyring = /home/mbscholt/bin/hg/mercurial_keyring.py
+convert =
+hgext.bookmarks =
+hgext.git = 
+
+prompt = /home/mbscholt/bin/hg/hg-prompt/prompt.py
