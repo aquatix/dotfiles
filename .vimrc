@@ -5,6 +5,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'majutsushi/tagbar'
+Plugin 'Shougo/unite.vim'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-pathogen'
@@ -38,3 +40,29 @@ endif
 
 " paste and autoindent
 set pastetoggle=<F10>
+
+map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" 2014-01-29 some sane Python settings
+autocmd FileType python set tabstop=4
+autocmd FileType python set shiftwidth=4
+autocmd FileType python set smarttab
+autocmd FileType python set expandtab
+autocmd FileType python set softtabstop=4
+autocmd FileType python set autoindent
+
+" 2014-01-29 some sane PHP settings
+autocmd FileType php set tabstop=4
+autocmd FileType php set shiftwidth=4
+autocmd FileType php set smarttab
+autocmd FileType php set expandtab
+autocmd FileType php set softtabstop=4
+autocmd FileType php set autoindent
+
+" 2014-03-21 some sane LaTeX settings
+autocmd FileType tex set tabstop=4
+autocmd FileType tex set shiftwidth=4
+autocmd FileType tex set smarttab
+autocmd FileType tex set expandtab
+autocmd FileType tex set softtabstop=4
+autocmd FileType tex set autoindent
