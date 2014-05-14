@@ -1,0 +1,45 @@
+# set default shell to bash; if the command begins with a `-' character, the shell will be started as a login-shell
+shell "-/bin/bash"
+
+# Turn off start message:
+startup_message off
+
+# keep scrollback n lines
+defscrollback 30000
+
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# erase background with current bg color
+defbce "on"
+
+screen -t irc 0
+stuff "/usr/bin/irssi\012"
+
+screen -t stat 1
+screen -t su 2
+screen 
+screen 
+screen -t notes
+screen 
+screen 
+
+screen -t up
+stuff "cd /var/local/www/thinkup\012"
+screen -t up
+stuff "cd /var/local/www/thinkup\012"
+
+
+# from Murf
+#caption always "%{Yb} %H %{m}%t %{Yb}C-a %y%02m%02d %0c:%0s %{G}%l  %{W}%-Lw%{+u}%n %t %{-u}%+Lw"
+#hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %="
+
+# Juerd
+#hardstatus lastline '%{= G}[ %{G}%H %{g}][%= %{= y}%?%-w%?%{W}%n %t%?(%u)%?%{y}%?%+w%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+#hardstatus lastline '%{= g}[ %{G}%H %{g}][%l][%= %{= y}%?%-w%?%{W}%n %t%?(%u)%?%{y}%?%+w%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+#hardstatus lastline '%{= g}[%{G}%H%{g}][%{W}%l%{g}][%=%{=y}%?%-w%?%{W}%n_%t%?(%u)%?%{y}%?%+w%?%?%=%{g}][%{B}%d/%m %{W}%c%{g}]'
+hardstatus lastline '%{= g}[%{B}%H%{g}][%{y}%l%{g}][%=%{=y}%?%-w%?%{W}%n %t%?(%u)%?%{y}%?%+w%?%?%=%{g}][%{B}%d/%m %{W}%c%{g}]'
+#hardstatus lastline '%{= g}[%{G}%H%{g}][%{W}%l%{g}][%=%?%-w%?%{W}%n %t%?(%u)%?%+w%?%?%=%{g}][%{B}%d/%m %{W}%c%{g}]'
+termcapinfo xterm 'hs:ts'
