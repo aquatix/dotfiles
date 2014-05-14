@@ -1,0 +1,5 @@
+mbscholt = Michiel Scholten <michiel@aquariusoft.org>
+m.scholten = Michiel Scholten <michiel@aquariusoft.org>
+Michiel Scholten = Michiel Scholten <michiel@aquariusoft.org>
+convert-repo = svnconvert <michiel@aquariusoft.org>
+michiel.scholten@sanomamedia.nl = Michiel Scholten <michiel@aquariusoft.org>

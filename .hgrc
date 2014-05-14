@@ -1,11 +1,32 @@
 [ui]
-username = Michiel Scholten <michiel@aquariusoft.org>
+#username = Michiel Scholten <michiel@aquariusoft.org>
+username = m.scholten
 
 [extensions]
-graphlog = 
-mercurial_keyring = /home/mbscholt/bin/hg/mercurial_keyring.py
+hgext.mercurial_keyring = ~/workspace/application_addons/mercurial/mercurial_keyring/mercurial_keyring.py
 convert =
 hgext.bookmarks =
-hgext.git = 
+graphlog = 
+hgext.purge=
+hgk=
+hgflow = ~/workspace/application_addons/mercurial/hgflow/src/hgflow.py
+hggit = ~/workspace/application_addons/mercurial/hg-git/hggit
 
 prompt = /home/mbscholt/bin/hg/hg-prompt/prompt.py
+
+[git]
+authors = ~/.hgauthors.txt
+
+[tortoisehg]
+editor = geany
+tabwidth = 8
+shell = gnome-terminal
+
+[auth]
+sanoma.schemes = https
+sanoma.prefix = hg.sanomaservices.nl
+sanoma.username = m.scholten
+
+aqs.schemes = ssh
+aqs.prefix = aquariusoft.org
+aqs.username = Michiel Scholten <michiel@aquariusoft.org>
