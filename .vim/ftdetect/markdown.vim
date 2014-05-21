@@ -3,4 +3,4 @@ augroup filetypedetect
     autocmd BufNew,BufNewFile,BufRead *.txt,*.text,*.md,*.markdown :setfiletype markdown
 augroup END
 " 2014-02-28 this really fixes the filetype recognition
-autocmd BufWinEnter *.{md,mkd,mkdn,mark*,txt,text} silent setf markdown
+autocmd BufWinEnter *.{md,mkd,mkdn,mark*} silent setf markdown
