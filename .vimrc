@@ -7,10 +7,12 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'majutsushi/tagbar'
 Plugin 'Shougo/unite.vim'
+" Nice statusbar
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
-Plugin 'tpope/vim-pathogen'
+" Version control notes in the line number bar
 Plugin 'mhinz/vim-signify'
+" Nice colour scheme
 Plugin 'jnurmine/Zenburn.git'
 
 " All of your Plugins must be added before the following line
@@ -29,7 +31,7 @@ set complete-=k complete+=k
 set smartcase
 
 " 2008-04-14 with the if-statement added at 2008-11-19
-if &term == "xterm" || &term == "screen-bce"
+if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color"
 	set t_Co=256
 	colorscheme zenburn
 
