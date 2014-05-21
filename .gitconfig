@@ -1,20 +1,24 @@
 [user]
-  name = Michiel Scholten
-  email = michiel@aquariusoft.org
+	name = Michiel Scholten
+	email = michiel@aquariusoft.org
 
 [giggle]
 	main-window-maximized = true
-	main-window-geometry = 268x63+98+40
-	history-view-vpane-position = 353
+	main-window-geometry = 430x306+0+26
+	history-view-vpane-position = 550
+	file-view-vpane-position = 730
 	main-window-view = HistoryView
-	file-view-vpane-position = 354
 
 [alias]
-  shove = commit -m \"$(curl http://whatthecommit.com/ 2> /dev/null |html2text |head -n1)\"
-  st = status
-  co = checkout
-  ci = commit
-  br = branch
+	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+	shove = commit -m \"$(curl http://whatthecommit.com/ 2> /dev/null |html2text |head -n1)\"
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
 
 [push]
-  default = simple
+	default = simple
+
+[core]
+	editor = vim
