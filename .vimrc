@@ -12,6 +12,9 @@ Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
 Plugin 'mhinz/vim-signify'
+" Think of sensible.vim as one step above 'nocompatible' mode: a universal
+" set of defaults that (hopefully) everyone can agree on.
+Plugin 'tpope/vim-sensible'
 " Nice colour scheme
 Plugin 'jnurmine/Zenburn.git'
 
