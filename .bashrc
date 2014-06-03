@@ -53,6 +53,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+hg_ps1() {
+	    #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
+	    hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
+    }
+
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # Michiel's colour config
@@ -60,7 +65,8 @@ if [ "$color_prompt" = yes ]; then
     BLUE="\[\033[0;34m\]"
     YELLOW="\[\033[0;33m\]"
     PROMPT_SYMBOL='$'
-    PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+    PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
     # /Michiel's colour config
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
