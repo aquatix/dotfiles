@@ -12,10 +12,10 @@ hgk=
 hgflow = ~/workspace/application_addons/mercurial/hgflow/src/hgflow.py
 hggit = ~/workspace/application_addons/mercurial/hg-git/hggit
 
-prompt = /home/mbscholt/bin/hg/hg-prompt/prompt.py
+prompt = /home/mbscholt/workspace/application_addons/mercurial/hg-prompt/prompt.py
 
 [git]
-authors = ~/.hgauthors.txt
+authors = /home/mbscholt/.hgauthors.txt
 
 [tortoisehg]
 editor = geany
