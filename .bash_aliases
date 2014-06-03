@@ -21,6 +21,12 @@ alias notes='vim ~/mydocs/notes/notes.txt'
 alias higgs='ssh higgs'
 alias medusa='ssh medusa'
 
+#20120714
+alias gm='gnome-mplayer'
+
+#20131124
+alias fucking='sudo'
+
 #20140110
 alias such=git
 alias very=git
