@@ -17,6 +17,8 @@ Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
 Plugin 'jnurmine/Zenburn.git'
+" Python autocompletion
+Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
