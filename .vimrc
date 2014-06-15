@@ -19,6 +19,13 @@ Plugin 'tpope/vim-sensible'
 Plugin 'jnurmine/Zenburn.git'
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
+" Handy Markdown stuff
+Plugin 'tpope/vim-markdown'
+" Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
+" stuff
+Plugin 'vim-pandoc/vim-pandoc'
+" Distraction-free writing, start with <Leader>V (\V)
+Plugin 'mikewest/vimroom'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
