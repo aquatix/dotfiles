@@ -46,3 +46,14 @@ function fuck() {
     echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
   fi
 }
+
+#20140614 wrapper around bpython to load the virtualenv's python path
+bpython() {
+  if test -n "$VIRTUAL_ENV"
+  then
+    PYTHONPATH="$(python -c 'import sys; print ":".join(sys.path)')" \
+    command bpython "$@"
+  else
+    command bpython "$@"
+  fi
+}
