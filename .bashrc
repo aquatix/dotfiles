@@ -58,6 +58,13 @@ hg_ps1() {
 	    hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
     }
 
+# gitprompt configuration
+# Set config variables first
+#GIT_PROMPT_ONLY_IN_REPO=1
+
+# as last entry source the gitprompt script
+#source ~/workspace/application_addons/git/bash-git-prompt/gitprompt.sh
+
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     # Michiel's colour config
@@ -67,6 +74,7 @@ if [ "$color_prompt" = yes ]; then
     PROMPT_SYMBOL='$'
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
     PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
     # /Michiel's colour config
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
