@@ -10,7 +10,8 @@ Plugin 'majutsushi/tagbar'
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
-" Nice statusbar
+" Nice statusbar, alternative for powerline. Get powerline font for best
+" looking result
 Plugin 'bling/vim-airline'
 " Better showing of open buffers (open files)
 Plugin 'bling/vim-bufferline'
@@ -36,6 +37,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
+" Enable line numbers and syntax highlighting by default
 set number
 syntax on
 " enable words completion
