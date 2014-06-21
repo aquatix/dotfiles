@@ -5,10 +5,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Display tags of the current file ordered by scope
 Plugin 'majutsushi/tagbar'
+" The unite or unite.vim plug-in can search and display information from
+" arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
 " Nice statusbar
 Plugin 'bling/vim-airline'
+" Better showing of open buffers (open files)
 Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
 Plugin 'mhinz/vim-signify'
