@@ -49,7 +49,7 @@ set complete-=k complete+=k
 set smartcase
 
 " 2008-04-14 with the if-statement added at 2008-11-19
-if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color"
+if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
 	set t_Co=256
 	colorscheme zenburn
 
