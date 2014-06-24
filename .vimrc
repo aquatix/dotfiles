@@ -26,9 +26,11 @@ Plugin 'jnurmine/Zenburn.git'
 Plugin 'davidhalter/jedi-vim'
 " Handy Markdown stuff
 Plugin 'tpope/vim-markdown'
-" Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
-" stuff
-Plugin 'vim-pandoc/vim-pandoc'
+if v:version >= 704
+	" Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
+	" stuff. Works with vim >= 7.4
+	Plugin 'vim-pandoc/vim-pandoc'
+endif
 " Distraction-free writing, start with <Leader>V (\V)
 Plugin 'mikewest/vimroom'
 
