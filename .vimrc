@@ -86,3 +86,11 @@ autocmd FileType tex set smarttab
 autocmd FileType tex set expandtab
 autocmd FileType tex set softtabstop=4
 autocmd FileType tex set autoindent
+"
+" 2014-06-24 some sane shell settings
+autocmd FileType sh set tabstop=4
+autocmd FileType sh set shiftwidth=4
+autocmd FileType sh set smarttab
+autocmd FileType sh set expandtab
+autocmd FileType sh set softtabstop=4
+autocmd FileType sh set autoindent
