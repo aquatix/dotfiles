@@ -23,8 +23,7 @@ echo "INFO: Vundle Install"
 vim +BundleInstall +qall
 
 # Mercurial extensions
-#HGDIR=~/workspace/application_addons/mercurial
-HGDIR=~/.hgext
+HGDIR=~/workspace/application_addons/mercurial
 mkdir -p $HGDIR
 cd $HGDIR
 
