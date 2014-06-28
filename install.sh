@@ -10,13 +10,34 @@ git submodule init
 echo "INFO: Update submodules"
 git submodule update
 
+if [ ! -d "~/.vim/bundle/Vundle.vim" ]; then
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+else
+    cd ~/.vim/bundle/Vundle.vim
+    git pull
+    cd
+fi
+
 echo "INFO: Vundle Install"
 vim +BundleInstall +qall
 
 # Mercurial extensions
-mkdir -p ~/workspace/application_addons/mercurial
-cd ~/workspace/application_addons/mercurial
-hg clone http://bitbucket.org/Mekk/mercurial_keyring
-hg clone http://bitbucket.org/sjl/hg-prompt
-hg clone hg clone http://bitbucket.org/durin42/hg-git
-hg clone http://bitbucket.org/yujiewu/hgflow
+#HGDIR=~/workspace/application_addons/mercurial
+HGDIR=~/.hgext
+mkdir -p $HGDIR
+cd $HGDIR
+
+for REPO in Mekk/mercurial_keyring sjl/hg-prompt durin42/hg-git yujiewu/hgflow
+do
+    REPODIR="${REPO##*/}"
+    echo $REPODIR
+    if [ ! -d "$HGDIR/$REPODIR" ]; then
+        hg clone http://bitbucket.org/$REPO
+        #echo  http://bitbucket.org/$REPO
+    else
+        cd $HGDIR/$REPODIR
+        #echo $HGDIR/$REPODIR
+        hg pull -u
+    fi
+done
