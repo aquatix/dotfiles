@@ -27,6 +27,9 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Default editor is vim
+export EDITOR='vim'
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -72,8 +75,8 @@ if [ "$color_prompt" = yes ]; then
     BLUE="\[\033[0;34m\]"
     YELLOW="\[\033[0;33m\]"
     PROMPT_SYMBOL='$'
-    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
-    PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
+    PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
     # /Michiel's colour config
 else
