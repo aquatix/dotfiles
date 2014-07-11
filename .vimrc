@@ -39,8 +39,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-" Enable line numbers and syntax highlighting by default
+" Enable line numbers, highlighting of current line and syntax highlighting by default
 set number
+set cursorline
 syntax on
 " enable words completion
 set dictionary+=/usr/share/dict/words
