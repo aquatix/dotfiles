@@ -1,2 +1,0 @@
-#!/bin/bash
-sudo mount -t ecryptfs ~/files/sanoma/.priv ~/Documents/private/sanoma
