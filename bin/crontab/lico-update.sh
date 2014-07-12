@@ -7,7 +7,7 @@
 #            https://linuxcounter.net
 # -------------------------------------------------------------------------
 
-scriptversion="lico-update.sh version 0.3.19"
+scriptversion="lico-update.sh version 0.3.20"
 
 # -------------------------------------------------------------------------
 
@@ -496,16 +496,16 @@ getTotalDiskSpace() {
   if [ "${OS}" = "Linux" ]; then
     olddf=$( [ -z "$( ${DF} --help | ${GREP} -- "-P" )" ] && echo "1" || echo "0" )
     if [ "${olddf}" = "1" ]; then
-      space=$( ${DF} | ${EGREP} "^/dev/" | ${SED} "s/  */\ /g" | ${CUT} -d " " -f 2 | ${AWK} '{s+=$1} END {printf "%f", s}' )
+      space=$( ${DF} 2>/dev/null | ${EGREP} "^/dev/" | ${SED} "s/  */\ /g" | ${CUT} -d " " -f 2 | ${AWK} '{s+=$1} END {printf "%f", s}' )
     else
-      space=$( ${DF} -l -P | ${EGREP} "^/dev/" | ${SED} "s/  */\ /g" | ${CUT} -d " " -f 2 | ${AWK} '{s+=$1} END {printf "%f", s}' )
+      space=$( ${DF} -l -P 2>/dev/null | ${EGREP} "^/dev/" | ${SED} "s/  */\ /g" | ${CUT} -d " " -f 2 | ${AWK} '{s+=$1} END {printf "%f", s}' )
     fi
     echo ${space}
   fi
 }
 
 getFreeDiskSpace() {
-  [ "${OS}" = "Linux" ] && echo $(${DF} -l -P | ${EGREP} "^/dev/" | ${SED} "s/  */\ /g" | ${CUT} -d " " -f 4 | ${AWK} '{s+=$1} END {printf "%f", s}') || :
+  [ "${OS}" = "Linux" ] && echo $(${DF} -l -P 2>/dev/null | ${EGREP} "^/dev/" | ${SED} "s/  */\ /g" | ${CUT} -d " " -f 4 | ${AWK} '{s+=$1} END {printf "%f", s}') || :
 }
 
 getUptime() {
