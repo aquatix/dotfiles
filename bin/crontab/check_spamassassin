@@ -1,0 +1,5 @@
+#!/bin/bash
+# Nightly training session
+/usr/bin/sa-learn --mbox --ham ~/mail/ham
+/usr/bin/sa-learn --mbox --spam ~/mail/spam
+
