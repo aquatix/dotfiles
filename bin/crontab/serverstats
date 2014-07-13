@@ -1,0 +1,21 @@
+#!/bin/bash
+DATESTAMP=`date +%Y\-%m\-%d\ %H\:%M`
+echo "== Server stats ======"
+echo "Stats for: $DATESTAMP"
+echo "uptime:"
+uptime
+echo "======================"
+echo "w:"
+w
+echo "======================"
+echo "last -n 20:"
+last -n 20
+echo "======================"
+echo "vnstat"
+/usr/bin/vnstat
+echo "======================"
+echo "top"
+top -bn 1
+echo "======================"
+echo "End of report"
+echo "======================"
