@@ -16,9 +16,26 @@
 	co = checkout
 	ci = commit
 	br = branch
+	c = commit -am
 
 [push]
 	default = simple
 
 [core]
 	editor = vim
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+	insteadOf = "github:"
+
+[url "git@bitbucket.org:"]
+	insteadOf = "bb:"
+	pushInsteadOf = "bitbucket:"
+	pushInsteadOf = "git://bitbucket.org/"
+
+[url "git://bitbucket.org/"]
+	insteadOf = "bitbucket:"
