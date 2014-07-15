@@ -3,7 +3,6 @@
 
 install_hg()
 {
-break
     # Mercurial extensions
     touch ~/.dot_has_hg
     HGDIR=~/workspace/application_addons/mercurial
