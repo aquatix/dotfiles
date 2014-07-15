@@ -76,7 +76,7 @@ if [ "$color_prompt" = yes ]; then
     YELLOW="\[\033[0;33m\]"
     GREEN="\[\033[0;32m\]"
     PROMPT_SYMBOL='$'
-    if [ "${HOSTNAME}" = "higgs.aquariusoft.org" ] || [ "${HOSTNAME}" = "medusa" ]; then
+    if [ -e ~/.dot_is_server ]; then
         PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
     else
         PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
