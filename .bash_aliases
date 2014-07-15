@@ -41,6 +41,10 @@ alias so=git
 #20140521 force 256 colours in tmux
 alias tmux='tmux -2'
 
+# 20140715 you can connect to your session normally, and if you are bothered by
+# another session that forced down your tmux window size you can simply call
+alias takeover="tmux detach -a"
+
 function fuck() {
   if killall -9 "$2"; then
     echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
