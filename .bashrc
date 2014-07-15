@@ -74,8 +74,13 @@ if [ "$color_prompt" = yes ]; then
     BLACK="\[\033[0m\]"
     BLUE="\[\033[0;34m\]"
     YELLOW="\[\033[0;33m\]"
+    GREEN="\[\033[0;32m\]"
     PROMPT_SYMBOL='$'
-    PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+    if [ "${HOSTNAME}" = "higgs.aquariusoft.org" ] || [ "${HOSTNAME}" = "medusa" ]; then
+        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
+    else
+        PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+    fi
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
     # /Michiel's colour config
