@@ -6,8 +6,6 @@ alias ll='ls -la'
 # append history instead of overwriting:
 shopt -s histappend
 
-#alias findphp='find . -name "*php" | xargs grep'
-#alias findphp='find . -name "*.php" | xargs grep -i'
 alias findphp='find . -name "*.php" | xargs grep'
 alias findjs='find . -name "*.js" | xargs grep'
 alias findcss='find . -name "*.css" | xargs grep'
@@ -21,13 +19,13 @@ alias notes='vim ~/mydocs/notes/notes.txt'
 alias higgs='ssh higgs'
 alias medusa='ssh medusa'
 
-#20120714
+# 20120714
 alias gm='gnome-mplayer'
 
-#20131124
+# 20131124
 alias fucking='sudo'
 
-#20140110
+# 20140110
 alias such=git
 alias very=git
 alias wow='git status'
@@ -38,7 +36,7 @@ alias so=git
 # so rebase
 # so diff
 
-#20140521 force 256 colours in tmux
+# 20140521 force 256 colours in tmux
 alias tmux='tmux -2'
 
 # 20140715 you can connect to your session normally, and if you are bothered by
@@ -51,7 +49,7 @@ function fuck() {
   fi
 }
 
-#20140614 wrapper around bpython to load the virtualenv's python path
+# 20140614 wrapper around bpython to load the virtualenv's python path
 bpython() {
   if test -n "$VIRTUAL_ENV"
   then
