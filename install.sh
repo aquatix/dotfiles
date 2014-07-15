@@ -45,6 +45,7 @@ fi
 echo "INFO: Vundle Install"
 vim +BundleInstall +qall
 
+echo
 echo "Do you wish to install mercurial stuff?"
 select yn in "Yes" "No"; do
     case $yn in
@@ -53,6 +54,7 @@ select yn in "Yes" "No"; do
     esac
 done
 
+echo
 echo "Is this machine a server?"
 select yn in "Yes" "No"; do
     case $yn in
