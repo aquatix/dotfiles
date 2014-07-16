@@ -50,7 +50,7 @@ echo "Do you wish to install mercurial stuff?"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) install_hg; break;;
-        No ) break;;
+        No ) touch ~/.dot_no_hg; break;;
     esac
 done
 
@@ -59,6 +59,6 @@ echo "Is this machine a server?"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) touch ~/.dot_is_server; break;;
-        No ) break;;
+        No ) touch ~/.dot_no_server; break;;
     esac
 done
