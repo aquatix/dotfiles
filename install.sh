@@ -45,20 +45,26 @@ fi
 echo "INFO: Vundle Install"
 vim +BundleInstall +qall
 
-echo
-echo "Do you wish to install mercurial stuff?"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) install_hg; break;;
-        No ) touch ~/.dot_no_hg; break;;
-    esac
-done
+if [ -e ~/.dot_has_hg ]; then
+    install_hg
+elif [ ! -e ~/.dot_no_hg ]; then
+    echo
+    echo "Do you wish to install mercurial stuff?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) install_hg; break;;
+            No ) touch ~/.dot_no_hg; break;;
+        esac
+    done
+fi
 
-echo
-echo "Is this machine a server?"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) touch ~/.dot_is_server; break;;
-        No ) touch ~/.dot_no_server; break;;
-    esac
-done
+if [ ! -e ~/.dot_is_server ] && [ ! -e ~/.dot_no_server ]; then
+    echo
+    echo "Is this machine a server?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) touch ~/.dot_is_server; break;;
+            No ) touch ~/.dot_no_server; break;;
+        esac
+    done
+fi
