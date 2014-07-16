@@ -75,8 +75,11 @@ if [ "$color_prompt" = yes ]; then
     BLUE="\[\033[0;34m\]"
     YELLOW="\[\033[0;33m\]"
     GREEN="\[\033[0;32m\]"
+    RED="\[\033[0;31m\]"
     PROMPT_SYMBOL='$'
-    if [ -e ~/.dot_is_server ]; then
+    if [ $USER = 'root' ]; then
+        PS1="$RED\t $GREEN\u$BLACK@\h:\W$ "
+    elif [ -e ~/.dot_is_server ]; then
         PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
     else
         PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
