@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#value=`cat config.txt`
+#echo "$value"
+
+WORKSPACE="$HOME/workspace/projects"
+
+if [ ! -e $WORKSPACE ]; then
+    mkdir -p $WORKSPACE
+fi
+
+GITHUBUSER=aquatix
+REPOS="dotfiles ns-api"
+
+for REPO in $REPOS; do
+    cd $WORKSPACE/github
+    if [ -e $REPO ]; then
+        cd $REPO
+        #git diff --quiet || echo "[c] skipping" 
+        git diff --quiet
+        if [ $? > 0 ]; then
+            echo -e "[\e[31mX\e[0m] $REPO changed - $WORKSPACE/github/$REPO"
+        else
+            echo -e "[\e[32mU\e[0m] $REPO"
+            #git pull
+        fi
+    else
+        #git clone $REPO
+        echo -e "[\e[33mC\e[0m] $REPO"
+    fi
+done
