@@ -9,62 +9,46 @@ if [ ! -e $WORKSPACE ]; then
     mkdir -p $WORKSPACE
 fi
 
-#GRPS=`cat ~/.git_groups`
-#GRPS=$(<~/.git_groups)
-#GRPS=$(<$HOME/.privdotfiles/git_groups)
-echo `pwd`
-
 saveIFS="$IFS"
 IFS=$'\n'
 GRPS=($(<~/.git_groups))
 IFS="$saveIFS"
-#echo ${GRPS[0]}
-
-#GRPS=$( <clean_svn )
-#echo "groups:"
-#echo "$GRPS"
-for GRP in "${GRPS[@]}"; do
-    echo "group: $GRP"
-    saveIFS="$IFS"
-    IFS=$'\n'
-    REPOS=($(<~/.git_$GRP))
-    IFS="$saveIFS"
-
-    for REPO in "${REPOS[@]}"; do
-        echo $REPO
-    done
-done
-exit 0
 
 for GRP in "${GRPS[@]}"; do
-    echo $GRP
-    if [ ! -e $GRP ]; then
+    if [ ! -e $WORKSPACE/$GRP ]; then
         mkdir $WORKSPACE/$GRP
+    elif [ -f $WORKSPACE/$GRP ]; then
+        echo -e "[\e[31mX\e[0m] Group directory already exists as file: $WORKSPACE/$GRP"
+        exit 1
     fi
 
-    saveIFS="$IFS"
-    IFS=$'\n'
-    REPOS=($(<~/.git_$GRP))
-    IFS="$saveIFS"
+    if [ -e ~/.git_group_$GRP ]; then
+        saveIFS="$IFS"
+        IFS=$'\n'
+        REPOS=($(<~/.git_group_$GRP))
+        IFS="$saveIFS"
 
-    for REPO in "${REPOS[@]}"; do
-        cd $WORKSPACE/$GRP
-        REPODIR=$(basename "$REPO")
-        #extension="${filename##*.}"
-        REPODIR="${REPODIR%.*}"
-        if [ -e $REPODIR ]; then
-            cd $REPODIR
-            #git diff --quiet || echo "[c] skipping" 
-            git diff --quiet
-            if [ $? > 0 ]; then
-                echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPO"
+        for REPO in "${REPOS[@]}"; do
+            cd $WORKSPACE/$GRP
+            REPODIR=$(basename "$REPO")
+            #extension="${filename##*.}"
+            REPODIR="${REPODIR%.*}"
+            if [ -e $REPODIR ]; then
+                cd $REPODIR
+                #git diff --quiet || echo "[c] skipping" 
+                git diff --quiet
+                if [ $? > 0 ]; then
+                    echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPO"
+                else
+                    echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
+                    #git pull
+                fi
             else
-                echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
-                #git pull
+                #git clone $REPO
+                echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
             fi
-        else
-            #git clone $REPO
-            echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
-        fi
-    done
+        done
+    else
+        echo -e "[\e[31mX\e[0m] Group config file ~/.git_group_$GRP not found"
+    fi
 done
