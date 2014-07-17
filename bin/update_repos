@@ -35,17 +35,16 @@ for GRP in "${GRPS[@]}"; do
             REPODIR="${REPODIR%.*}"
             if [ -e $REPODIR ]; then
                 cd $REPODIR
-                #git diff --quiet || echo "[c] skipping" 
-                git diff --quiet
-                if [ $? > 0 ]; then
-                    echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPO"
+                if ! git diff --quiet; then
+                    echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
                 else
                     echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
-                    #git pull
+                    git pull --quiet
+                    git push --quiet
                 fi
             else
-                #git clone $REPO
                 echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
+                git clone --quiet $REPO
             fi
         done
     else
