@@ -9,16 +9,46 @@ if [ ! -e $WORKSPACE ]; then
     mkdir -p $WORKSPACE
 fi
 
-GITHUBUSER=aquatix
-REPOS="dotfiles ns-api"
+#GRPS=`cat ~/.git_groups`
+#GRPS=$(<~/.git_groups)
+#GRPS=$(<$HOME/.privdotfiles/git_groups)
+echo `pwd`
 
-for GROUP in $GROUPS; do
-    if [ ! -e $GROUP ]; then
-        mkdir $WORKSPACE/$GROUP
+saveIFS="$IFS"
+IFS=$'\n'
+GRPS=($(<~/.git_groups))
+IFS="$saveIFS"
+#echo ${GRPS[0]}
+
+#GRPS=$( <clean_svn )
+#echo "groups:"
+#echo "$GRPS"
+for GRP in "${GRPS[@]}"; do
+    echo "group: $GRP"
+    saveIFS="$IFS"
+    IFS=$'\n'
+    REPOS=($(<~/.git_$GRP))
+    IFS="$saveIFS"
+
+    for REPO in "${REPOS[@]}"; do
+        echo $REPO
+    done
+done
+exit 0
+
+for GRP in "${GRPS[@]}"; do
+    echo $GRP
+    if [ ! -e $GRP ]; then
+        mkdir $WORKSPACE/$GRP
     fi
 
-    for REPO in $REPOS; do
-        cd $WORKSPACE/$GROUP
+    saveIFS="$IFS"
+    IFS=$'\n'
+    REPOS=($(<~/.git_$GRP))
+    IFS="$saveIFS"
+
+    for REPO in "${REPOS[@]}"; do
+        cd $WORKSPACE/$GRP
         REPODIR=$(basename "$REPO")
         #extension="${filename##*.}"
         REPODIR="${REPODIR%.*}"
@@ -27,14 +57,14 @@ for GROUP in $GROUPS; do
             #git diff --quiet || echo "[c] skipping" 
             git diff --quiet
             if [ $? > 0 ]; then
-                echo -e "[\e[31mX\e[0m] $GROUP/$REPODIR changed - $WORKSPACE/$GROUP/$REPO"
+                echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPO"
             else
-                echo -e "[\e[32mU\e[0m] $GROUP/$REPODIR"
+                echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
                 #git pull
             fi
         else
             #git clone $REPO
-            echo -e "[\e[33mC\e[0m] $GROUP/$REPODIR"
+            echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
         fi
     done
 done
