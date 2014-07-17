@@ -17,24 +17,24 @@ for GROUP in $GROUPS; do
         mkdir $WORKSPACE/$GROUP
     fi
 
-for REPO in $REPOS; do
-    cd $WORKSPACE/$GROUP
-    REPODIR=$(basename "$REPO")
-    #extension="${filename##*.}"
-    REPODIR="${REPODIR%.*}"
-    if [ -e $REPODIR ]; then
-        cd $REPODIR
-        #git diff --quiet || echo "[c] skipping" 
-        git diff --quiet
-        if [ $? > 0 ]; then
-            echo -e "[\e[31mX\e[0m] $GROUP/$REPODIR changed - $WORKSPACE/$GROUP/$REPO"
+    for REPO in $REPOS; do
+        cd $WORKSPACE/$GROUP
+        REPODIR=$(basename "$REPO")
+        #extension="${filename##*.}"
+        REPODIR="${REPODIR%.*}"
+        if [ -e $REPODIR ]; then
+            cd $REPODIR
+            #git diff --quiet || echo "[c] skipping" 
+            git diff --quiet
+            if [ $? > 0 ]; then
+                echo -e "[\e[31mX\e[0m] $GROUP/$REPODIR changed - $WORKSPACE/$GROUP/$REPO"
+            else
+                echo -e "[\e[32mU\e[0m] $GROUP/$REPODIR"
+                #git pull
+            fi
         else
-            echo -e "[\e[32mU\e[0m] $GROUP/$REPODIR"
-            #git pull
+            #git clone $REPO
+            echo -e "[\e[33mC\e[0m] $GROUP/$REPODIR"
         fi
-    else
-        #git clone $REPO
-        echo -e "[\e[33mC\e[0m] $GROUP/$REPODIR"
-    fi
-done
+    done
 done
