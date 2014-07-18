@@ -1,20 +1,35 @@
 #!/bin/bash
 
-#value=`cat config.txt`
-#echo "$value"
-
-WORKSPACE="$HOME/workspace/projects"
-
-if [ ! -e $WORKSPACE ]; then
-    mkdir -p $WORKSPACE
-fi
-
 saveIFS="$IFS"
 IFS=$'\n'
-GRPS=($(<~/.git_groups))
+LINES=($(<~/.git_repos))
 IFS="$saveIFS"
 
-for GRP in "${GRPS[@]}"; do
+# Set defaults to user's homedir and no group (e.g., subdir)
+WORKSPACE=$HOME
+GRP=""
+for LINE in "${LINES[@]}"; do
+    if [ ${LINE:0:1} = '#' ] || [ -z $LINE ]; then
+        # Comment or empty line encountered, skip
+        continue
+    fi
+
+    if [ ${LINE:0:1} = 'workspace=' ]; then
+        # TODO: strip 'workspace=' from LINE
+        #WORKSPACE="$HOME/workspace/projects"
+        WORKSPACE="$HOME/$LINE"
+
+        if [ ! -e $WORKSPACE ]; then
+            mkdir -p $WORKSPACE
+        fi
+    fi
+
+    if [ ${LINE:0:1} = '[' ]; then
+        echo 'group: $GRP'
+        # TODO: strip [ and ] from LINE
+        GRP=$LINE
+    fi
+
     if [ ! -e $WORKSPACE/$GRP ]; then
         mkdir $WORKSPACE/$GRP
     elif [ -f $WORKSPACE/$GRP ]; then
