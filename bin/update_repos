@@ -37,32 +37,21 @@ for LINE in "${LINES[@]}"; do
         exit 1
     fi
 
-    if [ -e ~/.git_group_$GRP ]; then
-        saveIFS="$IFS"
-        IFS=$'\n'
-        REPOS=($(<~/.git_group_$GRP))
-        IFS="$saveIFS"
-
-        for REPO in "${REPOS[@]}"; do
-            cd $WORKSPACE/$GRP
-            REPODIR=$(basename "$REPO")
-            #extension="${filename##*.}"
-            REPODIR="${REPODIR%.*}"
-            if [ -e $REPODIR ]; then
-                cd $REPODIR
-                if ! git diff --quiet; then
-                    echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
-                else
-                    echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
-                    git pull --quiet
-                    git push --quiet
-                fi
-            else
-                echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
-                git clone --quiet $REPO
-            fi
-        done
+    cd $WORKSPACE/$GRP
+    REPODIR=$(basename "$REPO")
+    #extension="${filename##*.}"
+    REPODIR="${REPODIR%.*}"
+    if [ -e $REPODIR ]; then
+        cd $REPODIR
+        if ! git diff --quiet; then
+            echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
+        else
+            echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
+            git pull --quiet
+            git push --quiet
+        fi
     else
-        echo -e "[\e[31mX\e[0m] Group config file ~/.git_group_$GRP not found"
+        echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
+        git clone --quiet $REPO
     fi
 done
