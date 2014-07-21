@@ -26,6 +26,9 @@ for LINE in "${LINES[@]}"; do
             WORKSPACE="$HOME/$WORKSPACEDIR"
         fi
         echo "workspace: $WORKSPACE"
+        # Reset GRP, as we enter a new workspace
+        GRP=""
+        GPRDIR=""
 
         if [ ! -e $WORKSPACE ]; then
             #mkdir -p $WORKSPACE
@@ -53,7 +56,7 @@ for LINE in "${LINES[@]}"; do
         exit 1
     fi
 
-    cd $WORKSPACE/$GRP
+    cd $GRPDIR
     REPODIR=$(basename "$LINE")
     #extension="${filename##*.}"
     REPODIR="${REPODIR%.*}"
