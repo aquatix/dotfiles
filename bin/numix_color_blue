@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ ! -d "Numix Daily" ]; then
+    echo "Numix theme not found!"
+    exit 1
+fi
+
+if [ -d "Numix Blue" ]; then
+	rm -r "Numix Blue"
+fi
+
+cp -a "Numix Daily" "Numix Blue"
+cd "Numix Blue"
+
+# change orange hilight to blue
+#find . -type f -print0 | xargs -0 sed -i 's/d64937/1BA1E2/g'
+find . -type f -print0 | xargs -0 sed -i 's/d64937/0072b3/g'
+
+# change darkish gray background to lighter
+find . -type f -print0 | xargs -0 sed -i 's/dedede/eeeeee/g'
