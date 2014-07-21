@@ -36,8 +36,7 @@ for LINE in "${LINES[@]}"; do
 
     if [ ${LINE:0:6} = 'group=' ]; then
         GRP=`echo $LINE | cut -d'=' -f 2`
-        echo "group: $GRP"
-        if [ -z $GRP ]; then
+        if [ ! -z $GRP ]; then
             GRPDIR=$WORKSPACE/$GRP
         else
             GRPDIR=$WORKSPACE
