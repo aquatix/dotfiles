@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -d "Numix Daily" ]; then
+    echo "Numix theme not found!"
+    exit 1
+fi
+
 if [ -d "Numix Blue" ]; then
 	rm -r "Numix Blue"
 fi
