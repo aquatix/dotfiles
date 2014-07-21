@@ -11,15 +11,13 @@ GRP=""
 for LINE in "${LINES[@]}"; do
     if [ ${LINE:0:1} = '#' ] || [ -z $LINE ]; then
         # Comment or empty line encountered, skip
-        echo "comment or empty line"
+        #echo "comment or empty line"
         continue
     fi
 
     if [ ${LINE:0:10} = 'workspace=' ]; then
         length=${#LINE}
-        #WORKSPACE="$HOME/workspace/projects"
         WORKSPACEDIR=`echo $LINE | cut -d'=' -f 2`
-        #WORKSPACE="$HOME/${LINE:11:$length}"
         if [ -z $WORKSPACEDIR ]; then
             WORKSPACE=$HOME
         else
@@ -31,8 +29,7 @@ for LINE in "${LINES[@]}"; do
         GPRDIR=""
 
         if [ ! -e $WORKSPACE ]; then
-            #mkdir -p $WORKSPACE
-            echo "mkdir -p $WORKSPACE"
+            mkdir -p $WORKSPACE
         fi
         continue
     fi
@@ -49,8 +46,7 @@ for LINE in "${LINES[@]}"; do
     fi
 
     if [ ! -e $GRPDIR ]; then
-        #mkdir $GRPDIR
-        echo "mkdir $GRPDIR"
+        mkdir $GRPDIR
     elif [ -f $GRPDIR ]; then
         echo -e "[\e[31mX\e[0m] Group directory already exists as file: $GRPDIR"
         exit 1
@@ -66,11 +62,11 @@ for LINE in "${LINES[@]}"; do
             echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
         else
             echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
-            #git pull --quiet
-            #git push --quiet
+            git pull --quiet
+            git push --quiet
         fi
     else
         echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
-        #git clone --quiet $LINE
+        git clone --quiet $LINE
     fi
 done
