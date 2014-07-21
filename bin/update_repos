@@ -62,7 +62,7 @@ for LINE in "${LINES[@]}"; do
         else
             echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
             git pull --quiet
-            git push --quiet
+            #git push --quiet
         fi
     else
         echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
