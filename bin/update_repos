@@ -58,7 +58,7 @@ for LINE in "${LINES[@]}"; do
     if [ -e $REPODIR ]; then
         cd $REPODIR
 
-        git remote update > /dev/null
+        git remote update &> /dev/null
 
         LOCAL=$(git rev-parse @)
         REMOTE=$(git rev-parse @{u})
@@ -69,7 +69,7 @@ for LINE in "${LINES[@]}"; do
             echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
         elif [ $LOCAL = $REMOTE ]; then
             # Up-to-date
-            echo -e "[\e[32mN\e[0m] $GRP/$REPODIR"
+            echo -e "[\e[32m-\e[0m] $GRP/$REPODIR"
         elif [ $LOCAL = $BASE ]; then
             # Need to pull
             echo -e "[\e[33mU\e[0m] $GRP/$REPODIR"
