@@ -77,7 +77,7 @@ for LINE in "${LINES[@]}"; do
         elif [ $REMOTE = $BASE ]; then
             # Need to push
             echo -e "[\e[33mP\e[0m] $GRP/$REPODIR pushing"
-            git push
+            git push --quiet
         else
             # Diverged
             echo -e "[\e[31mX\e[0m] $GRP/$REPODIR diverged - $WORKSPACE/$GRP/$REPODIR"
