@@ -57,13 +57,40 @@ for LINE in "${LINES[@]}"; do
     REPODIR="${REPODIR%.*}"
     if [ -e $REPODIR ]; then
         cd $REPODIR
+
+        git remote update > /dev/null
+
+        LOCAL=$(git rev-parse @)
+        REMOTE=$(git rev-parse @{u})
+        BASE=$(git merge-base @ @{u})
+
+        # 31: red, 32: green, 33: orange/yellow
         if ! git diff --quiet; then
             echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
+        elif [ $LOCAL = $REMOTE ]; then
+            #echo "Up-to-date"
+            echo -e "[\e[32mN\e[0m] $GRP/$REPODIR"
+        elif [ $LOCAL = $BASE ]; then
+            #echo "Need to pull"
+            #echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
+            echo -e "[\e[33mU\e[0m] $GRP/$REPODIR"
+            #git pull --quiet
+        elif [ $REMOTE = $BASE ]; then
+            #echo "Need to push"
+            echo -e "[\e[33mP\e[0m] $GRP/$REPODIR pushing"
+            #git push
         else
-            echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
-            git pull --quiet
-            #git push --quiet
+            #echo "Diverged"
+            echo -e "[\e[31mX\e[0m] $GRP/$REPODIR diverged - $WORKSPACE/$GRP/$REPODIR"
         fi
+
+        #if ! git diff --quiet; then
+        #    echo -e "[\e[31mX\e[0m] $GRP/$REPODIR changed - $WORKSPACE/$GRP/$REPODIR"
+        #else
+        #    echo -e "[\e[32mU\e[0m] $GRP/$REPODIR"
+        #    git pull --quiet
+        #    #git push --quiet
+        #fi
     else
         echo -e "[\e[33mC\e[0m] $GRP/$REPODIR"
         git clone --quiet $LINE
