@@ -26,3 +26,17 @@ find . -type f -print0 | xargs -0 sed -i 's/d64937/0072b3/g'
 
 # change darkish gray background to lighter
 find . -type f -print0 | xargs -0 sed -i 's/dedede/eeeeee/g'
+
+cd ..
+
+if [ -d "Numix Orange" ]; then
+	rm -r "Numix Orange"
+fi
+
+cp -a "Numix Daily" "Numix Orange"
+cd "Numix Orange"
+
+# change hard orange hilight to a nicer shade
+find . -type f -print0 | xargs -0 sed -i 's/d64937/ff8813/g'
+# change darkish gray background to lighter
+find . -type f -print0 | xargs -0 sed -i 's/dedede/eeeeee/g'
