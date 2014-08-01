@@ -38,6 +38,9 @@ Plugin 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
                                     " wants to interact with it.
+" The NERD Commenter : A plugin that allows for easy commenting of code for
+" many filetypes.
+Plugin 'scrooloose/nerdcommenter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
