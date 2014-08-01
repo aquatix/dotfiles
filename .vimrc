@@ -59,6 +59,9 @@ set complete-=k complete+=k
 " 2006-04-24
 set smartcase
 
+" reload file when changes happen in other editors
+set autoread
+
 " 2008-04-14 with the if-statement added at 2008-11-19
 if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
 	set t_Co=256
