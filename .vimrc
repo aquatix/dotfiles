@@ -33,6 +33,11 @@ if v:version >= 704
 endif
 " Distraction-free writing, start with <Leader>V (\V)
 Plugin 'mikewest/vimroom'
+" undotree.vim : Display your undo history in a graph.
+Plugin 'mbbill/undotree'
+nnoremap <Leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
+                                    " wants to interact with it.
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
