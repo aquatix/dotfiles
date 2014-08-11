@@ -37,11 +37,11 @@ for TARGET
   in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc
 do
   echo $TARGET
-  if [ -l $TARGET ]; then
+  if [ -L $TARGET ]; then
       echo "symlink exists, skipping"
   elif [ -e $TARGET ]; then
 	  echo "exists, moving"
-      if [ ! -d "workspace/backup/$DATETIME" ];
+      if [ ! -d "workspace/backup/$DATETIME" ]; then
           mkdir -p "workspace/backup/$DATETIME"
       fi
 	  #mv $TARGET "workspace/backup/$DATETIME/${TARGET}"
