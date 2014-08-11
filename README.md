@@ -5,11 +5,10 @@ After having my homedirs in subversion for years, move to Git.
 
 ```
 mkdir ~/.dot
-clone --no-checkout <url>
-git config core.worktree="../../../"
-git checkout master
-cd
-sh install.sh
+cd ~/.dot
+clone <url>
+cd dotfiles    # this takes you to the freshly cloned ~/.dot/dotfiles
+sh install.sh  # install the files in the homedir
 ```
 
 # Fix for shift+F6 in tmux (and screen probably)
