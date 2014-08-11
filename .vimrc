@@ -10,6 +10,9 @@ Plugin 'majutsushi/tagbar'
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
+
+" == UI
+
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
 Plugin 'bling/vim-airline'
@@ -22,6 +25,9 @@ Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
 Plugin 'jnurmine/Zenburn.git'
+
+" == 
+
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
 " Handy Markdown stuff
