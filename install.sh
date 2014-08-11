@@ -24,8 +24,35 @@ install_hg()
     done
 }
 
+# Get the directory the dotfiles have been cloned into
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $DIR
+echo "Installing from $DIR"
+DATETIME=`date +%Y%m%d_%H%M`
+
+# Go home
+cd
+
+# Symlink all the things
+for TARGET
+  in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc
+do
+  echo $TARGET
+  if [ -l $TARGET ]; then
+      echo "symlink exists, skipping"
+  elif [ -e $TARGET ]; then
+	  echo "exists, moving"
+      if [ ! -d "workspace/backup/$DATETIME" ];
+          mkdir -p "workspace/backup/$DATETIME"
+      fi
+	  #mv $TARGET "workspace/backup/$DATETIME/${TARGET}"
+	  echo "workspace/backup/$DATETIME/${TARGET}"
+  fi
+  #ln -s
+  #ln -s $DIR/$TARGET
+  echo "ln -s $DIR/$TARGET"
+done
+# Test
+exit 1
 
 echo "INFO: Init submodules"
 git submodule init
