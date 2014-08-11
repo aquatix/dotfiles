@@ -4,6 +4,11 @@ dotfiles
 After having my homedirs in subversion for years, move to Git.
 
 ```
+mkdir ~/.dot
+clone --no-checkout <url>
+git config core.worktree="../../../"
+git checkout master
+cd
 sh install.sh
 ```
 
