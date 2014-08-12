@@ -142,8 +142,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -x ~/.privdotfiles/bin ]; then
-    PATH=$PATH:~/.privdotfiles/bin
+if [ -x ~/.dot/privdotfiles/bin ]; then
+    PATH=$PATH:~/.dot/privdotfiles/bin
 fi
 
 PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools
