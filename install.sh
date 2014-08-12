@@ -37,17 +37,16 @@ for TARGET
   in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc
 do
   echo $TARGET
-  if [ -L $TARGET ]; then
-      echo "symlink exists, skipping"
+  if [ "$(readlink $TARGET)" = "$DIR/$TARGET" ]; then
+      echo "symlink exists and is fine, skipping"
   elif [ -e $TARGET ]; then
-	  echo "exists, moving"
+	  echo "exists, moving out of the way"
       if [ ! -d "workspace/backup/$DATETIME" ]; then
           mkdir -p "workspace/backup/$DATETIME"
       fi
 	  #mv $TARGET "workspace/backup/$DATETIME/${TARGET}"
-	  echo "workspace/backup/$DATETIME/${TARGET}"
+	  echo "workspace/backup/dotfiles_$DATETIME/${TARGET}"
   fi
-  #ln -s
   #ln -s $DIR/$TARGET
   echo "ln -s $DIR/$TARGET"
 done
