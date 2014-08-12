@@ -36,22 +36,36 @@ cd
 for TARGET
   in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc
 do
+  cd
   echo $TARGET
   if [ "$(readlink $TARGET)" = "$DIR/$TARGET" ]; then
-      echo "symlink exists and is fine, skipping"
-  elif [ -e $TARGET ]; then
-	  echo "exists, moving out of the way"
+      echo "  symlink exists and is fine, skipping"
+      continue
+  elif [ -e $TARGET ] || [ -L $TARGET ] && [ "$(readlink $TARGET)" != "$DIR/$TARGET" ]; then
+	  echo "  exists, moving out of the way"
       if [ ! -d "workspace/backup/$DATETIME" ]; then
           mkdir -p "workspace/backup/$DATETIME"
       fi
-	  #mv $TARGET "workspace/backup/$DATETIME/${TARGET}"
-	  echo "workspace/backup/dotfiles_$DATETIME/${TARGET}"
+      DIRNAME=$(dirname ${TARGET})
+      if [ $DIRNAME != "." ]; then
+          mkdir "workspace/backup/$DATETIME/$DIRNAME"
+	      mv $TARGET "workspace/backup/$DATETIME/$DIRNAME"
+          #echo "workspace/backup/privdotfiles_$DATETIME/$DIRNAME"
+      else
+          mv $TARGET "workspace/backup/$DATETIME/"
+          #echo "workspace/backup/privdotfiles_$DATETIME/${TARGET}"
+      fi
   fi
-  #ln -s $DIR/$TARGET
-  echo "ln -s $DIR/$TARGET"
+
+  # If link is in a subdir, go there
+  DIRNAME=$(dirname ${TARGET})
+  if [ $DIRNAME != "." ]; then
+      cd $DIRNAME
+  fi
+  # Create the symlink
+  ln -s $DIR/$TARGET
+  #echo "ln -s $DIR/$TARGET"
 done
-# Test
-exit 1
 
 echo "INFO: Init submodules"
 git submodule init
