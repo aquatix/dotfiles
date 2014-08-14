@@ -43,16 +43,16 @@ do
       continue
   elif [ -e $TARGET ] || [ -L $TARGET ] && [ "$(readlink $TARGET)" != "$DIR/$TARGET" ]; then
 	  echo "  exists, moving out of the way"
-      if [ ! -d "workspace/backup/$DATETIME" ]; then
-          mkdir -p "workspace/backup/$DATETIME"
+      if [ ! -d "workspace/backup/dotfiles_$DATETIME" ]; then
+          mkdir -p "workspace/backup/dotfiles_$DATETIME"
       fi
       DIRNAME=$(dirname ${TARGET})
       if [ $DIRNAME != "." ]; then
-          mkdir "workspace/backup/$DATETIME/$DIRNAME"
-	      mv $TARGET "workspace/backup/$DATETIME/$DIRNAME"
+          mkdir "workspace/backup/dotfiles_$DATETIME/$DIRNAME"
+	      mv $TARGET "workspace/backup/dotfiles_$DATETIME/$DIRNAME"
           #echo "workspace/backup/privdotfiles_$DATETIME/$DIRNAME"
       else
-          mv $TARGET "workspace/backup/$DATETIME/"
+          mv $TARGET "workspace/backup/dotfiles_$DATETIME/"
           #echo "workspace/backup/privdotfiles_$DATETIME/${TARGET}"
       fi
   fi
