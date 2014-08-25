@@ -43,6 +43,9 @@ alias tmux='tmux -2'
 # another session that forced down your tmux window size you can simply call
 alias takeover="tmux detach -a"
 
+# 20140825 as there is no `pip upgrade`, this has to do
+alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
+
 function fuck() {
   if killall -9 "$2"; then
     echo ; echo " (╯°□°）╯︵$(echo "$2"|toilet -f term -F rotate)"; echo
