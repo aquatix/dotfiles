@@ -1,3 +1,4 @@
 #!/bin/bash
 cd ~/mydocs/work/sanoma
+git pull
 vim notes.txt planning_2014.txt notes_2014.md
