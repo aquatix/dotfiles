@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Make sure only root can run our script
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+cd /usr/share/themes
+
+if [ ! -d "Iris Dark" ]; then
+    echo "Iris theme not found!"
+    exit 1
+fi
+
+if [ -d "Iris Dark Green" ]; then
+	rm -r "Iris Dark Green"
+fi
+
+cp -a "Iris Dark" "Iris Dark Green"
+cd "Iris Dark Green"
+
+# change orange hilight to green (shade from Faba-Mint)
+find . -type f -print0 | xargs -0 sed -i 's/df253f/79a142/g'
