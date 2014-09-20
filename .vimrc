@@ -25,8 +25,11 @@ Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
 Plugin 'jnurmine/Zenburn.git'
+" Quick file system tree, mapped to Ctrl+n for quick toggle
+Plugin 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
 
-" == 
+" == Content convenience
 
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
