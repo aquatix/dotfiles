@@ -34,7 +34,7 @@ cd
 
 # Symlink all the things
 for TARGET
-  in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc
+  in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
 do
   cd
   echo $TARGET
