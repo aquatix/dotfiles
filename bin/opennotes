@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ~/mydocs/work/sanoma
+cd ~/mydocs/notes
 git pull
-vim -c ":vsp planning_2014.txt" sprints_2014.txt notes_2014.md
+vim -c ":vsp notes.txt" dammit_blogs.md captains_log.md
