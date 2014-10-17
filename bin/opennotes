@@ -1,4 +1,5 @@
 #!/bin/bash
 cd ~/mydocs/notes
 git pull
-vim -c ":vsp notes.txt" dammit_blogs.md captains_log.md
+#vim -c ":vsp notes.txt" dammit_blogs.md captains_log.md
+vim dammit_blogs.md notes.txt captains_log.md
