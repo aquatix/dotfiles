@@ -80,7 +80,7 @@ if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &t
 
 	" create a bar for airline
 	set laststatus=2
-	let g:airline_powerline_fonts = 1 
+	let g:airline_powerline_fonts = 1
 endif
 
 " paste and autoindent
