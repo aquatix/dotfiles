@@ -13,6 +13,7 @@ hgk=
 hgflow = ~/workspace/application_addons/mercurial/hgflow/src/hgflow.py
 #hggit = ~/workspace/application_addons/mercurial/hg-git/hggit
 prompt = /home/mbscholt/workspace/application_addons/mercurial/hg-prompt/prompt.py
+shelve=
 
 [git]
 authors = /home/mbscholt/.hgauthors.txt
