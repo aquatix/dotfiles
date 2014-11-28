@@ -6,7 +6,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Display tags of the current file ordered by scope
+" You need ctags: sudo apt-get install exuberant-ctagsor` or
+" `brew install ctags` for example
 Plugin 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
