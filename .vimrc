@@ -31,6 +31,17 @@ map <C-n> :NERDTreeToggle<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Full path fuzzy file, buffer, mru, tag, ... finder
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+
 " == Content convenience
 
 " Python autocompletion
@@ -53,6 +64,9 @@ let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
 " many filetypes.
 Plugin 'scrooloose/nerdcommenter'
 
+" Highlight colours in CSS files
+Plugin 'ap/vim-css-color'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,6 +82,12 @@ set dictionary+=/usr/share/dict/words
 set complete-=k complete+=k
 
 " 2006-04-24
+set smartcase
+
+" ignorecase plus smartcase make searches case-insensitive except when you
+" include upper-case characters (so /foo matches FOO and fOo, but /FOO only
+" matches the former)
+set ignorecase
 set smartcase
 
 " reload file when changes happen in other editors
