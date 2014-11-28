@@ -106,7 +106,11 @@ endif
 " paste and autoindent
 set pastetoggle=<F10>
 
+" Prettify json and javascript
 map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" Fly through buffers instead of cycling
+nnoremap <leader>l :ls<cr>:b<space>
 
 " 2014-01-29 some sane Python settings
 autocmd FileType python set tabstop=4
