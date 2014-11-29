@@ -5,6 +5,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" == UI ======
+
 " Display tags of the current file ordered by scope
 " You need ctags: `sudo apt-get install exuberant-ctags` or
 " `brew install ctags` for example
@@ -13,8 +15,6 @@ nmap <F8> :TagbarToggle<CR>
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
-
-" == UI
 
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
@@ -45,7 +45,7 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 
-" == Content convenience
+" == Content convenience ======
 
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
@@ -84,13 +84,11 @@ set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
 
-" 2006-04-24
-set smartcase
-
 " ignorecase plus smartcase make searches case-insensitive except when you
 " include upper-case characters (so /foo matches FOO and fOo, but /FOO only
 " matches the former)
 set ignorecase
+" 2006-04-24
 set smartcase
 
 " reload file when changes happen in other editors
