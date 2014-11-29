@@ -5,13 +5,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" == UI ======
+
 " Display tags of the current file ordered by scope
+" You need ctags: `sudo apt-get install exuberant-ctags` or
+" `brew install ctags` for example
 Plugin 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
-
-" == UI
 
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
@@ -31,7 +34,18 @@ map <C-n> :NERDTreeToggle<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" == Content convenience
+" Full path fuzzy file, buffer, mru, tag, ... finder
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+
+" == Content convenience ======
 
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
@@ -53,6 +67,9 @@ let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
 " many filetypes.
 Plugin 'scrooloose/nerdcommenter'
 
+" Highlight colours in CSS files
+Plugin 'ap/vim-css-color'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,6 +84,10 @@ set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
 
+" ignorecase plus smartcase make searches case-insensitive except when you
+" include upper-case characters (so /foo matches FOO and fOo, but /FOO only
+" matches the former)
+set ignorecase
 " 2006-04-24
 set smartcase
 
@@ -80,13 +101,17 @@ if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &t
 
 	" create a bar for airline
 	set laststatus=2
-	let g:airline_powerline_fonts = 1 
+	let g:airline_powerline_fonts = 1
 endif
 
 " paste and autoindent
 set pastetoggle=<F10>
 
+" Prettify json and javascript
 map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" Fly through buffers instead of cycling
+nnoremap <leader>l :ls<cr>:b<space>
 
 " 2014-01-29 some sane Python settings
 autocmd FileType python set tabstop=4
