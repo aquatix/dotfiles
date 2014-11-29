@@ -61,6 +61,29 @@ hg_ps1() {
     hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
 }
 
+set_bash_prompt(){
+    # Michiel's colour config
+    BLACK="\[\033[0m\]"
+    BLUE="\[\033[0;34m\]"
+    YELLOW="\[\033[0;33m\]"
+    GREEN="\[\033[0;32m\]"
+    RED="\[\033[0;31m\]"
+    PROMPT_SYMBOL='$'
+    if [ $USER = 'root' ]; then
+        PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
+    elif [ -e ~/.dot_is_server ]; then
+        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
+    else
+        #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+        #PS1='$PS1$(jobscount)'
+        PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ "
+        #PS1='$YELLOW\t $BLUE\u$BLACK@\h:\W$(running=$(jobscount); [ "${running:-0}" -eq 0 ] || printf %s "$running")\$ '
+    fi
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
+    # /Michiel's colour config
+}
+
 function stoppedjobs {
     jobs -s | wc -l | sed -e "s/ //g"
 }
@@ -80,26 +103,7 @@ jobscount() {
 
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # Michiel's colour config
-    BLACK="\[\033[0m\]"
-    BLUE="\[\033[0;34m\]"
-    YELLOW="\[\033[0;33m\]"
-    GREEN="\[\033[0;32m\]"
-    RED="\[\033[0;31m\]"
-    PROMPT_SYMBOL='$'
-    if [ $USER = 'root' ]; then
-        PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
-    elif [ -e ~/.dot_is_server ]; then
-        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
-    else
-        PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
-        #PS1='$PS1$(jobscount)'
-        #PS1='$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ '
-        #PS1='$YELLOW\t $BLUE\u$BLACK@\h:\W$(running=$(jobscount); [ "${running:-0}" -eq 0 ] || printf %s "$running")\$ '
-    fi
-    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
-    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
-    # /Michiel's colour config
+    PROMPT_COMMAND=set_bash_prompt
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
