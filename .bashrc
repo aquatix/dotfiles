@@ -57,9 +57,19 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 hg_ps1() {
-	    #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
-	    hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
-    }
+    #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
+    hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
+}
+
+function stoppedjobs {
+    jobs -s | wc -l | sed -e "s/ //g"
+}
+
+jobscount() {
+    local stopped=$(jobs -sp | wc -l)
+    local running=$(jobs -rp | wc -l)
+    ((running+stopped)) && echo -n "${running}r/${stopped}s "
+}
 
 # gitprompt configuration
 # Set config variables first
@@ -83,6 +93,9 @@ if [ "$color_prompt" = yes ]; then
         PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
     else
         PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+        #PS1='$PS1$(jobscount)'
+        #PS1='$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ '
+        #PS1='$YELLOW\t $BLUE\u$BLACK@\h:\W$(running=$(jobscount); [ "${running:-0}" -eq 0 ] || printf %s "$running")\$ '
     fi
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
