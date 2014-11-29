@@ -70,28 +70,24 @@ set_bash_prompt(){
     RED="\[\033[0;31m\]"
     PROMPT_SYMBOL='$'
     if [ $USER = 'root' ]; then
-        PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
+        #PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
+        PS1="$YELLOW\t $RED\u$BLACK@\h:\W$(jobscount)# "
     elif [ -e ~/.dot_is_server ]; then
-        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
+        #PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
+        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$(jobscount)$ "
     else
         #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
-        #PS1='$PS1$(jobscount)'
         PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ "
-        #PS1='$YELLOW\t $BLUE\u$BLACK@\h:\W$(running=$(jobscount); [ "${running:-0}" -eq 0 ] || printf %s "$running")\$ '
     fi
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
     # /Michiel's colour config
 }
 
-function stoppedjobs {
-    jobs -s | wc -l | sed -e "s/ //g"
-}
-
 jobscount() {
     local stopped=$(jobs -sp | wc -l)
     local running=$(jobs -rp | wc -l)
-    ((running+stopped)) && echo -n "${running}r/${stopped}s "
+    ((running+stopped)) && echo -n "[${running}r/${stopped}s]"
 }
 
 # gitprompt configuration
