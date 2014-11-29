@@ -6,7 +6,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Display tags of the current file ordered by scope
-" You need ctags: sudo apt-get install exuberant-ctagsor` or
+" You need ctags: `sudo apt-get install exuberant-ctags` or
 " `brew install ctags` for example
 Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
