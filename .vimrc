@@ -84,6 +84,10 @@ set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
 
+" ctags: check the current folder for tags file and keep going one directory up
+" all the way to the homedir
+set tags=./tags,./TAGS,tags;~,TAGS;~
+
 " ignorecase plus smartcase make searches case-insensitive except when you
 " include upper-case characters (so /foo matches FOO and fOo, but /FOO only
 " matches the former)
