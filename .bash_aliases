@@ -15,6 +15,9 @@ alias findfile='find . | grep -v .svn | grep -v .hg | grep -v .git | grep'
 
 alias notes='vim ~/mydocs/notes/notes.txt'
 
+# 20141202
+alias captainslog='vim ~/mydocs/notes/captains_log.md'
+
 # Some hosts
 alias higgs='ssh higgs'
 alias medusa='ssh medusa'
