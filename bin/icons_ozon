@@ -1,0 +1,10 @@
+#!/bin/bash
+#mydir=$(mktemp -dt "$0")
+mydir=$(mktemp -d "$TMPDIR/$(basename $0).XXXXXXXXXX")
+
+cd $mydir
+pwd
+wget https://github.com/ozonos/ozon-icon-theme/archive/master.zip
+unzip -q master.zip
+sudo mv /usr/share/icons/Ozon /usr/share/icons/Ozon.prev
+sudo mv ozon-icon-theme-master/Ozon /usr/share/icons/
