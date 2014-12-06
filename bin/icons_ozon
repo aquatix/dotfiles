@@ -1,6 +1,7 @@
 #!/bin/bash
 #mydir=$(mktemp -dt "$0")
-mydir=$(mktemp -d "$TMPDIR/$(basename $0).XXXXXXXXXX")
+#mydir=$(mktemp -d "$TMPDIR/$(basename $0).XXXXXXXXXX")
+mydir=$(mktemp -d "/tmp/$(basename $0).XXXXXXXXXX")
 
 cd $mydir
 pwd
