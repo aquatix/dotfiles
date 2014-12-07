@@ -167,6 +167,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# If the private dotfiles repo is installed, we'd like to use its scripts too
 if [ -x ~/.dot/privdotfiles/bin ]; then
     PATH=$PATH:~/.dot/privdotfiles/bin
 fi
