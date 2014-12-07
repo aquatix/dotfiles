@@ -171,4 +171,5 @@ if [ -x ~/.dot/privdotfiles/bin ]; then
     PATH=$PATH:~/.dot/privdotfiles/bin
 fi
 
-PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools
+# Android-related binaries
+PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools:/usr/local/bin/android-sdk-linux/tools
