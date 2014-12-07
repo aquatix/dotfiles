@@ -71,13 +71,13 @@ set_bash_prompt(){
     PROMPT_SYMBOL='$'
     if [ $USER = 'root' ]; then
         #PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
-        PS1="$YELLOW\t $RED\u$BLACK@\h:\W$(jobscount)# "
+        PS1="$(venvinfo)$YELLOW\t $RED\u$BLACK@\h:\W$(jobscount)# "
     elif [ -e ~/.dot_is_server ]; then
         #PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
-        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$(jobscount)$ "
+        PS1="$(venvinfo)$YELLOW\t $GREEN\u$BLACK@\h:\W$(jobscount)$ "
     else
         #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
-        PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ "
+        PS1="$(venvinfo)$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ "
     fi
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
     #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
@@ -85,9 +85,21 @@ set_bash_prompt(){
 }
 
 jobscount() {
+    # Show amount of running and stopped (backgrounded) jobs
     local stopped=$(jobs -sp | wc -l)
     local running=$(jobs -rp | wc -l)
     ((running+stopped)) && echo -n "[${running}r/${stopped}s]"
+}
+
+venvinfo() {
+    # Virtualenv information
+    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
+        # special case for Aspen magic directories
+        # see http://www.zetadev.com/software/aspen/
+        echo "[`basename \`dirname \"$VIRTUAL_ENV\"\``] "
+    elif [ "$VIRTUAL_ENV" != "" ]; then
+        echo "(`basename \"$VIRTUAL_ENV\"`) "
+    fi
 }
 
 # gitprompt configuration
