@@ -16,6 +16,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lll='ll |less -R'
 
 # append history instead of overwriting:
 shopt -s histappend
@@ -71,6 +72,9 @@ alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs 
 
 # 20140908 reload tmux config
 alias tmux_reload="tmux source-file ~/.tmux.conf"
+
+# project-oriented aliases
+alias dcpvag='workon dcp; cd ~/workspace/sanoma/content-library/; vagrant ssh'
 
 function fuck() {
   if killall -9 "$2"; then
