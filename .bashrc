@@ -56,6 +56,46 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# http://stackoverflow.com/questions/4023830/bash-how-compare-two-strings-in-version-format
+vercomp () {
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 2
+        fi
+    done
+    return 0
+}
+
+# check version of git; it supports 'simple' from 1.7.11 up, fall back to 'matching'
+vercomp "1.7.11" `git --version|awk '{ print $3 }'`
+case $? in
+    0) op='=';;
+    1) git config --global push.default matching; git config --global pull.default matching ;; # op='>';;
+    2) op='<';;
+esac
+
 hg_ps1() {
     #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
     hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
