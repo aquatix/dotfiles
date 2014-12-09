@@ -57,6 +57,8 @@ alias so=git
 # so rebase
 # so diff
 
+alias hgd='hg diff | colordiff -y | less -R'
+
 # 20140521 force 256 colours in tmux
 alias tmux='tmux -2'
 
