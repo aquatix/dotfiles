@@ -117,6 +117,12 @@ map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 " Fly through buffers instead of cycling
 nnoremap <leader>l :ls<cr>:b<space>
 
+" Enables input of special characters by a combination of two characters.
+" Example: Type 'a', erase it by typing CTRL-H - and then type ':' - this
+" results in the umlaut: ä So Vim remembers the character you have erased and
+" combines it with the character you have typed "over" the previous one.
+set digraph
+
 " 2014-01-29 some sane Python settings
 autocmd FileType python set tabstop=4
 autocmd FileType python set shiftwidth=4
