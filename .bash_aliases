@@ -36,7 +36,7 @@ vercomp () {
 vercomp "1.7.11" `git --version|awk '{ print $3 }'`
 case $? in
     0) op='=';;
-    1) alias git='git config --global push.default matching';; # op='>';;
+    1) git config --global push.default matching; git config --global pull.default matching ;; # op='>';;
     2) op='<';;
 esac
 
