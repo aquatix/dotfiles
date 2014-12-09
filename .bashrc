@@ -57,6 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # http://stackoverflow.com/questions/4023830/bash-how-compare-two-strings-in-version-format
+# returns 0 if =, 1 if >, 2 if <
 vercomp () {
     if [[ $1 == $2 ]]
     then
@@ -90,11 +91,10 @@ vercomp () {
 
 # check version of git; it supports 'simple' from 1.7.11 up, fall back to 'matching'
 vercomp "1.7.11" `git --version|awk '{ print $3 }'`
-case $? in
-    0) op='=';;
-    1) git config --global push.default matching; git config --global pull.default matching ;; # op='>';;
-    2) op='<';;
-esac
+if [ $? -eq 1 ]; then
+    git config --global push.default matching
+    git config --global pull.default matching
+fi
 
 hg_ps1() {
     #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
