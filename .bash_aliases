@@ -58,6 +58,11 @@ alias so=git
 # so rebase
 # so diff
 
+alias gd='git diff'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gst='git status'
+
 # mercurial coloured diff
 alias hgd='hg diff | colordiff -y | less -R'
 
