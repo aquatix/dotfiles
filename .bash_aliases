@@ -81,7 +81,7 @@ alias tmux_reload="tmux source-file ~/.tmux.conf"
 
 # project-oriented aliases
 alias dcpvag='workon dcp; cd ~/workspace/sanoma/content-library/; vagrant ssh'
-alias dcpsrc='cd development/current/content-library/src/content_library/; . ~/development/env/bin/activate'
+alias dcpsrc='cd ~/development/current/content-library/src/content_library/; . ~/development/env/bin/activate'
 
 # if you're really annoyed with a runaway process
 function fuck() {
