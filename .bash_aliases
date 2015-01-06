@@ -65,6 +65,9 @@ alias gst='git status'
 
 # mercurial coloured diff
 alias hgd='hg diff | colordiff -y | less -R'
+# some more shorthands
+alias hgl='hg log | less'
+alias hgb='hg branch'
 
 # 20140521 force 256 colours in tmux
 alias tmux='tmux -2'
