@@ -87,6 +87,9 @@ alias dcpvag='workon dcp; cd ~/workspace/sanoma/content-library/; vagrant ssh'
 alias dcpsrc='cd ~/development/current/content-library/src/content_library/; . ~/development/env/bin/activate'
 alias dcpcelery='python manage.py celery worker -Q celery -l info'
 
+# update/install Calibre ebook manager
+alias updatecalibre='sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('"'"'Download failed\n'"'"'); exec(sys.stdin.read()); main()"'
+
 # if you're really annoyed with a runaway process
 function fuck() {
   if killall -9 "$2"; then
