@@ -31,6 +31,7 @@ Plugin 'jnurmine/Zenburn.git'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
