@@ -165,3 +165,11 @@ autocmd FileType markdown set smarttab
 autocmd FileType markdown set expandtab
 autocmd FileType markdown set softtabstop=4
 autocmd FileType markdown set autoindent
+
+" 2015-01-13 some sane Yaml settings
+autocmd FileType yaml set tabstop=4
+autocmd FileType yaml set shiftwidth=4
+autocmd FileType yaml set smarttab
+autocmd FileType yaml set expandtab
+autocmd FileType yaml set softtabstop=4
+autocmd FileType yaml set autoindent
