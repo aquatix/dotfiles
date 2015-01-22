@@ -3,7 +3,7 @@
 
 SENSORDATA=$(sensors 2>&1)
 
-TEMPERATURE="$(grep -i 'temp1' <<< "${SENSORDATA}" | \
+TEMPERATURE="$(grep -i 'Core 0' <<< "${SENSORDATA}" | \
 		grep -Eo '[0-9\.]+[[:punct:]]?[ ]?[CF]+' | head -n 1 | \
                 sed 's/.\([CF]\)/\1/' | sed 's/C//' )" 
 
