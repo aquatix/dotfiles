@@ -8,9 +8,13 @@ for HDD in sda sdb sdc sdd sde sdf
 do
 	#TEMPERATURE=`awk '{print $NF}' /root/tmp/hddtemp`
         if [ "$HDD" == "sde" ]; then
-		TEMPERATURE=`/usr/sbin/smartctl -A /dev/sde | grep Airflow_Temperature_Cel | awk '{print $10}'`
+		TEMPERATURE=`/usr/sbin/smartctl -A /dev/sde | grep Temperature_Cel | awk '{print $10}'`
         elif [ "$HDD" == "sdf" ]; then
-		TEMPERATURE=`/usr/sbin/smartctl -A /dev/sdf | grep Airflow_Temperature_Cel | awk '{print $10}'`
+		TEMPERATURE=`/usr/sbin/smartctl -A /dev/sdf | grep Temperature_Cel | awk '{print $10}'`
+        elif [ "$HDD" == "sdc" ]; then
+		TEMPERATURE=`/usr/sbin/smartctl -A /dev/sdc | grep Temperature_Cel | awk '{print $10}'`
+        elif [ "$HDD" == "sdd" ]; then
+		TEMPERATURE=`/usr/sbin/smartctl -A /dev/sdd | grep Temperature_Cel | awk '{print $10}'`
 	else
 		RAWTEMP=`/usr/sbin/hddtemp /dev/$HDD`
 		#echo $RAWTEMP
