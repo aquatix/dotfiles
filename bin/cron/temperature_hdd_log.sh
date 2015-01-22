@@ -4,7 +4,7 @@
 #TEMPERATURE=`awk '{print $2}' /proc/acpi/thermal_zone/THRM/temperature`
 MONTH=`date +%Y-%m`
 DATE=`date +%Y-%m-%d`
-for HDD in sda sdb sdc
+for HDD in sda sdb sdc sdd
 do
 	RAWTEMP=`/usr/sbin/hddtemp /dev/$HDD`
 	#echo $RAWTEMP
