@@ -1,7 +1,13 @@
 #!/bin/bash
 #temperature:             23 C
 
-TEMPERATURE=`awk '{print $2}' /proc/acpi/thermal_zone/THRM/temperature`
+SENSORDATA=$(sensors 2>&1)
+
+TEMPERATURE="$(grep -i 'temp1' <<< "${SENSORDATA}" | \
+		grep -Eo '[0-9\.]+[[:punct:]]?[ ]?[CF]+' | head -n 1 | \
+                sed 's/.\([CF]\)/\1/' | sed 's/C//' )" 
+
+#TEMPERATURE=`awk '{print $2}' /proc/acpi/thermal_zone/THRM/temperature`
 MONTH=`date +%Y-%m`
 DATE=`date +%Y-%m-%d`
 #TOTAL=`awk '{a+=$8}END{print a}' /var/log/custom_logs/temperature.log`
