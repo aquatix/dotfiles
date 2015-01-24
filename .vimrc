@@ -51,7 +51,7 @@ let g:ctrlp_switch_buffer = 0
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
 " Code checker. For python, install flake8 or pylint, preferably in the
-" virtualenv
+" virtualenv. For Django support, install pylint-django
 Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -62,8 +62,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" No silly 80-char line limit. Sorry pep-8.
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
+" No silly 80-char line limit. Sorry pep-8. Also, Django support.
+let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django"
 " Handy Markdown stuff
 Plugin 'tpope/vim-markdown'
 if v:version >= 704
