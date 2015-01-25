@@ -152,6 +152,9 @@ autocmd FileType python set expandtab
 autocmd FileType python set softtabstop=4
 autocmd FileType python set autoindent
 
+" Django html template highlighting by default
+au BufNewFile,BufRead *.html set filetype=htmldjango
+
 " 2014-01-29 some sane PHP settings
 autocmd FileType php set tabstop=4
 autocmd FileType php set shiftwidth=4
