@@ -68,6 +68,7 @@ alias hgd='hg diff | colordiff -y | less -R'
 # some more shorthands
 alias hgl='hg log | less'
 alias hgb='hg branch'
+alias hgt='hg tags | less'
 
 # 20140521 force 256 colours in tmux
 alias tmux='tmux -2'
