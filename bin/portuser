@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+  echo "Provide a TCP port number"
+else
+  sudo fuser -v $1/tcp
+fi
