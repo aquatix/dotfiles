@@ -62,6 +62,7 @@ alias gd='git diff'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gst='git status'
+alias gp='git push'
 
 # mercurial coloured diff
 alias hgd='hg diff | colordiff -y | less -R'
@@ -69,6 +70,8 @@ alias hgd='hg diff | colordiff -y | less -R'
 alias hgl='hg log | less'
 alias hgb='hg branch'
 alias hgt='hg tags | less'
+alias hgu='hg pull -u'
+alias hgp='hg push'
 
 # 20140521 force 256 colours in tmux
 alias tmux='tmux -2'
