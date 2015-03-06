@@ -73,6 +73,8 @@ if !exists( "b:myLang" )
   endif
 endif
 
+" Word completion
+set complete+=kspell
 
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
