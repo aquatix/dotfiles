@@ -63,6 +63,9 @@ alias gc='git commit'
 alias gca='git commit -a'
 alias gst='git status'
 alias gp='git push'
+# git activity per week day:
+# git log --pretty='%at' | while read d; do date -d "@$d"; done | awk '{print $1}' | sort | uniq -c
+alias ga='git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
 
 # mercurial coloured diff
 alias hgd='hg diff | colordiff -y | less -R'
