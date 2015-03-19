@@ -3,6 +3,7 @@ if exists("b:current_syntax")
 endif
 
 syntax keyword todoKeyword todo done
+syntax keyword todoKeyword vrij free
 highlight link todoKeyword Keyword
 
 syntax match todoComment "\v#.*$"
