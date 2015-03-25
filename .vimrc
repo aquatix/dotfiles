@@ -160,8 +160,10 @@ map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 " Fly through buffers instead of cycling
 nnoremap <leader>l :ls<cr>:b<space>
 
-"vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-"vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+" Git and Mercurial 'blame' command. First select lines in visual modes, then
+" hit the appropriate leader key sequence (e.g., \g for git blame)
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 
 " Enables input of special characters by a combination of two characters.
