@@ -100,6 +100,9 @@ alias dcpcelery='python manage.py celery worker -Q celery -l info'
 # update/install Calibre ebook manager
 alias updatecalibre='sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('"'"'Download failed\n'"'"'); exec(sys.stdin.read()); main()"'
 
+# Watch a DNS entry, see when it changes to a new value for example
+alias checkdns='watch -n1 dig '
+
 # if you're really annoyed with a runaway process
 function fuck() {
   if killall -9 "$2"; then
