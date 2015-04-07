@@ -1,0 +1,13 @@
+#!/bin/bash
+LOADAVG=$( cat /proc/loadavg | awk '{ print $2 }' )
+
+MONTH=`date +%Y-%m`
+DATE=`date +%Y-%m-%d`
+
+LOG="/var/log/custom_logs/cpu/load_$MONTH.log"
+TIMESTAMP=`date +%Y%m%d_%H%M`
+echo "${TIMESTAMP} $LOADAVG" >> ${LOG}
+
+LOG="/var/log/custom_logs/temp_daily/cpu/load_$DATE.log"
+TIMESTAMP=`date "+%Y%m%d %H%M"`
+echo "${TIMESTAMP} $LOADAVG" >> ${LOG}
