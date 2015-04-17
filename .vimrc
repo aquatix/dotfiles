@@ -142,7 +142,7 @@ set smartcase
 set autoread
 
 " 2008-04-14 with the if-statement added at 2008-11-19
-if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
+if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
 	set t_Co=256
 	colorscheme zenburn
 
