@@ -8,6 +8,16 @@ syntax keyword todoKeyword todo done
 syntax keyword todoKeyword vrij free
 highlight link todoKeyword Keyword
 
+" Remarks about the day
+syntax match todoDayKeyword "thuiswerken"
+syntax match todoDayKeyword "papadag"
+syntax match todoDayKeyword "vrije dag"
+syntax match todoDayKeyword "koningsdag"
+"highlight todoDayKeyword ctermfg=25 guifg=#005faf
+"highlight todoDayKeyword ctermfg=27 guifg=#005fff
+"highlight todoDayKeyword ctermfg=39 guifg=#00afff
+highlight todoDayKeyword ctermfg=38 guifg=#00afd7
+" DeepSkeyBlue4
 
 " Inline commenting
 syntax match todoComment "\v#.*$"
@@ -36,8 +46,8 @@ syntax match todoStatusDone "\v^x "
 syntax match todoStatusDone "\v x "
 highlight todoStatusDone ctermfg=green guifg=#00ff00
 
-syntax match todoStatusDoing "\v^d "
-syntax match todoStatusDoing "\v d "
+syntax match todoStatusDoing "\v^d .*$"
+syntax match todoStatusDoing "\v d .*$"
 "highlight todoStatusDoing ctermfg=DarkOrange guifg=#ffcc00
 highlight todoStatusDoing ctermfg=DarkYellow guifg=#ffcc00
 
