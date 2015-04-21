@@ -1,4 +1,5 @@
 #!/bin/bash
 cd ~/mydocs/work/sanoma
 git pull
-vim -c ":vsp planning_2015.todo" notes_2015.md notes_2014.md
+#vim -c ":vsp planning_2015.todo" notes_2015.md notes_2014.md
+vim planning_2015.todo notes_2015.md notes_2014.md
