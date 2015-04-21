@@ -35,6 +35,13 @@ let NERDTreeIgnore = ['\.pyc$']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+
+" Web Development/Filetype icons
+Plugin 'ryanoasis/vim-webdevicons'
+" Set guifont when using gvim:
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+
+
 " Full path fuzzy file, buffer, mru, tag, ... finder
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<Leader>t'
