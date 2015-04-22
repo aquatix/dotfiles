@@ -37,6 +37,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 
 " Web Development/Filetype icons
+" Needs a font like found at
+" https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 Plugin 'ryanoasis/vim-webdevicons'
 " Set guifont when using gvim:
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
