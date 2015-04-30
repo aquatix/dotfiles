@@ -62,6 +62,7 @@ alias gd='git diff'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gst='git status'
+alias gu='git pull --all'
 alias gp='git push --all --follow-tags'
 # git activity per week day:
 # git log --pretty='%at' | while read d; do date -d "@$d"; done | awk '{print $1}' | sort | uniq -c
