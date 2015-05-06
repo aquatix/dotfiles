@@ -63,8 +63,9 @@ alias gc='git commit'
 alias gca='git commit -a'
 alias gl='git log'
 alias gst='git status'
-alias gu='git pull --all'
+alias gt='git tag|less'
 alias gp='git push --all --follow-tags'
+alias gu='git pull --all'
 # git activity per week day:
 # git log --pretty='%at' | while read d; do date -d "@$d"; done | awk '{print $1}' | sort | uniq -c
 alias gad='git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
