@@ -61,6 +61,7 @@ alias so=git
 alias gd='git diff'
 alias gc='git commit'
 alias gca='git commit -a'
+alias gl='git log'
 alias gst='git status'
 alias gu='git pull --all'
 alias gp='git push --all --follow-tags'
