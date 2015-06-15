@@ -1,21 +1,15 @@
 #!/bin/bash
 
+# Dry run, stating what files would be removed
 git clean -d -x -n
 
-echo "Continue the real cleanup of the tree? [y/N]"
-
-read -n 1 "Continue the real cleanup of the tree (y/n)?" choice
-case "$choice" in 
-  y|Y ) echo "yes";;
-  n|N ) echo "no";;
-  * ) echo "invalid";;
-esac
-
-read -n 1 answer
-
-if (( ${#answer} && (( "$answer" == "Y" || "$answer" == "y" )) )); then
+read -r -p "Continue the real cleanup of the tree? [y/N] " -n 1 response
+response=${response,,} # tolower
+if [[ $response =~ ^(yes|y| ) ]]; then
+  echo
   echo "Cleaning up"
-  #git clean -d -x -f
+  git clean -d -x -f
 else
+  echo
   echo "Aborted"
 fi
