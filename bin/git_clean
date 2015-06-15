@@ -1,0 +1,14 @@
+#!/bin/bash
+
+git clean -d -x -n
+
+echo "Continue the real cleanup of the tree? [y/N]"
+
+read -n 1 answer
+
+if (( ${#answer} && (( "$answer" == "Y" || "$answer" == "y" )) )); then
+  echo "Cleaning up"
+  #git clean -d -x -f
+else
+  echo "Aborted"
+fi
