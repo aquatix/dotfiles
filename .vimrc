@@ -10,6 +10,9 @@ Plugin 'majutsushi/tagbar'
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
+
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
 Plugin 'bling/vim-airline'
@@ -69,7 +72,7 @@ if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &t
 
 	" create a bar for airline
 	set laststatus=2
-	let g:airline_powerline_fonts = 1 
+	let g:airline_powerline_fonts = 1
 endif
 
 " paste and autoindent
