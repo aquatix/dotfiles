@@ -24,8 +24,48 @@ install_hg()
     done
 }
 
+# Get the directory the dotfiles have been cloned into
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd $DIR
+echo "Installing from $DIR"
+DATETIME=`date +%Y%m%d_%H%M`
+
+# Go home
+cd
+
+# Symlink all the things
+for TARGET
+  in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
+do
+  cd
+  echo $TARGET
+  if [ "$(readlink $TARGET)" = "$DIR/$TARGET" ]; then
+      echo "  symlink exists and is fine, skipping"
+      continue
+  elif [ -e $TARGET ] || [ -L $TARGET ] && [ "$(readlink $TARGET)" != "$DIR/$TARGET" ]; then
+	  echo "  exists, moving out of the way"
+      if [ ! -d "workspace/backup/dotfiles_$DATETIME" ]; then
+          mkdir -p "workspace/backup/dotfiles_$DATETIME"
+      fi
+      DIRNAME=$(dirname ${TARGET})
+      if [ $DIRNAME != "." ]; then
+          mkdir "workspace/backup/dotfiles_$DATETIME/$DIRNAME"
+	      mv $TARGET "workspace/backup/dotfiles_$DATETIME/$DIRNAME"
+          #echo "workspace/backup/privdotfiles_$DATETIME/$DIRNAME"
+      else
+          mv $TARGET "workspace/backup/dotfiles_$DATETIME/"
+          #echo "workspace/backup/privdotfiles_$DATETIME/${TARGET}"
+      fi
+  fi
+
+  # If link is in a subdir, go there
+  DIRNAME=$(dirname ${TARGET})
+  if [ $DIRNAME != "." ]; then
+      cd $DIRNAME
+  fi
+  # Create the symlink
+  ln -s $DIR/$TARGET
+  #echo "ln -s $DIR/$TARGET"
+done
 
 echo "INFO: Init submodules"
 git submodule init

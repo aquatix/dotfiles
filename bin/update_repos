@@ -1,8 +1,14 @@
 #!/bin/bash
 
+REPOSFILE=(~/.git_repos)
+
+if [ -n "$1" ]; then
+    REPOSFILE="$1"
+fi
+
 saveIFS="$IFS"
 IFS=$'\n'
-LINES=($(<~/.git_repos))
+LINES=($(<"$REPOSFILE"))
 IFS="$saveIFS"
 
 # Set defaults to user's homedir and no group (e.g., subdir)

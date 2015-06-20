@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Dry run, stating what files would be removed
+git clean -d -x -n
+
+read -r -p "Continue the real cleanup of the tree? [y/N] " -n 1 response
+response=${response,,} # tolower
+if [[ $response =~ ^(yes|y| ) ]]; then
+  echo
+  echo "Cleaning up"
+  git clean -d -x -f
+else
+  echo
+  echo "Aborted"
+fi

@@ -56,10 +56,91 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# http://stackoverflow.com/questions/4023830/bash-how-compare-two-strings-in-version-format
+# returns 0 if =, 1 if >, 2 if <
+vercomp () {
+    if [[ $1 == $2 ]]
+    then
+        return 0
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 2
+        fi
+    done
+    return 0
+}
+
+# check version of git; it supports 'simple' from 1.7.11 up, fall back to 'matching'
+vercomp "1.7.11" `git --version|awk '{ print $3 }'`
+if [ $? -eq 1 ]; then
+    git config --global push.default matching
+    git config --global pull.default matching
+fi
+
 hg_ps1() {
-	    #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
-	    hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
-    }
+    #hg prompt "{ on {branch}}{ at {bookmark}}{status}" 2> /dev/null
+    hg prompt " \[\033[1;37m\]hg\[\033[0m\] {branch}{status}" 2> /dev/null
+}
+
+set_bash_prompt(){
+    # Michiel's colour config
+    BLACK="\[\033[0m\]"
+    BLUE="\[\033[0;34m\]"
+    YELLOW="\[\033[0;33m\]"
+    GREEN="\[\033[0;32m\]"
+    RED="\[\033[0;31m\]"
+    PROMPT_SYMBOL='$'
+    if [ $USER = 'root' ]; then
+        #PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
+        PS1="${debian_chroot:+$debian_chroot }$(venvinfo)$YELLOW\t $RED\u$BLACK@\h:\W$(jobscount)# "
+    elif [ -e ~/.dot_is_server ]; then
+        #PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
+        PS1="${debian_chroot:+$debian_chroot }$(venvinfo)$YELLOW\t $GREEN\u$BLACK@\h:\W$(jobscount)$ "
+    else
+        #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
+        PS1="${debian_chroot:+$debian_chroot }$(venvinfo)$YELLOW\t $BLUE\u$BLACK@\h:\W$(jobscount)$ "
+    fi
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
+    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
+    # /Michiel's colour config
+}
+
+jobscount() {
+    # Show amount of running and stopped (backgrounded) jobs
+    local stopped=$(jobs -sp | wc -l)
+    local running=$(jobs -rp | wc -l)
+    ((running+stopped)) && echo -n "[${running}r/${stopped}s]"
+}
+
+venvinfo() {
+    # Virtualenv information
+    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
+        # special case for Aspen magic directories
+        # see http://www.zetadev.com/software/aspen/
+        echo "[`basename \`dirname \"$VIRTUAL_ENV\"\``] "
+    elif [ "$VIRTUAL_ENV" != "" ]; then
+        echo "(`basename \"$VIRTUAL_ENV\"`) "
+    fi
+}
 
 # gitprompt configuration
 # Set config variables first
@@ -70,23 +151,7 @@ hg_ps1() {
 
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    # Michiel's colour config
-    BLACK="\[\033[0m\]"
-    BLUE="\[\033[0;34m\]"
-    YELLOW="\[\033[0;33m\]"
-    GREEN="\[\033[0;32m\]"
-    RED="\[\033[0;31m\]"
-    PROMPT_SYMBOL='$'
-    if [ $USER = 'root' ]; then
-        PS1="$RED\t $GREEN\u$BLACK@\h:\W$ "
-    elif [ -e ~/.dot_is_server ]; then
-        PS1="$YELLOW\t $GREEN\u$BLACK@\h:\W$ "
-    else
-        PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$ "
-    fi
-    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$ "
-    #PS1="$YELLOW\t $BLUE\u$BLACK@\h:\W$(hg_ps1)$(__git_ps1)$ "
-    # /Michiel's colour config
+    PROMPT_COMMAND=set_bash_prompt
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -101,32 +166,10 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -142,8 +185,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -x ~/.privdotfiles/bin ]; then
-    PATH=$PATH:~/.privdotfiles/bin
+# If the private dotfiles repo is installed, we'd like to use its scripts too
+if [ -x ~/.dot/privdotfiles/bin ]; then
+    PATH=$PATH:~/.dot/privdotfiles/bin
 fi
 
-PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools
+# Android-related binaries
+PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools:/usr/local/bin/android-sdk-linux/tools

@@ -1,3 +1,5 @@
 #!/bin/bash
-cd ~/mydocs/work/sanoma
-vim notes.txt planning_2014.txt notes_2014.md
+cd ~/mydocs/notes
+git pull
+#vim -c ":vsp notes.txt" dammit_blogs.md captains_log.md
+vim dammit_blogs.md notes.txt captains_log.md

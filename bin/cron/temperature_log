@@ -1,0 +1,24 @@
+#!/bin/bash
+#temperature:             23 C
+
+SENSORDATA=$(sensors 2>&1)
+
+TEMPERATURE="$(grep -i 'Core 0' <<< "${SENSORDATA}" | \
+		grep -Eo '[0-9\.]+[[:punct:]]?[ ]?[CF]+' | head -n 1 | \
+                sed 's/.\([CF]\)/\1/' | sed 's/C//' )" 
+
+#TEMPERATURE=`awk '{print $2}' /proc/acpi/thermal_zone/THRM/temperature`
+MONTH=`date +%Y-%m`
+DATE=`date +%Y-%m-%d`
+#TOTAL=`awk '{a+=$8}END{print a}' /var/log/custom_logs/temperature.log`
+#LINES=`wc -l /var/log/custom_logs/temperature.log | awk '{print $1}'`
+#MON=`date +%B`
+#m=`wc -l /tmp/temp5_minutes | awk '{print $1}'`
+
+LOG="/var/log/custom_logs/cpu/temperature_$MONTH.log"
+TIMESTAMP=`date +%Y%m%d_%H%M`
+echo "${TIMESTAMP} $TEMPERATURE" >> ${LOG}
+
+LOG="/var/log/custom_logs/temp_daily/cpu/temperature_$DATE.log"
+TIMESTAMP=`date "+%Y%m%d %H%M"`
+echo "${TIMESTAMP} $TEMPERATURE" >> ${LOG}

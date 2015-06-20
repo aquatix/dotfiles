@@ -5,8 +5,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" == UI ======
+
 " Display tags of the current file ordered by scope
+" You need ctags: `sudo apt-get install exuberant-ctags` or
+" `brew install ctags` for example
 Plugin 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
 Plugin 'Shougo/unite.vim'
@@ -25,8 +30,79 @@ Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
 Plugin 'jnurmine/Zenburn.git'
+" Quick file system tree, mapped to Ctrl+n for quick toggle
+Plugin 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+" Web Development/Filetype icons
+" Needs a font like found at
+" https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
+Plugin 'ryanoasis/vim-webdevicons'
+" Set guifont when using gvim:
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+
+
+" Full path fuzzy file, buffer, mru, tag, ... finder
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
+
+
+" == Content convenience ======
+
+" Spell Check (http://vim.wikia.com/wiki/Toggle_spellcheck_with_function_keys)
+let b:myLang=0
+let g:myLangList=["nospell","nl","en_gb","en_us"]
+function! ToggleSpell()
+  let b:myLang=b:myLang+1
+  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
+  if b:myLang==0
+    setlocal nospell
+  else
+    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+  endif
+  echo "spell checking language:" g:myLangList[b:myLang]
+endfunction
+
+nmap <silent> <F7> :call ToggleSpell()<CR>
+
+" In case the spelling language was set by other means than ToggleSpell() (a filetype autocommand say):
+if !exists( "b:myLang" )
+  if &spell
+    let b:myLang=index(g:myLangList, &spelllang)
+  else
+    let b:myLang=0
+  endif
+endif
+
+" Word completion
+set complete+=kspell
+
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
+" Code checker. For python, install flake8 or pylint, preferably in the
+" virtualenv. For Django support, install pylint-django
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" No silly 80-char line limit. Sorry pep-8. Also, Django support.
+let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django"
 " Handy Markdown stuff
 Plugin 'tpope/vim-markdown'
 if v:version >= 704
@@ -45,6 +121,9 @@ let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
 " many filetypes.
 Plugin 'scrooloose/nerdcommenter'
 
+" Highlight colours in CSS files
+Plugin 'ap/vim-css-color'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -59,6 +138,14 @@ set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
 
+" ctags: check the current folder for tags file and keep going one directory up
+" all the way to the homedir
+set tags=./tags,./TAGS,tags;~,TAGS;~
+
+" ignorecase plus smartcase make searches case-insensitive except when you
+" include upper-case characters (so /foo matches FOO and fOo, but /FOO only
+" matches the former)
+set ignorecase
 " 2006-04-24
 set smartcase
 
@@ -66,7 +153,7 @@ set smartcase
 set autoread
 
 " 2008-04-14 with the if-statement added at 2008-11-19
-if &term == "xterm" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
+if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
 	set t_Co=256
 	colorscheme zenburn
 
@@ -78,7 +165,25 @@ endif
 " paste and autoindent
 set pastetoggle=<F10>
 
+" Prettify json and javascript
 map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" Fly through buffers instead of cycling
+nnoremap <leader>l :ls<cr>:b<space>
+
+" Git and Mercurial 'blame' command. First select lines in visual modes, then
+" hit the appropriate leader key sequence (e.g., \g for git blame)
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+
+" Enables input of special characters by a combination of two characters.
+" Example: Type 'a', erase it by typing CTRL-H - and then type ':' - this
+" results in the umlaut: ä So Vim remembers the character you have erased and
+" combines it with the character you have typed "over" the previous one.
+"set digraph
+" Disabled as it also works with backspace and gives odd results with some
+" normal typing, giving asiatic glyphs and such. Just use CTRL+k a:
 
 " 2014-01-29 some sane Python settings
 autocmd FileType python set tabstop=4
@@ -87,6 +192,9 @@ autocmd FileType python set smarttab
 autocmd FileType python set expandtab
 autocmd FileType python set softtabstop=4
 autocmd FileType python set autoindent
+
+" Django html template highlighting by default
+au BufNewFile,BufRead *.html set filetype=htmldjango
 
 " 2014-01-29 some sane PHP settings
 autocmd FileType php set tabstop=4
@@ -103,7 +211,7 @@ autocmd FileType tex set smarttab
 autocmd FileType tex set expandtab
 autocmd FileType tex set softtabstop=4
 autocmd FileType tex set autoindent
-"
+
 " 2014-06-24 some sane shell settings
 autocmd FileType sh set tabstop=4
 autocmd FileType sh set shiftwidth=4
@@ -111,3 +219,19 @@ autocmd FileType sh set smarttab
 autocmd FileType sh set expandtab
 autocmd FileType sh set softtabstop=4
 autocmd FileType sh set autoindent
+
+" 2014-10-05 some sane Markdown settings
+autocmd FileType markdown set tabstop=4
+autocmd FileType markdown set shiftwidth=4
+autocmd FileType markdown set smarttab
+autocmd FileType markdown set expandtab
+autocmd FileType markdown set softtabstop=4
+autocmd FileType markdown set autoindent
+
+" 2015-01-13 some sane Yaml settings
+autocmd FileType yaml set tabstop=4
+autocmd FileType yaml set shiftwidth=4
+autocmd FileType yaml set smarttab
+autocmd FileType yaml set expandtab
+autocmd FileType yaml set softtabstop=4
+autocmd FileType yaml set autoindent

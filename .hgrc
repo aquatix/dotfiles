@@ -7,12 +7,13 @@ username = m.scholten
 hgext.mercurial_keyring = ~/workspace/application_addons/mercurial/mercurial_keyring/mercurial_keyring.py
 convert =
 hgext.bookmarks =
-graphlog = 
+graphlog =
 hgext.purge=
 hgk=
 hgflow = ~/workspace/application_addons/mercurial/hgflow/src/hgflow.py
 #hggit = ~/workspace/application_addons/mercurial/hg-git/hggit
 prompt = /home/mbscholt/workspace/application_addons/mercurial/hg-prompt/prompt.py
+shelve=
 
 [git]
 authors = /home/mbscholt/.hgauthors.txt
