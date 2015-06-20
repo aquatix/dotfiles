@@ -14,7 +14,7 @@ Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 " The unite or unite.vim plug-in can search and display information from
 " arbitrary sources like files, buffers, recently used files or registers.
-Plugin 'Shougo/unite.vim'
+"Plugin 'Shougo/unite.vim'
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 "nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
 
@@ -47,8 +47,9 @@ Plugin 'ryanoasis/vim-webdevicons'
 
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
+" Quickly open files, fuzzy search on name
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_map = '<Leader>t'
+"let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
