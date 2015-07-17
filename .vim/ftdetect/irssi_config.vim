@@ -1,1 +1,1 @@
-autocmd BufWinEnter config silent setf config
+autocmd BufWinEnter config silent setf perl
