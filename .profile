@@ -20,3 +20,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# Firefox tweak (see http://dammit.nl/p/956 )
+# layers.offmainthreadcomposition.enabled
+# layers.acceleration.force-enabled
+export MOZ_USE_OMTC=1
