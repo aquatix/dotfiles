@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Provide a virtualenv name"
+else
+
+    VENVDIR="$HOME/.virtualenvs/$1"
+
+    #source `which virtualenvwrapper.sh`
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+    if [ -d "$VENVDIR" ]; then
+        workon "$1"
+    else
+        mkvirtualenv "$1"
+    fi
+fi
