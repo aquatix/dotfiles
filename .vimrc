@@ -88,8 +88,15 @@ endif
 " Word completion
 set complete+=kspell
 
+" Python virtualenv support
+"Plugin 'jmcantrell/vim-virtualenv'
+
+" Python goodness
+"Plugin 'klen/python-mode'
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
+
+
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
 Plugin 'scrooloose/syntastic'
@@ -102,8 +109,20 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" No silly 80-char line limit. Sorry pep-8. Also, Django support.
-let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django"
+" No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
+let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django -d C0103,C0111"
+
+" Use the virtualenv's Python interpreter
+"if $VIRTUAL_ENV != ''
+"    let g:syntastic_python_python_exec = '$VIRTUAL_ENV/bin/python'
+"endif
+
+"let g:syntastic_python_checkers=['pylint']
+"let g:syntastic_python_python_exec = 'python'
+"let g:syntastic_python_pylint_exe = 'python -m pylint'
+"let g:syntastic_python_pylint_exe = 'python $(which pylint)'
+
+
 " Handy Markdown stuff
 Plugin 'tpope/vim-markdown'
 if v:version >= 704
