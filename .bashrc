@@ -59,7 +59,7 @@ fi
 # http://stackoverflow.com/questions/4023830/bash-how-compare-two-strings-in-version-format
 # returns 0 if =, 1 if >, 2 if <
 vercomp () {
-    if [[ $1 == $2 ]]
+    if [[ "$1" == "$2" ]]
     then
         return 0
     fi
@@ -90,7 +90,7 @@ vercomp () {
 }
 
 # check version of git; it supports 'simple' from 1.7.11 up, fall back to 'matching'
-vercomp "1.7.11" `git --version|awk '{ print $3 }'`
+vercomp "1.7.11" "$(git --version|awk '{ print $3 }')"
 if [ $? -eq 1 ]; then
     git config --global push.default matching
     git config --global pull.default matching
@@ -108,8 +108,8 @@ set_bash_prompt(){
     YELLOW="\[\033[0;33m\]"
     GREEN="\[\033[0;32m\]"
     RED="\[\033[0;31m\]"
-    PROMPT_SYMBOL='$'
-    if [ $USER = 'root' ]; then
+    #PROMPT_SYMBOL='$'
+    if [ "$USER" = 'root' ]; then
         #PS1="$YELLOW\t $RED\u$BLACK@\h:\W# "
         PS1="${debian_chroot:+$debian_chroot }$(venvinfo)$YELLOW\t $RED\u$BLACK@\h:\W$(jobscount)# "
     elif [ -e ~/.dot_is_server ]; then
@@ -133,12 +133,12 @@ jobscount() {
 
 venvinfo() {
     # Virtualenv information
-    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
+    if [ "$(basename "$VIRTUAL_ENV")" = "__" ]; then
         # special case for Aspen magic directories
         # see http://www.zetadev.com/software/aspen/
-        echo "[`basename \`dirname \"$VIRTUAL_ENV\"\``] "
+        echo "[$(basename "$(dirname "$VIRTUAL_ENV")")] "
     elif [ "$VIRTUAL_ENV" != "" ]; then
-        echo "(`basename \"$VIRTUAL_ENV\"`) "
+        echo "($(basename "$VIRTUAL_ENV")) "
     fi
 }
 
