@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # inspired by rrix' dotfiles
 
 install_hg()
@@ -27,14 +27,13 @@ install_hg()
 # Get the directory the dotfiles have been cloned into
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Installing from $DIR"
-DATETIME=`date +%Y%m%d_%H%M`
+DATETIME=$(date +%Y%m%d_%H%M)
 
 # Go home
 cd
 
 # Symlink all the things
-for TARGET
-  in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
+for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
 do
   cd
   echo $TARGET
@@ -47,7 +46,7 @@ do
           mkdir -p "workspace/backup/dotfiles_$DATETIME"
       fi
       DIRNAME=$(dirname ${TARGET})
-      if [ $DIRNAME != "." ]; then
+      if [ "$DIRNAME" != "." ]; then
           mkdir "workspace/backup/dotfiles_$DATETIME/$DIRNAME"
 	      mv $TARGET "workspace/backup/dotfiles_$DATETIME/$DIRNAME"
           #echo "workspace/backup/privdotfiles_$DATETIME/$DIRNAME"
@@ -59,11 +58,11 @@ do
 
   # If link is in a subdir, go there
   DIRNAME=$(dirname ${TARGET})
-  if [ $DIRNAME != "." ]; then
-      cd $DIRNAME
+  if [ "$DIRNAME" != "." ]; then
+      cd "$DIRNAME"
   fi
   # Create the symlink
-  ln -s $DIR/$TARGET
+  ln -s "$DIR/$TARGET"
   #echo "ln -s $DIR/$TARGET"
 done
 
@@ -73,7 +72,7 @@ git submodule init
 echo "INFO: Update submodules"
 git submodule update
 
-if [ ! -d "~/.vim/bundle/Vundle.vim" ]; then
+if [ ! -d "${HOME}/.vim/bundle/Vundle.vim" ]; then
     mkdir -p ~/.vim/bundle
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 else
