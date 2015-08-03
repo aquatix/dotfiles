@@ -167,15 +167,15 @@ xterm*|rxvt*)
 esac
 
 # SSH config merge
-#mkdir -p ~/.ssh/config.d/
 if [ -e ~/.ssh/config.d ]; then
     #if find ~/.ssh/config.d -mindepth 1 -print -quit | grep -q .; then
+    # Do we have config files in that directory?
     if find ~/.ssh/config.d -print -quit | grep -q .; then
-        #newestconfig=$(ls -t ~/.ssh/config.d/ | head -1)
         newestconfig=$(find ~/.ssh/config.d/* -printf '%T+ %p\n' | sort -r | head -n1 | awk '{print $2}')
         if [ "$newestconfig" -nt ~/.ssh/config ]; then
+            # We found a config that's newer than the generated config file, re-generate
             [ -e ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date -Ins)
-            #cat ~/.ssh/config.d/* > ~/.ssh/config
+            # Lets preserve order, so you can have  00_generic 10_homestuff 20_work1 21_work2  and such
             find ~/.ssh/config.d/* -type f -print0 | sort -z | xargs -0 -n1 cat > ~/.ssh/config
         fi
     fi
