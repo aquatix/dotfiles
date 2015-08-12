@@ -1,0 +1,16 @@
+#!/bin/bash
+# http://blog.chmouel.com/2009/07/03/update-emacsvim-tags-with-inotify/
+# /home/youruser/workspace/myproject IN_CLOSE_WRITE /home/youruser/bin/update-ctags py $@ $@/$#
+
+ACCEPTED_EXTENSION="$(echo $1|sed 's/|/ /g')"
+BASE_DIR=$2
+FILE_EXT=${3##*.}
+
+[[ -z ${FILE_EXT} ]] && exit
+
+processing=
+for extension in $ACCEPTED_EXTENSION;do
+    [[ $extension == $FILE_EXT ]] && processing=true
+done
+
+find ${BASE_DIR} ! -wholename './.git/*'  -a ! -wholename './.svn/*' -a ! -name '*.pyc' -a ! -name '*~' -a ! -name '*#' -print0| xargs -0 etags -o ${BASE_DIR}/TAGS 2>/dev/null >/dev/null
