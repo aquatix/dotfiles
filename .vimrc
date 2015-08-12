@@ -38,24 +38,27 @@ let NERDTreeIgnore = ['\.pyc$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
-" Web Development/Filetype icons
-" Needs a font like found at
-" https://github.com/ryanoasis/nerd-fonts
-Plugin 'ryanoasis/vim-devicons'
-" Set guifont when using gvim:
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
-
-
 " Full path fuzzy file, buffer, mru, tag, ... finder
 " Quickly open files, fuzzy search on name
 Plugin 'kien/ctrlp.vim'
 "let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_map = '<c-p>'
+" Search in Files, Buffers and MRU files at the same time:
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+
+
+" Web Development/Filetype icons
+" Needs a font like found at
+" https://github.com/ryanoasis/nerd-fonts
+Plugin 'ryanoasis/vim-devicons'
+" Set guifont when using gvim:
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
 
 " == Content convenience ======
