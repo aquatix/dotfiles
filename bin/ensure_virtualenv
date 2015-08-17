@@ -13,5 +13,6 @@ else
         workon "$1"
     else
         mkvirtualenv "$1"
+        setvirtualenvproject
     fi
 fi
