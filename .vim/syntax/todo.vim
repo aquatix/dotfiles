@@ -14,7 +14,7 @@ syntax match todoDayKeyword "thuiswerken"
 syntax match todoDayKeyword "papadag"
 syntax match todoDayKeyword "vrije dag"
 syntax match todoDayKeyword "koningsdag"
-highlight todoDayKeyword ctermfg=38 guifg=#00afd7
+highlight todoDayKeyword ctermfg=116 guifg=#8cd0d3
 
 
 " Inline commenting
@@ -46,7 +46,7 @@ highlight todoStatusDone ctermfg=green guifg=#00ff00
 
 syntax match todoStatusDoing "\v^d .*$"
 syntax match todoStatusDoing "\v d .*$"
-highlight todoStatusDoing ctermfg=DarkYellow guifg=#ffcc00
+highlight todoStatusDoing ctermfg=223 guifg=#f0dfaf
 
 syntax match todoStatusTest "\v^t "
 syntax match todoStatusTest "\v t "
