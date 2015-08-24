@@ -165,6 +165,9 @@ set dictionary+=/usr/share/dict/words
 set complete-=k complete+=k
 " change the mapleader from \ to ,
 let mapleader=","
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " ctags: check the current folder for tags file and keep going one directory up
 " all the way to the homedir
