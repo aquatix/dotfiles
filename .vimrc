@@ -163,6 +163,8 @@ syntax on
 set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
+" change the mapleader from \ to ,
+let mapleader=","
 
 " ctags: check the current folder for tags file and keep going one directory up
 " all the way to the homedir
