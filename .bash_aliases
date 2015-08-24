@@ -39,7 +39,8 @@ alias captainslog='vim ~/mydocs/notes/captains_log.md'
 
 # Some hosts
 alias higgs='ssh higgs'
-alias medusa='ssh medusa'
+#alias medusa='ssh medusa -o LocalCommand="tmux attach"'
+alias medusa='ssh medusa -t "tmux attach"'
 
 # 20120714
 alias gm='gnome-mplayer'
