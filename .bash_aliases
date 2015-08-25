@@ -21,10 +21,10 @@ alias lll='ls --color=always -alF | less -R'
 # append history instead of overwriting:
 shopt -s histappend
 
-alias findphp='find . -name "*.php" | xargs grep'
-alias findjs='find . -name "*.js" | xargs grep'
-alias findcss='find . -name "*.css" | xargs grep'
-alias findpy='find . -name "*.py" | xargs grep'
+alias findphp='find . -name "*.php" | xargs grep --color=auto'
+alias findjs='find . -name "*.js" | xargs grep --color=auto'
+alias findcss='find . -name "*.css" | xargs grep --color=auto'
+alias findpy='find . -name "*.py" | xargs grep --color=auto'
 
 alias findfile='find . | grep -v .svn | grep -v .hg | grep -v .git | grep'
 
