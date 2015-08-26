@@ -38,7 +38,7 @@ alias notes='vim ~/mydocs/notes/notes.txt'
 alias captainslog='vim ~/mydocs/notes/captains_log.md'
 
 # Some hosts
-alias higgs='ssh higgs'
+alias higgs='ssh higgs -t "tmux attach"'
 #alias medusa='ssh medusa -o LocalCommand="tmux attach"'
 alias medusa='ssh medusa -t "tmux attach"'
 
