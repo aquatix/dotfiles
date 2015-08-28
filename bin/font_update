@@ -1,4 +1,16 @@
 #!/bin/bash
+
+function install_font {
+    if [ -e "$2" ] && [ ! -L "$2" ]; then
+        echo "Already exists as real file: $2"
+    elif [ -L "$2" ]; then
+        echo "Skipped: $2"
+    else
+        echo "Linked font: $2"
+        ln -s "$1" "$2"
+    fi
+}
+
 IFS=$'\n'
 
 FONTS_SAUCECODE=$'Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
@@ -10,30 +22,43 @@ Futura-Std-Book_19044.ttf
 Futura-Std-Book-Oblique_19043.ttf'
 
 if [ -e ~/.dot_is_server ]; then
+    # Update from the repo
     SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts/SourceCodePro"
     DEST_DIR="/stuff/system/sync/fonts/active"
     if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+        cd "$SOURCE_DIR"
+        git pull --all
         while read -r FONT; do
-            echo "font: $FONT"
+            echo "Copied font: $FONT"
             cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
         done <<< "$FONTS_SAUCECODE"
     else
         echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
     fi
 else
-    SOURCE_DIR="~/Downloads/sync/fonts/active"
-    DEST_DIR="~/.local/share/fonts/"
-    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
-        cd $DEST_DIR
+    # Create symlinks if needed
+    SOURCE_DIR="$HOME/Downloads/sync/fonts/active"
+    DEST_DIR="$HOME/.local/share/fonts"
+    if [ ! -e "$DEST_DIR" ]; then
+        mkdir -p "$DEST_DIR"
+    fi
+    if [ -d "$SOURCE_DIR" ]; then
+    #if [ ! -e "$SOURCE_DIR" ]; then
+        cd "$DEST_DIR"
         while read -r FONT; do
-            echo "font: $FONT"
-            ln -s "$SOURCE_DIR/$FONT" "$DEST_DIR"
+            if [ -e "$FONT" ] && [ ! -L "$DEST_DIR/$FONT" ]; then
+                echo "Already exists as real file: $FONT"
+            elif [ -L "$DEST_DIR/$FONT" ]; then
+                echo "Skipped: $FONT"
+            else
+                echo "Linked font: $FONT"
+                ln -s "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
+            fi
         done <<< "$FONTS_SAUCECODE"
         while read -r FONT; do
-            echo "font: $FONT"
-            ln -s "$SOURCE_DIR/$FONT" "$DEST_DIR"
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR"
         done <<< "$FONTS_FUTURA"
     else
-        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+        echo "$SOURCE_DIR not found, aborting"
     fi
 fi
