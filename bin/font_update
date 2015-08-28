@@ -1,0 +1,39 @@
+#!/bin/bash
+IFS=$'\n'
+
+FONTS_SAUCECODE=$'Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
+Futura-Std-Bold-Oblique_19041.ttf
+Futura-Std-Book_19044.ttf
+Futura-Std-Book-Oblique_19043.ttf'
+
+if [ -e ~/.dot_is_server ]; then
+    SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts/SourceCodePro"
+    DEST_DIR="/stuff/system/sync/fonts/active"
+    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+        while read -r FONT; do
+            echo "font: $FONT"
+            cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
+        done <<< "$FONTS_SAUCECODE"
+    else
+        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+    fi
+else
+    SOURCE_DIR="~/Downloads/sync/fonts/active"
+    DEST_DIR="~/.local/share/fonts/"
+    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+        cd $DEST_DIR
+        while read -r FONT; do
+            echo "font: $FONT"
+            ln -s "$SOURCE_DIR/$FONT" "$DEST_DIR"
+        done <<< "$FONTS_SAUCECODE"
+        while read -r FONT; do
+            echo "font: $FONT"
+            ln -s "$SOURCE_DIR/$FONT" "$DEST_DIR"
+        done <<< "$FONTS_FUTURA"
+    else
+        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+    fi
+fi
