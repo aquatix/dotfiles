@@ -43,22 +43,17 @@ else
         mkdir -p "$DEST_DIR"
     fi
     if [ -d "$SOURCE_DIR" ]; then
-    #if [ ! -e "$SOURCE_DIR" ]; then
         cd "$DEST_DIR"
         while read -r FONT; do
-            if [ -e "$FONT" ] && [ ! -L "$DEST_DIR/$FONT" ]; then
-                echo "Already exists as real file: $FONT"
-            elif [ -L "$DEST_DIR/$FONT" ]; then
-                echo "Skipped: $FONT"
-            else
-                echo "Linked font: $FONT"
-                ln -s "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
-            fi
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_SAUCECODE"
         while read -r FONT; do
-            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR"
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_FUTURA"
     else
         echo "$SOURCE_DIR not found, aborting"
+    fi
+    if [ -d "$HOME/.fonts" ]; then
+        echo "Mind that you do have a ~/.fonts dir too, which might contain older versions"
     fi
 fi
