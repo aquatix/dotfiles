@@ -67,6 +67,9 @@ Plugin 'ryanoasis/vim-devicons'
 let b:myLang=0
 let g:myLangList=["nospell","nl","en_gb","en_us"]
 function! ToggleSpell()
+  if !exists( "b:myLang" )
+    let b:myLang=0
+  endif
   let b:myLang=b:myLang+1
   if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
   if b:myLang==0
