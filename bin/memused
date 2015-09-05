@@ -1,0 +1,9 @@
+#!/bin/bash
+# Written by Alexander Löhner
+# The Linux Counter Project
+
+if [[ "${1}" = "" ]]; then
+        echo "please add the name of the process as a parameter"
+        exit 1
+fi
+echo "scale=2; `for i in $(pidof ${1}); do echo 0 $(awk '/Private/ {print \"+\", $2}' /proc/$i/smaps) | bc ; done | xargs | sed \"s/ / \+ /g\" | bc`/1000" | bc
