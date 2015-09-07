@@ -1,2 +1,7 @@
 # Vim
 .vim/bundle
+*.swp
+*.swo
+
+# Tags file
+tags
