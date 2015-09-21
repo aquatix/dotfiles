@@ -50,7 +50,7 @@ else
     if [ -d "$SOURCE_DIR" ]; then
         cd "$DEST_DIR"
         while read -r FONT; do
-            FONT_FILE=basename "${FONT}"
+            FONT_FILE=$(basename "${SOURCE_DIR}/${FONT}")
             install_font "$SOURCE_DIR/$FONT_FILE" "$DEST_DIR/$FONT_FILE"
         done <<< "$FONTS_CODING"
         while read -r FONT; do
