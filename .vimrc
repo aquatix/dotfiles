@@ -162,6 +162,12 @@ filetype plugin indent on    " required
 set number
 set cursorline
 syntax on
+
+" Show tabs and trailspaces
+set listchars=tab:▸\ ,trail:·
+" Display whitespace
+set list
+
 " enable words completion
 set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
