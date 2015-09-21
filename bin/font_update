@@ -13,9 +13,14 @@ function install_font {
 
 IFS=$'\n'
 
-FONTS_SAUCECODE=$'Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+FONTS_CODING=$'SourceCodePro/Bold/Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+SourceCodePro/Medium/Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+SourceCodePro/Medium/Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Hack/Bold/Knack Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Hack/Regular/Knack Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Hack/BoldOblique/Knack BoldOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Hack/RegularOblique/Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+
 FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
 Futura-Std-Bold-Oblique_19041.ttf
 Futura-Std-Book_19044.ttf
@@ -23,7 +28,7 @@ Futura-Std-Book-Oblique_19043.ttf'
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
-    SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts/SourceCodePro"
+    SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts"
     DEST_DIR="/stuff/system/sync/fonts/active"
     if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
         cd "$SOURCE_DIR"
@@ -31,7 +36,7 @@ if [ -e ~/.dot_is_server ]; then
         while read -r FONT; do
             echo "Copied font: $FONT"
             cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
-        done <<< "$FONTS_SAUCECODE"
+        done <<< "$FONTS_CODING"
     else
         echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
     fi
@@ -45,8 +50,9 @@ else
     if [ -d "$SOURCE_DIR" ]; then
         cd "$DEST_DIR"
         while read -r FONT; do
-            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
-        done <<< "$FONTS_SAUCECODE"
+            FONT_FILE=basename "${FONT}"
+            install_font "$SOURCE_DIR/$FONT_FILE" "$DEST_DIR/$FONT_FILE"
+        done <<< "$FONTS_CODING"
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_FUTURA"
