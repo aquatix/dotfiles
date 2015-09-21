@@ -15,7 +15,6 @@ IFS=$'\n'
 
 FONTS_CODING=$'SourceCodePro/Bold/Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
 SourceCodePro/Medium/Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-SourceCodePro/Medium/Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
 Hack/Bold/Knack Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
 Hack/Regular/Knack Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
 Hack/BoldOblique/Knack BoldOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
