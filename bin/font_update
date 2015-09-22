@@ -25,6 +25,8 @@ Futura-Std-Bold-Oblique_19041.ttf
 Futura-Std-Book_19044.ttf
 Futura-Std-Book-Oblique_19043.ttf'
 
+FONTS_DELETE=$'Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
     SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts"
@@ -55,6 +57,13 @@ else
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_FUTURA"
+        # Delete obsolete fonts
+        while read -r FONT; do
+            if [ -L "$DEST_DIR/$FONT" ]; then
+                echo "Deleting symlink $DEST_DIR/$FONT"
+                rm "$DEST_DIR/$FONT"
+            fi
+        done <<< "$FONTS_DELETE"
     else
         echo "$SOURCE_DIR not found, aborting"
     fi
