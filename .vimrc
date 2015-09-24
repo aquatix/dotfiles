@@ -212,6 +212,9 @@ set pastetoggle=<F10>
 " Prettify json and javascript
 map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
+" Replayce 'dayh' with a formatted day header
+iab <expr> dayh strftime("== %Y%m%d %A ======")
+
 " Fly through buffers instead of cycling
 nnoremap <leader>l :ls<cr>:b<space>
 
