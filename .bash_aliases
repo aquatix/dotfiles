@@ -41,6 +41,7 @@ alias captainslog='vim ~/mydocs/notes/captains_log.md'
 alias higgs='ssh higgs -t "tmux attach"'
 #alias medusa='ssh medusa -o LocalCommand="tmux attach"'
 alias medusa='ssh medusa -t "tmux attach"'
+#alias medusa='ssh medusa -t -- /bin/sh -c \'export TERM="screen-256color"; tmux has-session && exec tmux attach || exec tmux\''
 
 # 20120714
 alias gm='gnome-mplayer'
