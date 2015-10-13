@@ -71,6 +71,7 @@ Plugin 'ryanoasis/vim-devicons'
 " == Content convenience ======
 
 " Spell Check (http://vim.wikia.com/wiki/Toggle_spellcheck_with_function_keys)
+" Loop through various languages to select the one to spellcheck with
 let b:myLang=0
 let g:myLangList=["nospell","nl","en_gb","en_us"]
 function! ToggleSpell()
@@ -87,6 +88,7 @@ function! ToggleSpell()
   echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
 
+" Map <F7> to toggle the language with
 nmap <silent> <F7> :call ToggleSpell()<CR>
 
 " In case the spelling language was set by other means than ToggleSpell() (a filetype autocommand say):
@@ -98,7 +100,7 @@ if !exists( "b:myLang" )
   endif
 endif
 
-" Word completion
+" Word completion from dictionary (on ctrl+space)
 set complete+=kspell
 
 " Python virtualenv support
@@ -106,6 +108,7 @@ set complete+=kspell
 
 " Python goodness
 "Plugin 'klen/python-mode'
+
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
 
@@ -146,18 +149,21 @@ if v:version >= 704
     " stuff. Works with vim >= 7.4
     Plugin 'vim-pandoc/vim-pandoc'
 endif
-" Distraction-free writing, start with <Leader>V (\V)
+
+" Distraction-free writing, start with <Leader>V (\V or ,V in this config)
 Plugin 'mikewest/vimroom'
+
 " undotree.vim : Display your undo history in a graph.
 Plugin 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
                                     " wants to interact with it.
-" The NERD Commenter : A plugin that allows for easy commenting of code for
+
+" The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
 Plugin 'scrooloose/nerdcommenter'
 
-" Highlight colours in CSS files
+" Highlight colours in CSS (and html) files
 Plugin 'ap/vim-css-color'
 
 " All of your Plugins must be added before the following line
@@ -179,7 +185,7 @@ set list
 set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
-" change the mapleader from \ to ,
+" change the <Leader> key from \ to ,
 let mapleader=","
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -193,7 +199,6 @@ set tags=./tags,./TAGS,tags;~,TAGS;~
 " include upper-case characters (so /foo matches FOO and fOo, but /FOO only
 " matches the former)
 set ignorecase
-" 2006-04-24
 set smartcase
 
 " reload file when changes happen in other editors
