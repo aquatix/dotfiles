@@ -1,3 +1,10 @@
+" ~/.vimrc VIM configuration file
+" Creator: Michiel Scholten
+" I try to comment everything, so you know what and why to copy parts. Copying
+" wholesale is generally not a good idea; getting an idea to what things
+" actually mean and are used for is really recommended.
+
+" Vundle manages the plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -135,9 +142,9 @@ let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins py
 " Handy Markdown stuff
 Plugin 'tpope/vim-markdown'
 if v:version >= 704
-	" Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
-	" stuff. Works with vim >= 7.4
-	Plugin 'vim-pandoc/vim-pandoc'
+    " Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
+    " stuff. Works with vim >= 7.4
+    Plugin 'vim-pandoc/vim-pandoc'
 endif
 " Distraction-free writing, start with <Leader>V (\V)
 Plugin 'mikewest/vimroom'
@@ -196,7 +203,7 @@ set autoread
 " marks are preserved)
 set hidden
 
-" 2008-04-14 with the if-statement added at 2008-11-19
+" Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
 	set t_Co=256
 	colorscheme zenburn
@@ -206,13 +213,14 @@ if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &te
 	let g:airline_powerline_fonts = 1
 endif
 
-" paste and autoindent
+" Toggle paste and autoindent mode (enable paste so no indention weirdness
+" happens when pasting into the current file)
 set pastetoggle=<F10>
 
 " Prettify json and javascript
 map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
-" Replayce 'dayh' with a formatted day header
+" Replace 'dayh' with a formatted day header
 iab <expr> dayh strftime("== %Y%m%d %A ======")
 
 " Fly through buffers instead of cycling
@@ -232,53 +240,21 @@ vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line
 " Disabled as it also works with backspace and gives odd results with some
 " normal typing, giving asiatic glyphs and such. Just use CTRL+k a:
 
-" 2014-01-29 some sane Python settings
-autocmd FileType python set tabstop=4
-autocmd FileType python set shiftwidth=4
-autocmd FileType python set smarttab
-autocmd FileType python set expandtab
-autocmd FileType python set softtabstop=4
-autocmd FileType python set autoindent
+" Number of visual spaces per TAB
+set tabstop=4
+" Number of spaces in tab when editing
+set softtabstop=4
+" Turn tabs into spaces
+set expandtab
+" How many columns text is indented with the reindent operations and automatic
+" indentation
+set shiftwidth=4
+" Indentation according to shiftwidth when <TAB> is pressed at beginning of line
+set smarttab
+" Indentation setting for everywhere else (not beginning of line)
+set softtabstop=4
+" Copy the indentation of the previous line
+set autoindent
 
 " Django html template highlighting by default
 au BufNewFile,BufRead *.html set filetype=htmldjango
-
-" 2014-01-29 some sane PHP settings
-autocmd FileType php set tabstop=4
-autocmd FileType php set shiftwidth=4
-autocmd FileType php set smarttab
-autocmd FileType php set expandtab
-autocmd FileType php set softtabstop=4
-autocmd FileType php set autoindent
-
-" 2014-03-21 some sane LaTeX settings
-autocmd FileType tex set tabstop=4
-autocmd FileType tex set shiftwidth=4
-autocmd FileType tex set smarttab
-autocmd FileType tex set expandtab
-autocmd FileType tex set softtabstop=4
-autocmd FileType tex set autoindent
-
-" 2014-06-24 some sane shell settings
-autocmd FileType sh set tabstop=4
-autocmd FileType sh set shiftwidth=4
-autocmd FileType sh set smarttab
-autocmd FileType sh set expandtab
-autocmd FileType sh set softtabstop=4
-autocmd FileType sh set autoindent
-
-" 2014-10-05 some sane Markdown settings
-autocmd FileType markdown set tabstop=4
-autocmd FileType markdown set shiftwidth=4
-autocmd FileType markdown set smarttab
-autocmd FileType markdown set expandtab
-autocmd FileType markdown set softtabstop=4
-autocmd FileType markdown set autoindent
-
-" 2015-01-13 some sane Yaml settings
-autocmd FileType yaml set tabstop=4
-autocmd FileType yaml set shiftwidth=4
-autocmd FileType yaml set smarttab
-autocmd FileType yaml set expandtab
-autocmd FileType yaml set softtabstop=4
-autocmd FileType yaml set autoindent
