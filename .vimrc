@@ -70,6 +70,10 @@ Plugin 'ryanoasis/vim-devicons'
 
 " == Content convenience ======
 
+" Automatically insert matching close bracket where it belongs
+Plugin 'seletskiy/vim-autosurround'
+inoremap  ( (<C-O>:call AutoSurround(")")<CR>
+
 " Spell Check (http://vim.wikia.com/wiki/Toggle_spellcheck_with_function_keys)
 " Loop through various languages to select the one to spellcheck with
 let b:myLang=0
