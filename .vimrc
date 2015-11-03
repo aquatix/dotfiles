@@ -70,6 +70,8 @@ Plugin 'ryanoasis/vim-devicons'
 
 " == Content convenience ======
 
+Plugin 'jamessan/vim-gnupg'
+
 " Automatically insert matching close bracket where it belongs
 "Plugin 'seletskiy/vim-autosurround'
 "inoremap  ( (<C-O>:call AutoSurround(")")<CR>
