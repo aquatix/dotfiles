@@ -236,6 +236,8 @@ map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Replace 'dayh' with a formatted day header
 iab <expr> dayh strftime("== %Y%m%d %A ======")
+" Replace 'timeh' with a formatted date/time header
+iab <expr> timeh strftime("## %Y%m%d %a %H:%M:%S")
 
 " Fly through buffers instead of cycling
 nnoremap <leader>l :ls<cr>:b<space>
