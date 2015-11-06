@@ -118,6 +118,12 @@ set complete+=kspell
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
 
+" code-completion engine
+" sudo apt-get install build-essential cmake
+" sudo apt-get install python-dev
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py  # For C-style languages: ./install.py --clang-completer
+Plugin 'Valloric/YouCompleteMe'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
