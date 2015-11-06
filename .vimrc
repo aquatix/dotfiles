@@ -182,7 +182,7 @@ set number
 set cursorline
 syntax on
 
-if v:version >= 704 && has('patch338')
+if has('patch-7.4-338')
     " automatically indents wrapped lines up to the previous line. You can also
     " use the showbreak option to automatically indent the line even more
     set breakindent
