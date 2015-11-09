@@ -243,6 +243,11 @@ endif
 " happens when pasting into the current file)
 set pastetoggle=<F10>
 
+" Tab navigation
+nmap <c-Up> :tabnew<CR>
+nmap <c-Right> :tabnext<CR>
+nmap <c-Left> :tabprevious<CR>
+
 " Prettify json and javascript
 map <Leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
