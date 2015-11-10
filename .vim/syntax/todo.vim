@@ -56,6 +56,10 @@ syntax match todoStatusTodo "\v^- "
 syntax match todoStatusTodo "\v - "
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
+syntax match todoStatusQuestion "\v^\? "
+syntax match todoStatusQuestion "\v \? "
+highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
+
 syntax match note "\v^n .*$"
 syntax match note "\v n .*$"
 highlight note ctermfg=Grey guifg=#eeeeee
@@ -63,6 +67,7 @@ highlight note ctermfg=Grey guifg=#eeeeee
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
 highlight link todoStatusTodo PreProc
+highlight link todoStatusQuestion PreProc
 
 
 " Syntax highlighting scheme name
