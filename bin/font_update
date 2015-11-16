@@ -13,19 +13,23 @@ function install_font {
 
 IFS=$'\n'
 
-FONTS_CODING=$'SourceCodePro/Bold/Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-SourceCodePro/Medium/Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Hack/Bold/Knack Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Hack/Regular/Knack Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Hack/BoldOblique/Knack BoldOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Hack/RegularOblique/Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+FONTS_CODING=$'Hack/Bold/complete/Knack Bold Nerd Font Complete Mono.ttf
+Hack/Regular/complete/Knack Regular Nerd Font Complete Mono.ttf
+Hack/BoldItalic/complete/Knack Bold Italic Nerd Font Complete Mono.ttf
+Hack/Italic/complete/Knack Italic Nerd Font Complete Mono.ttf'
 
 FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
 Futura-Std-Bold-Oblique_19041.ttf
 Futura-Std-Book_19044.ttf
 Futura-Std-Book-Oblique_19043.ttf'
 
-FONTS_DELETE=$'Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+FONTS_DELETE=$'Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Sauce Code Pro Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Knack Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Knack Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Knack BoldOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
