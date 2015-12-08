@@ -1,3 +1,4 @@
+#!/bin/bash
 PATH=$PATH:~/bin
 
 # enable color support of ls and also add handy aliases
@@ -25,6 +26,7 @@ alias findphp='find . -name "*.php" | xargs grep --color=auto'
 alias findjs='find . -name "*.js" | xargs grep --color=auto'
 alias findcss='find . -name "*.css" | xargs grep --color=auto'
 alias findpy='find . -name "*.py" | xargs grep --color=auto'
+alias findyaml='find . -name "*.yaml" | xargs grep --color=auto'
 
 alias findfile='find . | grep -v .svn | grep -v .hg | grep -v .git | grep'
 
