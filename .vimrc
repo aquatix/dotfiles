@@ -47,7 +47,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
 " Quickly open files, fuzzy search on name
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_map = '<c-p>'
 " Search in Files, Buffers and MRU files at the same time:
