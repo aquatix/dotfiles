@@ -32,6 +32,8 @@ Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
 Plugin 'mhinz/vim-signify'
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
 " Think of sensible.vim as one step above 'nocompatible' mode: a universal
 " set of defaults that (hopefully) everyone can agree on.
 Plugin 'tpope/vim-sensible'
@@ -261,7 +263,8 @@ nnoremap <leader>l :ls<cr>:b<space>
 
 " Git and Mercurial 'blame' command. First select lines in visual modes, then
 " hit the appropriate leader key sequence (e.g., \g for git blame)
-vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+" Update: For Git blame, just do :Gblame from vim-fugitive
+"vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 vmap <Leader>h :<C-U>!hg blame -fu <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 
