@@ -27,7 +27,8 @@ nmap <F8> :TagbarToggle<CR>
 
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Better showing of open buffers (open files)
 Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
