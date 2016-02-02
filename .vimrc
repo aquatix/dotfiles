@@ -181,6 +181,9 @@ Plugin 'scrooloose/nerdcommenter'
 " Highlight colours in CSS (and html) files
 Plugin 'ap/vim-css-color'
 
+" CSV filetype plugin
+"Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
