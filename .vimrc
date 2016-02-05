@@ -184,6 +184,10 @@ Plugin 'ap/vim-css-color'
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
+" Automatic generation of tags file (ctags), in a central place (~/.vimtags)
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
