@@ -260,12 +260,12 @@ set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
-	set t_Co=256
-	colorscheme zenburn
+    set t_Co=256
+    colorscheme zenburn
 
-	" create a bar for airline
-	set laststatus=2
-	let g:airline_powerline_fonts = 1
+    " create a bar for airline
+    set laststatus=2
+    let g:airline_powerline_fonts = 1
 endif
 
 " Toggle paste and autoindent mode (enable paste so no indention weirdness
