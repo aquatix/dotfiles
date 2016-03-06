@@ -1,5 +1,12 @@
 #!/bin/bash
-exiv2 -T ./*.{CR2,jpg}
+if [ $(find . -name '*.CR2' | wc -l) -gt 0 ]; then
+    echo "CR2 found, fixing"
+    exiv2 -T ./*.CR2
+fi
+if [ $(find . -name '*.jpg' | wc -l) -gt 0 ]; then
+    echo "jpg found, fixing"
+    exiv2 -T ./*.jpg
+fi
 exit
 
 # old, slower method:
