@@ -1,4 +1,8 @@
 #!/bin/bash
+exiv2 -T ./*.{CR2,jpg}
+exit
+
+# old, slower method:
 find -name '*.jpg' | while read PIC; do
 DATE=$(exiftool -p '$DateTimeOriginal' $PIC | sed 's/[: ]//g')
 echo "$DATE $PIC"
