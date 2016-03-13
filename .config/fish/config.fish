@@ -5,6 +5,9 @@ source $fisher_home/config.fish
 # Virtualenv support with virtualfish
 eval (python -m virtualfish)
 
+# Theme options
+set -g theme_show_exit_status yes
+
 # Aliases
 # Listing
 alias ll 'ls -alF'
@@ -42,4 +45,3 @@ alias pip_upgrade "pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs 
 alias pypi_up 'python setup.py register sdist --formats=zip upload'
 
 alias weather 'ansiweather'
-
