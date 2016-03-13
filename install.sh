@@ -24,6 +24,12 @@ install_hg()
     done
 }
 
+install_fish()
+{
+    touch ~/.dot/.dot_has_fish
+    curl -sL get.fisherman.sh | fish
+}
+
 # Get the directory the dotfiles have been cloned into
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Installing from $DIR"
