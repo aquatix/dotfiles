@@ -3,7 +3,7 @@ set fisher_config ~/.config/fisherman
 source $fisher_home/config.fish
 
 # Virtualenv support with virtualfish
-eval (python -m virtualfish)
+eval (python -m virtualfish compat_aliases)
 
 # Theme options
 set -g theme_show_exit_status yes
