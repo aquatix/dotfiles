@@ -23,6 +23,7 @@ Futura-Std-Bold-Oblique_19041.ttf
 Futura-Std-Book_19044.ttf
 Futura-Std-Book-Oblique_19043.ttf'
 
+# https://github.com/eosrei/emojione-color-font/
 FONTS_VARIOUS=$'EmojiOneColor-SVGinOT.ttf'
 
 FONTS_DELETE=$'Sauce Code Pro Medium Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
