@@ -60,6 +60,13 @@ syntax match todoStatusTodo "\v^- "
 syntax match todoStatusTodo "\v - "
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
+syntax match todoStatusImportant "\v^\> .*$"
+syntax match todoStatusImportant "\v \> .*$"
+syntax match todoStatusImportant "\v^! .*$"
+syntax match todoStatusImportant "\v ! .*$"
+"highlight todoStatusImportant ctermfg=131 guifg=#af5f5f
+highlight todoStatusImportant ctermfg=167 guifg=#d75f5f
+
 syntax match todoStatusQuestion "\v^\? "
 syntax match todoStatusQuestion "\v \? "
 highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
@@ -71,6 +78,7 @@ highlight note ctermfg=Grey guifg=#eeeeee
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
 highlight link todoStatusTodo PreProc
+highlight link todoStatusImportant PreProc
 highlight link todoStatusQuestion PreProc
 
 
