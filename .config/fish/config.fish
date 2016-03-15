@@ -16,7 +16,9 @@ if test -x ~/.dot/privdotfiles/bin
 end
 
 ## Android-related binaries
-set PATH $PATH /usr/local/bin/android-sdk-linux/platform-tools /usr/local/bin/android-sdk-linux/tools
+if test -x /usr/local/bin/android-sdk-linux/platform-tools
+    set PATH $PATH /usr/local/bin/android-sdk-linux/platform-tools /usr/local/bin/android-sdk-linux/tools
+end
 
 # Aliases
 ## Listing
