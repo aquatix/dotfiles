@@ -4,9 +4,9 @@ endif
 
 
 " Keywords that we want to emphasize
-syntax keyword todoKeyword todo done important
-syntax keyword todoKeyword whoa free
-highlight link todoKeyword Keyword
+"syntax keyword todoKeyword todo done important
+"syntax keyword todoKeyword whoa free
+"highlight link todoKeyword Keyword
 
 
 " Remarks about the day
@@ -15,7 +15,7 @@ syntax match todoDayKeyword "papadag"
 syntax match todoDayKeyword "vrije dag"
 syntax match todoDayKeyword "vrij"
 syntax match todoDayKeyword "koningsdag"
-syntax match todoDayKeyword "ill"
+"syntax match todoDayKeyword "ill"
 syntax match todoDayKeyword "ziek"
 syntax match todoDayKeyword "ziekig"
 highlight todoDayKeyword ctermfg=116 guifg=#8cd0d3
