@@ -27,7 +27,10 @@ install_hg()
 install_fish()
 {
     touch ~/.dot/.dot_has_fish
+    mkdir -p "${HOME}/.config/fish/completions"
     curl -sL get.fisherman.sh | fish
+    ln -s "${HOME}/workspace/application_addons/cli/git-flow-completion/git.fish" "${HOME}/.config/fish/completions"
+    ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/tmuxinator.fish" "${HOME}/.config/fish/completions"
 }
 
 # Get the directory the dotfiles have been cloned into
