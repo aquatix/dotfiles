@@ -177,7 +177,12 @@ let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins py
 
 
 " Handy Markdown stuff
-Plugin 'tpope/vim-markdown'
+"Plugin 'tpope/vim-markdown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+" Do not fold markdown files by default
+let g:vim_markdown_folding_disabled = 1
+
 if v:version >= 704
     " Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
     " stuff. Works with vim >= 7.4
