@@ -139,6 +139,7 @@ set complete+=kspell
 
 " Python autocompletion
 Plugin 'davidhalter/jedi-vim'
+let g:jedi#force_py_version = 2
 
 " code-completion engine
 " sudo apt-get install build-essential cmake
