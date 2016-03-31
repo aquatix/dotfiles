@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "No filename to archive provided"
+    exit 1
+elif [ -z "$2" ]; then
+    echo "No archive directory path provided"
+    exit 2
+fi
+
+FILENAME="${1}"
+ARCHIVEDIR="${2}"
+
+if [ ! -e $FILENAME ]; then
+    echo "$FILENAME does not exist, exiting"
+    exit 3
+elif [ ! -e $ARCHIVEDIR ]; then
+    mkdir -p $ARCHIVEDIR
+    echo "Created $ARCHIVEDIR"
+fi
+
+DATETIME=$(stat -c %Y $FILENAME)
+
+if [ -e "$ARCHIVEDIR/timestamp.txt" ]; then
+    PREV_DATETIME=$(cat "$ARCHIVEDIR/timestamp.txt")
+fi
+
+echo $DATETIME
+if [ $DATETIME != $PREV_DATETIME ]; then
+    # Archive the file
+    FILE=$(basename $FILENAME)
+    TARGETFILE="${ARCHIVEDIR}/${HOSTNAME}_${DATETIME}_${FILE}"
+    cp -a $FILENAME "${TARGETFILE}"
+    gzip -9 "${TARGETFILE}"
+    echo $DATETIME > "$ARCHIVEDIR/timestamp.txt"
+fi
