@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "No sourcedir provided"
+    exit 1
+elif [ -z "$2" ]; then
+    echo "No archive directory path provided"
+    exit 2
+elif [ -z "$3" ]; then
+    echo "No normalised filename provided"
+    exit 3
+fi
+
+SOURCEDIR="${1}"
+ARCHIVEDIR="${2}"
+FILENAME="${3}"
+
+if [ ! -e $SOURCEDIR ]; then
+    echo "$SOURCEDIR does not exist, exiting"
+    exit 4
+fi
+
+for FILE in $(ls -1 $SOURCEDIR); do
+    if [ ! -d "${SOURCEDIR}/${FILE}" ]; then
+        echo $FILE
+        archive_file "${SOURCEDIR}/${FILE}" "${ARCHIVEDIR}" "${FILENAME}"
+    fi
+done
