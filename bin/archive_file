@@ -11,6 +11,11 @@ fi
 FILENAME="${1}"
 ARCHIVEDIR="${2}"
 
+if [ ! -z "$3" ]; then
+    # Alternative archive filename was provided
+    FILE="${3}"
+fi
+
 if [ ! -e $FILENAME ]; then
     echo "$FILENAME does not exist, exiting"
     exit 3
@@ -23,12 +28,15 @@ DATETIME=$(stat -c %Y $FILENAME)
 
 if [ -e "$ARCHIVEDIR/timestamp.txt" ]; then
     PREV_DATETIME=$(cat "$ARCHIVEDIR/timestamp.txt")
+else
+    PREV_DATETIME=0
 fi
 
-echo $DATETIME
 if [ $DATETIME != $PREV_DATETIME ]; then
     # Archive the file
-    FILE=$(basename $FILENAME)
+    if [ -z $FILE ]; then
+        FILE=$(basename $FILENAME)
+    fi
     TARGETFILE="${ARCHIVEDIR}/${HOSTNAME}_${DATETIME}_${FILE}"
     cp -a $FILENAME "${TARGETFILE}"
     gzip -9 "${TARGETFILE}"
