@@ -38,7 +38,10 @@ if [ $DATETIME != $PREV_DATETIME ]; then
         FILE=$(basename $FILENAME)
     fi
     TARGETFILE="${ARCHIVEDIR}/${HOSTNAME}_${DATETIME}_${FILE}"
-    cp -a $FILENAME "${TARGETFILE}"
-    gzip -9 "${TARGETFILE}"
+    if [ ! -e "${TARGETFILE}" ] && [ ! -e "${TARGETFILE}.gz" ]; then
+        # Only copy if archived version doesn't exist yet
+        cp -a $FILENAME "${TARGETFILE}"
+        gzip -9 "${TARGETFILE}"
+    fi
     echo $DATETIME > "$ARCHIVEDIR/timestamp.txt"
 fi
