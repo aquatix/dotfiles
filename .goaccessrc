@@ -1,18 +1,4 @@
-color_scheme 0
+color_scheme 1
 time-format %T
 date-format %d/%b/%Y
 log-format %h %^[%d:%^] "%r" %s %b "%R" "%u"
-
-# SanomaSearch frontend prod ELB
-exclude-ip 10.164.30.135
-exclude-ip 10.164.20.141
-
-# SanomaSearch service prod ELB
-#exclude-ip 10.164.30.238
-
-# ce.snmmd.nl frontend ELB
-#exclude-ip 10.164.21.206
-#exclude-ip 10.164.22.53
-#exclude-ip 10.164.24.152
-#exclude-ip 10.164.22.15
-#exclude-ip 10.164.29.160
