@@ -8,6 +8,7 @@ eval (python -m virtualfish compat_aliases)
 
 # Theme options
 set -g theme_show_exit_status yes
+set -g theme_date_format "+%a %Y-%m-%d %H:%M:%S"
 
 # PATH
 ## If the private dotfiles repo is installed, we'd like to use its scripts too
