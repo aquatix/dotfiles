@@ -79,11 +79,12 @@ for LINE in "${LINES[@]}"; do
         elif [ $LOCAL = $BASE ]; then
             # Need to pull
             echo -e "[\e[33mU\e[0m] $GRP/$REPODIR"
-            git pull --quiet
+            git pull --all --quiet
         elif [ $REMOTE = $BASE ]; then
             # Need to push
             echo -e "[\e[33mP\e[0m] $GRP/$REPODIR pushing"
-            git push --quiet
+            git push --all --quiet
+            git push --tags --quiet
         else
             # Diverged
             echo -e "[\e[31mX\e[0m] $GRP/$REPODIR diverged - $WORKSPACE/$GRP/$REPODIR"
