@@ -138,6 +138,9 @@ set complete+=kspell
 "Plugin 'klen/python-mode'
 
 " Python autocompletion
+" On a machine with a Python3-only vim, use system packages like:
+" python-jedi python3-jedi vim-python-jedi
+" instead
 "Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
 
