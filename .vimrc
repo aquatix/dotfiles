@@ -140,7 +140,7 @@ set complete+=kspell
 " Python autocompletion
 " On a machine with a Python3-only vim, use system packages like:
 " python-jedi python3-jedi vim-python-jedi
-" instead
+" instead. Also, vim-nox-py2 might be needed
 "Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
 
