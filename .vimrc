@@ -139,7 +139,8 @@ set complete+=kspell
 
 " Python autocompletion
 " On a machine with a Python3-only vim, use system packages like:
-" python-jedi python3-jedi to keep jedi working for Python 2 and 3
+" python-jedi python3-jedi to keep jedi working for Python 2 and 3.
+" Also, vim-nox-py2 might be needed
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
 
