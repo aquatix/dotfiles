@@ -1,8 +1,3 @@
-# Fisherman stuff
-set fisher_home ~/.local/share/fisherman
-set fisher_config ~/.config/fisherman
-source $fisher_home/config.fish
-
 # Virtualenv support with virtualfish
 eval (python -m virtualfish compat_aliases)
 
