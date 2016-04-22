@@ -210,6 +210,9 @@ Plugin 'scrooloose/nerdcommenter'
 " Highlight colours in CSS (and html) files
 Plugin 'ap/vim-css-color'
 
+" Highlight colours in fish shell files
+Plugin 'dag/vim-fish'
+
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
