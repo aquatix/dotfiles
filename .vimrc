@@ -143,6 +143,7 @@ set complete+=kspell
 " Also, vim-nox-py2 might be needed
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 " code-completion engine
 " sudo apt-get install build-essential cmake
