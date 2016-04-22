@@ -29,9 +29,16 @@ install_fish()
     touch ~/.dot/.dot_has_fish
     mkdir -p "${HOME}/.config/fish/completions"
     curl -sL get.fisherman.sh | fish
+    ln -s "${HOME}/.dot/dotfiles/.config/fish/config.fish" "${HOME}/.config/fish/"
+    ln -s "${HOME}/.dot/dotfiles/.config/fish/fishfile" "${HOME}/.config/fish/"
     ln -s "${HOME}/workspace/application_addons/cli/git-flow-completion/git.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/mux.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/tmuxinator.fish" "${HOME}/.config/fish/completions"
+    echo
+    echo "You might want to install Fisherman:"
+    echo "curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman"
+    echo "And some plugins: fisher install bobthefish shark omf/grc"
+    echo
 }
 
 # Get the directory the dotfiles have been cloned into
@@ -103,6 +110,19 @@ elif [ ! -e ~/.dot_no_hg ]; then
         case $yn in
             Yes ) install_hg; break;;
             No ) touch ~/.dot_no_hg; break;;
+        esac
+    done
+fi
+
+if [ -e ~/.dot/.dot_has_fish ]; then
+    install_hg
+elif [ ! -e ~/.dot/.dot_no_fish ]; then
+    echo
+    echo "Do you wish to install fish shell configuration?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) install_fish; break;;
+            No ) touch ~/.dot/.dot_no_fish; break;;
         esac
     done
 fi
