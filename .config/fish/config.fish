@@ -5,6 +5,9 @@ eval (python -m virtualfish compat_aliases)
 set -g theme_show_exit_status yes
 set -g theme_date_format "+%a %Y-%m-%d %H:%M:%S"
 
+# grc colouriser
+set -U grcplugin_ls --color
+
 # PATH
 ## If the private dotfiles repo is installed, we'd like to use its scripts too
 if test -x ~/.dot/privdotfiles/bin
