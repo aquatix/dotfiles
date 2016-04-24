@@ -1,7 +1,7 @@
 # Virtualenv support with virtualfish
 eval (python -m virtualfish compat_aliases)
 
-# Theme options
+# Theme options for bobthefish
 set -g theme_show_exit_status yes
 set -g theme_date_format "+%a %Y-%m-%d %H:%M:%S"
 
