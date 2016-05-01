@@ -44,6 +44,9 @@ alias findjs 'find . -name "*.js" | xargs grep --color=auto'
 alias findcss 'find . -name "*.css" | xargs grep --color=auto'
 alias findpy 'find . -name "*.py" | xargs grep --color=auto'
 alias findyaml 'find . -name "*.yaml" -o -name "*.yml" -o -name "*.eyaml" -o -name "*.eyml" | xargs grep --color=auto'
+function grepl
+    grep --color=always -ir $argv | less -R
+end
 
 ## Various
 alias tmux 'tmux -2'
