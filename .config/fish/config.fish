@@ -33,6 +33,7 @@ alias gc "git commit"
 alias gca "git commit -a"
 alias gd "git diff"
 alias gst "git status"
+alias ga "git add -A"
 alias gl "git log"
 alias gt 'git tag|less'
 #alias gad 'git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'

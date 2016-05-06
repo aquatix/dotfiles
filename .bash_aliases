@@ -68,6 +68,7 @@ alias gca='git commit -a'
 alias gl='git log'
 alias gst='git status'
 alias gt='git tag|less'
+alias ga='git add -A'
 alias gp='git push --all --follow-tags'
 alias gu='git pull --all'
 # git activity per week day:
