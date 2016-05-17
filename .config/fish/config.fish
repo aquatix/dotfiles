@@ -1,3 +1,6 @@
+# Set editor to vim
+set EDITOR vim
+
 # Virtualenv support with virtualfish
 eval (python -m virtualfish compat_aliases)
 
