@@ -219,6 +219,8 @@ Plugin 'dag/vim-fish'
 " Automatic generation of tags file (ctags), in a central place (~/.vimtags)
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+" easytags highlighting is slow
+let g:easytags_auto_highlight = 0
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
