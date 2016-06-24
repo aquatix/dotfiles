@@ -167,8 +167,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_python_checkers = ['pylint', 'flake8', 'pyflakes']
+
 " No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django -d C0103,C0111"
+"let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django -d C0103,C0111"
+let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
 
 " Use the virtualenv's Python interpreter
 "if $VIRTUAL_ENV != ''
