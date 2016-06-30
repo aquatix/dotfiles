@@ -207,3 +207,6 @@ fi
 
 # Android-related binaries
 PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools:/usr/local/bin/android-sdk-linux/tools
+
+# QT autoscaling, helpful for hidpi systems
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
