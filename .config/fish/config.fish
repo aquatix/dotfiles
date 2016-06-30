@@ -22,6 +22,9 @@ if test -x /usr/local/bin/android-sdk-linux/platform-tools
     set PATH $PATH /usr/local/bin/android-sdk-linux/platform-tools /usr/local/bin/android-sdk-linux/tools
 end
 
+# QT autoscaling, helpful for hidpi systems
+set -x QT_AUTO_SCREEN_SCALE_FACTOR 1
+
 # Aliases
 ## Listing
 alias ll 'ls -alF'
