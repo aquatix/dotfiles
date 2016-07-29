@@ -217,6 +217,9 @@ Plugin 'ap/vim-css-color'
 " Highlight colours in fish shell files
 Plugin 'dag/vim-fish'
 
+" Highlight colours in jade/pug templates
+Plugin 'digitaltoad/vim-pug'
+
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
