@@ -34,7 +34,8 @@ alias lll 'ls --color=always -alF | less -R'
 
 ## Git
 alias gu "git pull --all"
-alias gp "git push --all; git push --tags"
+alias gp "git push; git push --tags"
+alias gpa "git push --all; git push --tags"
 alias gc "git commit"
 alias gca "git commit -a"
 alias gd "git diff"

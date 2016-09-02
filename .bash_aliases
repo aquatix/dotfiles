@@ -69,7 +69,8 @@ alias gl='git log'
 alias gst='git status'
 alias gt='git tag|less'
 alias ga='git add -A'
-alias gp='git push --all --follow-tags'
+alias gp='git push --follow-tags'
+alias gpa='git push --all --follow-tags'
 alias gu='git pull --all'
 # git activity per week day:
 # git log --pretty='%at' | while read d; do date -d "@$d"; done | awk '{print $1}' | sort | uniq -c
