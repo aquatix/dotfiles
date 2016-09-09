@@ -64,6 +64,8 @@ alias tmux_takeover "tmux detach -a"
 alias mkvirtualenv3 "mkvirtualenv --python=`which python3`"
 alias pip_upgrade "pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
+alias pyloc 'find . -name "*.py" | xargs wc -l'
+
 alias pypi_up 'python setup.py register sdist --formats=zip upload'
 
 alias youtube-dl 'youtube-dl -t -f bestvideo+bestaudio/best --merge-output-format mp4'
