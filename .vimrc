@@ -4,6 +4,8 @@
 " wholesale is generally not a good idea; getting an idea to what things
 " actually mean and are used for is really recommended.
 
+set shell=/bin/bash
+
 " Vundle manages the plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
