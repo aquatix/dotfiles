@@ -11,9 +11,14 @@ endif
 
 " Remarks about the day
 syntax match todoDayKeyword "thuiswerken"
+syntax match todoDayKeyword "Thuis"
+syntax match todoDayKeyword "Thuiswerken"
+syntax match todoDayKeyword "Hackathon"
+syntax match todoDayKeyword "hackathon"
 syntax match todoDayKeyword "papadag"
 syntax match todoDayKeyword "vrije dag"
 syntax match todoDayKeyword "vrij"
+syntax match todoDayKeyword "Vrij"
 syntax match todoDayKeyword "koningsdag"
 "syntax match todoDayKeyword "ill"
 syntax match todoDayKeyword "ziek"
