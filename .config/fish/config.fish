@@ -12,6 +12,9 @@ set -g theme_date_format "+%a %Y-%m-%d %H:%M:%S"
 set -U grcplugin_ls --color
 
 # PATH
+if test -x ~/.dot/dotfiles/bin
+    set PATH $PATH ~/.dot/dotfiles/bin
+end
 ## If the private dotfiles repo is installed, we'd like to use its scripts too
 if test -x ~/.dot/privdotfiles/bin
     set PATH $PATH ~/.dot/privdotfiles/bin
