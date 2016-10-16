@@ -7,6 +7,10 @@ if [ $(find . -name '*.jpg' | wc -l) -gt 0 ]; then
     echo "jpg found, fixing"
     exiv2 -T ./*.jpg
 fi
+if [ $(find . -name '*.jpeg' | wc -l) -gt 0 ]; then
+    echo "jpeg found, fixing"
+    exiv2 -T ./*.jpeg
+fi
 if [ $(find . -name '*.JPG' | wc -l) -gt 0 ]; then
     echo "JPG found, fixing"
     exiv2 -T ./*.JPG
