@@ -69,7 +69,8 @@ alias pip_upgrade "pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs 
 
 alias pyloc 'find . -name "*.py" | xargs wc -l'
 
-alias pypi_up 'python setup.py register sdist --formats=zip upload'
+alias pypi_up 'python setup.py sdist --formats=zip upload -r pypi'
+alias pypi_sanoma 'python setup.py sdist --formats=zip upload -r sanoma'
 
 alias youtube-dl 'youtube-dl -t -f bestvideo+bestaudio/best --merge-output-format mp4'
 
