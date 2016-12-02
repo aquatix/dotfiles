@@ -20,6 +20,11 @@ if test -x ~/.dot/privdotfiles/bin
     set PATH $PATH ~/.dot/privdotfiles/bin
 end
 
+# If nvm is installed
+if test -x ~/.nvm
+    set -gx NVM_DIR ~/.nvm
+end
+
 ## Android-related binaries
 if test -x /usr/local/bin/android-sdk-linux/platform-tools
     set PATH $PATH /usr/local/bin/android-sdk-linux/platform-tools /usr/local/bin/android-sdk-linux/tools

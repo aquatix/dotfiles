@@ -25,6 +25,3 @@ fi
 # layers.offmainthreadcomposition.enabled
 # layers.acceleration.force-enabled
 export MOZ_USE_OMTC=1
-
-export NVM_DIR="/home/mbscholt/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
