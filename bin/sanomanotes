@@ -2,4 +2,4 @@
 cd ~/mydocs/work/sanoma
 git pull
 #vim -c ":vsp planning_2015.todo" notes_2015.md notes_2014.md
-vim -c "set nofoldenable" planning_2016.todo cs_notes.md dcp_notes.md dcp_howtos.md notes_2015.md
+vim -c "set nofoldenable" planning_2017.todo cs_notes.md dcp_notes.md dcp_howtos.md
