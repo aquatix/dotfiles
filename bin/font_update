@@ -23,6 +23,23 @@ Futura-Std-Bold-Oblique_19041.ttf
 Futura-Std-Book_19044.ttf
 Futura-Std-Book-Oblique_19043.ttf'
 
+FONTS_OVERPASS=$'overpass-bold-italic.otf
+overpass-bold.otf
+overpass-extrabold-italic.otf
+overpass-extrabold.otf
+overpass-extralight-italic.otf
+overpass-extralight.otf
+overpass-heavy-italic.otf
+overpass-heavy.otf
+overpass-italic.otf
+overpass-light-italic.otf
+overpass-light.otf
+overpass-regular.otf
+overpass-semibold-italic.otf
+overpass-semibold.otf
+overpass-thin-italic.otf
+overpass-thin.otf'
+
 # https://github.com/eosrei/emojione-color-font/
 FONTS_VARIOUS=$'EmojiOneColor-SVGinOT.ttf'
 
@@ -48,6 +65,20 @@ if [ -e ~/.dot_is_server ]; then
     else
         echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
     fi
+
+    # Update from the repo
+    SOURCE_DIR="/stuff/system/fonts/Overpass/desktop-fonts/overpass"
+    DEST_DIR="/stuff/system/sync/fonts/active"
+    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+        cd "$SOURCE_DIR"
+        git pull --all
+        while read -r FONT; do
+            echo "Copied font: $FONT"
+            cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
+        done <<< "$FONTS_OVERPASS"
+    else
+        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+    fi
 else
     # Create symlinks if needed
     SOURCE_DIR="$HOME/Downloads/sync/fonts/active"
@@ -64,6 +95,9 @@ else
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_FUTURA"
+        while read -r FONT; do
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
+        done <<< "$FONTS_OVERPASS"
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_VARIOUS"
