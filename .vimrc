@@ -222,6 +222,12 @@ Plugin 'dag/vim-fish'
 " Highlight colours in jade/pug templates
 Plugin 'digitaltoad/vim-pug'
 
+" Highlight nginx
+Plugin 'chr4/nginx.vim'
+
+" Highlight jinja templates
+Plugin 'lepture/vim-jinja'
+
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
