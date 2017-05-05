@@ -58,6 +58,7 @@ alias findfile 'find . | grep -v .svn | grep -v .hg | grep -v .git | grep'
 alias findphp 'find . -name "*.php" | xargs grep --color=auto'
 alias findjs 'find . -name "*.js" | xargs grep --color=auto'
 alias findcss 'find . -name "*.css" | xargs grep --color=auto'
+alias findhtml 'find . -name "*.html" | xargs grep --color=auto'
 alias findpy 'find . -name "*.py" | xargs grep --color=auto'
 alias findyaml 'find . -name "*.yaml" -o -name "*.yml" -o -name "*.eyaml" -o -name "*.eyml" | xargs grep --color=auto'
 function grepl
