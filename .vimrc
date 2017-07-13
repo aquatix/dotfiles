@@ -156,7 +156,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
