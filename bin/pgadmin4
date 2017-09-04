@@ -4,16 +4,18 @@ PGADMINVENV="pgadmin4"
 VENVDIR="$HOME/.virtualenvs/${PGADMINVENV}"
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
-if [ -d "$VENVDIR" ]; then
+if [ ! -d "$VENVDIR" ] || [ ! -e ${VENVDIR}lib/python2.7/site-packages/pgadmin4/pgAdmin4.py ]; then
+    mkvirtualenv "${PGADMINVENV}"
+    # Install
+    echo
+    echo "Download the wheel from https://www.pgadmin.org/download/pgadmin-4-python-wheel/"
+    echo
+    echo "Install with:"
+    echo "workon pgadmin4"
+    echo "pip install ./pgadmin4-1.6-py2.py3-none-any.whl"
+    echo "echo "SERVER_MODE = False" >> ${VENVDIR}/lib/python2.7/site-packages/pgadmin4/config_local.py"
+else
     workon "${PGADMINVENV}"
     # Start
     python ${VENVDIR}lib/python2.7/site-packages/pgadmin4/pgAdmin4.py
-else
-    mkvirtualenv "${PGADMINVENV}"
-    # Install
-    echo "Download the wheel from https://www.pgadmin.org/download/pgadmin-4-python-wheel/"
-    echo "Install with:"
-    echo "# workon pgadmin4"
-    echo "pip install ./pgadmin4-1.6-py2.py3-none-any.whl"
-    echo "echo "SERVER_MODE = False" >> ${VENVDIR}/lib/python2.7/site-packages/pgadmin4/config_local.py"
 fi
