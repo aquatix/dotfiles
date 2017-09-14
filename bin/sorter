@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Sort files with a prefix of LIMIT length into dirs with the same name as the prefix
+# E.g., log_1.txt log_2.txt have a common prefix 'log' with length 3, so
+# `sorter 3` will create dir 'log' and move both files there
+
+LIMIT=6
+if [ ! -z "$1" ]; then
+    LIMIT=$1
+fi
+
+for PATTERN in $(ls -1|cut -c 1-$LIMIT|sort|uniq); do
+    echo $PATTERN
+    mkdir -p "$PATTERN"
+    # mv does not work :)
+    #mv "${PATTERN}*.*" "$PATTERN/"
+    for FILE in $(find . -type f | grep "$PATTERN"); do
+        echo $FILE
+        mv "$FILE" "${PATTERN}/"
+    done
+done
