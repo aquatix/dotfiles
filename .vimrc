@@ -156,7 +156,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -185,6 +185,11 @@ let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
 "let g:syntastic_python_python_exec = 'python'
 "let g:syntastic_python_pylint_exe = 'python -m pylint'
 "let g:syntastic_python_pylint_exe = 'python $(which pylint)'
+
+
+" Code checker. For python, install flake8 or pylint, preferably in the
+" virtualenv. For Django support, install pylint-django
+Plugin 'w0rp/ale'
 
 
 " Handy Markdown stuff
