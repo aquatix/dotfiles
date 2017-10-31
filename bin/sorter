@@ -4,18 +4,71 @@
 # E.g., log_1.txt log_2.txt have a common prefix 'log' with length 3, so
 # `sorter 3` will create dir 'log' and move both files there
 
-LIMIT=6
-if [ ! -z "$1" ]; then
-    LIMIT=$1
+if [ ! -z "$2" ] && [ ! -z "$1" ]; then
+    LIMIT=$2
+elif [ -z "$2" ] && [ ! -z "$1" ]; then
+    echo "Provide a length for the prefix or strip-from-behind"
+    exit
 fi
 
-for PATTERN in $(ls -1|cut -c 1-$LIMIT|sort|uniq); do
-    echo $PATTERN
-    mkdir -p "$PATTERN"
-    # mv does not work :)
-    #mv "${PATTERN}*.*" "$PATTERN/"
-    for FILE in $(find . -type f | grep "$PATTERN"); do
-        echo $FILE
-        mv "$FILE" "${PATTERN}/"
+if [ "$1" ==  "f" ]; then
+    # From the front
+    for PATTERN in $(find . -maxdepth 1 -type f|cut -c 3-$((LIMIT + 2))|sort|uniq); do
+        # Offset LIMIT by two to skip the './' in front of every filename
+        echo $PATTERN
+        mkdir -p "$PATTERN"
+        # mv does not work :)
+        #mv "${PATTERN}*.*" "$PATTERN/"
+        for FILE in $(find . -maxdepth 1 -type f | grep "$PATTERN"); do
+            #echo $FILE
+            mv "$FILE" "${PATTERN}/"
+        done
     done
-done
+elif [ "$1" ==  "fe" ]; then
+    # From the front
+    for PATTERN in $(find . -maxdepth 1 -type f|cut -c 3-$((LIMIT + 2))|sort|uniq); do
+        echo $PATTERN
+        #for FILE in $(find . -maxdepth 1 -type f | grep "$PATTERN"); do
+        #    echo $FILE
+        #done
+    done
+elif [ "$1" == "b" ]; then
+    # From the back
+    for PATTERN in $(find . -maxdepth 1 -type f|rev|cut -c $LIMIT-|rev|sort|uniq); do
+        echo $PATTERN
+        mkdir -p "$PATTERN"
+
+        for FILE in $(find . -maxdepth 1 -type f | grep "$PATTERN"); do
+            #echo $FILE
+            mv "$FILE" "${PATTERN}/"
+        done
+    done
+elif [ "$1" == "be" ]; then
+    # From the back
+    for PATTERN in $(find . -maxdepth 1 -type f|rev|cut -c $LIMIT-|rev|sort|uniq); do
+        echo $PATTERN
+        #for FILE in $(find . -maxdepth 1 -type f | grep "$PATTERN"); do
+        #    echo $FILE
+        #done
+    done
+else
+    echo "sorter - Files-into-structured-directories sorter"
+    echo
+    echo "Sort files with a prefix of LIMIT length into dirs with the same name"
+    echo "as the prefix"
+    echo "E.g., log_1.txt log_2.txt have a common prefix 'log' with length 3,"
+    echo "so 'sorter 3' will create dir 'log' and move both files there"
+    echo
+    echo "usage: sorter OPTION LIMIT"
+    echo
+    echo "OPTION:"
+    echo " f  create directories based on the prefix from the front LIMIT"
+    echo "    characters"
+    echo " fe emulate the above, print would-be results"
+    echo " b  create directories based on the prefix that's left when stripping"
+    echo "    LIMIT characters from the back"
+    echo " be emulate the above, print would-be results"
+    echo
+    echo "LIMIT: length of prefix or strip-from-behind"
+    echo
+fi
