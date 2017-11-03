@@ -196,6 +196,7 @@ Plugin 'w0rp/ale'
 nmap <leader>= <Plug>(ale_fix)
 " Quickly open the loclist to see syntax errors
 nmap <leader>; :lopen<CR>
+let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can slow things down
 let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
