@@ -6,6 +6,9 @@
 
 set shell=/bin/bash
 
+" change the <Leader> key from \ to ,
+let mapleader=","
+
 " Vundle manages the plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -280,8 +283,6 @@ set list
 set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
-" change the <Leader> key from \ to ,
-let mapleader=","
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
