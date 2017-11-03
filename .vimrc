@@ -190,8 +190,13 @@ let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
 Plugin 'w0rp/ale'
+" Python specific setting
+let g:ale_python_pylint_options="--max-line-length=120 -d C0103,C0111"
 " Show errors or warnings in the statusline
 let g:airline#extensions#ale#enabled = 1
+" UI
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
 
 " Handy Markdown stuff
