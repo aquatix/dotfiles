@@ -190,7 +190,12 @@ let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
 Plugin 'w0rp/ale'
+nmap <leader>= <Plug>(ale_fix)
+" Quickly open the loclist to see syntax errors
+nmap <leader>; :lopen<CR>
+let g:ale_fixers = {}
 " Python specific settings
+let g:ale_fixers.python = ['isort']
 " No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
 let g:ale_python_pylint_options="--max-line-length=120 -d C0103,C0111"
 " Show errors or warnings in the statusline
