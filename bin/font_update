@@ -40,6 +40,15 @@ overpass-semibold.otf
 overpass-thin-italic.otf
 overpass-thin.otf'
 
+FONTS_GO=$'Go-Bold-Italic.ttf
+Go-Bold.ttf
+Go-Italic.ttf
+Go-Medium-Italic.ttf
+Go-Medium.ttf
+Go-Regular.ttf
+Go-Smallcaps-Italic.ttf
+Go-Smallcaps.ttf'
+
 # https://github.com/eosrei/emojione-color-font/
 FONTS_VARIOUS=$'EmojiOneColor-SVGinOT.ttf'
 
@@ -53,6 +62,7 @@ Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus P
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
+    echo "== Nerd fonts ======"
     SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts"
     DEST_DIR="/stuff/system/sync/fonts/active"
     if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
@@ -67,6 +77,7 @@ if [ -e ~/.dot_is_server ]; then
     fi
 
     # Update from the repo
+    echo "== Overpass ======"
     SOURCE_DIR="/stuff/system/fonts/Overpass/desktop-fonts/overpass"
     DEST_DIR="/stuff/system/sync/fonts/active"
     if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
@@ -79,6 +90,22 @@ if [ -e ~/.dot_is_server ]; then
     else
         echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
     fi
+
+    # Update from the repo
+    echo "== Go ======"
+    SOURCE_DIR="/stuff/system/fonts/Go/image/font/gofont/ttfs"
+    DEST_DIR="/stuff/system/sync/fonts/active"
+    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+        cd "$SOURCE_DIR"
+        git pull --all
+        while read -r FONT; do
+            echo "Copied font: $FONT"
+            cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
+        done <<< "$FONTS_GO"
+    else
+        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+    fi
+    echo "== DONE ======"
 else
     # Create symlinks if needed
     SOURCE_DIR="$HOME/Downloads/sync/fonts/active"
@@ -98,6 +125,9 @@ else
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_OVERPASS"
+        while read -r FONT; do
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
+        done <<< "$FONTS_GO"
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_VARIOUS"
