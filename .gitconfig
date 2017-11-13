@@ -17,6 +17,7 @@
 	ci = commit
 	br = branch
 	c = commit -am
+	shame = blame
 
 [push]
 	default = simple

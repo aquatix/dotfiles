@@ -6,6 +6,9 @@
 
 set shell=/bin/bash
 
+" change the <Leader> key from \ to ,
+let mapleader=","
+
 " Vundle manages the plugins
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -156,7 +159,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -185,6 +188,25 @@ let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
 "let g:syntastic_python_python_exec = 'python'
 "let g:syntastic_python_pylint_exe = 'python -m pylint'
 "let g:syntastic_python_pylint_exe = 'python $(which pylint)'
+
+
+" Code checker. For python, install flake8 or pylint, preferably in the
+" virtualenv. For Django support, install pylint-django
+Plugin 'w0rp/ale'
+nmap <leader>= <Plug>(ale_fix)
+" Quickly open the loclist to see syntax errors
+nmap <leader>; :lopen<CR>
+let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can slow things down
+let g:ale_fixers = {}
+" Python specific settings
+let g:ale_fixers.python = ['isort']
+" No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
+let g:ale_python_pylint_options="--max-line-length=120 -d C0103,C0111"
+" Show errors or warnings in the statusline
+let g:airline#extensions#ale#enabled = 1
+" UI
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
 
 " Handy Markdown stuff
@@ -262,8 +284,6 @@ set list
 set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
 set complete-=k complete+=k
-" change the <Leader> key from \ to ,
-let mapleader=","
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
