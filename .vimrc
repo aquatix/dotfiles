@@ -159,6 +159,9 @@ let g:ycm_server_python_interpreter = '/usr/bin/python'
 " ./install.py  # For C-style languages: ./install.py --clang-completer
 Plugin 'Valloric/YouCompleteMe'
 
+" Improved Django handling
+Plugin 'tweekmonster/django-plus'
+
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
 "Disabled, using ALE instead (see below); the settings here are not needed
@@ -204,8 +207,11 @@ let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
 " No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-"let g:ale_python_pylint_options="--max-line-length=120 --load-plugins pylint_django --disable=invalid-name,missing-docstring"
-let g:ale_python_pylint_options="--max-line-length=120 --disable=invalid-name,missing-docstring"
+if exists('b:is_django')
+    let g:ale_python_pylint_options="--max-line-length=120 --load-plugins pylint_django --disable=invalid-name,missing-docstring"
+else
+    let g:ale_python_pylint_options="--max-line-length=120 --disable=invalid-name,missing-docstring"
+endif
 " Show errors or warnings in the statusline
 let g:airline#extensions#ale#enabled = 1
 " UI
