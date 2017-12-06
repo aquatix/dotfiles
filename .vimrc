@@ -148,9 +148,6 @@ set complete+=kspell
 " Also, vim-nox-py2 might be needed
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
-" YouCompleteMe interpreter version (should be the same as what YCM was
-" compiled with):
-let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 " code-completion engine
 " sudo apt-get install build-essential cmake
@@ -158,6 +155,9 @@ let g:ycm_server_python_interpreter = '/usr/bin/python'
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py  # For C-style languages: ./install.py --clang-completer
 Plugin 'Valloric/YouCompleteMe'
+" YouCompleteMe interpreter version (should be the same as what YCM was
+" compiled with):
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 " Improved Django handling
 Plugin 'tweekmonster/django-plus'
