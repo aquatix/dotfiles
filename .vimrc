@@ -160,7 +160,7 @@ Plugin 'Valloric/YouCompleteMe'
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 " Improved Django handling
-Plugin 'tweekmonster/django-plus'
+Plugin 'tweekmonster/django-plus.vim'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
