@@ -204,7 +204,7 @@ let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
 " No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-let g:ale_python_pylint_options="--max-line-length=120 -d C0103,C0111"
+let g:ale_python_pylint_options="--max-line-length=120 --load-plugins pylint_django --disable=invalid-name,missing-docstring"
 " Show errors or warnings in the statusline
 let g:airline#extensions#ale#enabled = 1
 " UI
