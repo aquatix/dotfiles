@@ -148,6 +148,8 @@ set complete+=kspell
 " Also, vim-nox-py2 might be needed
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
+" YouCompleteMe interpreter version (should be the same as what YCM was
+" compiled with):
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 " code-completion engine
@@ -159,6 +161,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
+"Disabled, using ALE instead (see below); the settings here are not needed
 "Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
