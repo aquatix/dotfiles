@@ -157,7 +157,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'Valloric/YouCompleteMe'
 " YouCompleteMe interpreter version (should be the same as what YCM was
 " compiled with):
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+"let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_server_python_interpreter = 'python2'
 
 " Improved Django handling
 Plugin 'tweekmonster/django-plus.vim'
