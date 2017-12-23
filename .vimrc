@@ -158,7 +158,7 @@ Plugin 'Valloric/YouCompleteMe'
 " YouCompleteMe interpreter version (should be the same as what YCM was
 " compiled with):
 "let g:ycm_server_python_interpreter = '/usr/bin/python'
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " Debug stuff
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
