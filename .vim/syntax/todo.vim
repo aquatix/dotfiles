@@ -54,9 +54,11 @@ highlight note ctermfg=Grey guifg=#eeeeee
 
 syntax match todoStatusDone "\v^v "
 syntax match todoStatusDone "\v  v "
-syntax match todoStatusDone "\v^x "
-syntax match todoStatusDone "\v  x "
 highlight todoStatusDone ctermfg=green guifg=#00ff00
+
+syntax match todoStatusCancelled "\v^x "
+syntax match todoStatusCancelled "\v  x "
+highlight todoStatusCancelled ctermfg=DarkGreen
 
 syntax match todoStatusDoing "\v^d .*$"
 syntax match todoStatusDoing "\v  d .*$"
