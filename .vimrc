@@ -97,7 +97,13 @@ Plugin 'ryanoasis/vim-devicons'
 
 " == Content convenience ======
 
+" transparent editing of gpg encrypted files. The filename must have a .gpg,
+" .pgp or .asc suffix.
 Plugin 'jamessan/vim-gnupg'
+
+" tcomment provides easy to use, file-type sensible comments for Vim. It
+" can handle embedded syntax.
+Plugin 'tomtom/tcomment_vim'
 
 " Automatically insert matching close bracket where it belongs
 "Plugin 'seletskiy/vim-autosurround'
