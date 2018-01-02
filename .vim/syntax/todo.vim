@@ -82,7 +82,10 @@ syntax match todoStatusQuestion "\v  \? "
 highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 
 " Highlight matching brackets (for example a timeslot)
-syntax match brack /[\[\]]/ | hi brack ctermfg=DarkMagenta
+"syntax match brack /[\[\]]/ | hi brack ctermfg=DarkMagenta
+
+syntax match timeslot "\v\[.*-.*\] "
+highlight timeslot ctermfg=Magenta
 
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
