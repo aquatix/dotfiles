@@ -32,9 +32,9 @@ highlight link todoComment Comment
 
 
 " Heading (day) delimiters
-syn region todoDay matchgroup=todoHeadingDelimiter start="==\@!" end="==*\s*$" keepend oneline
+syntax region todoDay start=/\v\=\=\ / skip=/\v\\./ end=/\v\ \=\=\=\=\=\=/
 
-hi def link todoHeadingDelimiter Delimiter
+hi link todoDay Delimiter
 
 
 " Generic operators
