@@ -33,6 +33,11 @@ end
 # QT autoscaling, helpful for hidpi systems
 set -x QT_AUTO_SCREEN_SCALE_FACTOR 1
 
+# SilverSearcher 'ag' ('ack' and 'grep' replacement)
+set -gx FZF_DEFAULT_COMMAND 'ag -g ""'
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -gx FZF_ALT_C_COMMAND "$FZF_DEFAULT_COMMAND"
+
 # Aliases
 ## Listing
 alias ll 'ls -alF'
