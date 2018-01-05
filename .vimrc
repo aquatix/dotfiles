@@ -377,6 +377,9 @@ iab <expr> timeh strftime("## %Y%m%d %a %H:%M:%S")
 " Fly through buffers instead of cycling
 nnoremap <leader>l :ls<cr>:b<space>
 
+" Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
+nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
+
 " Git and Mercurial 'blame' command. First select lines in visual modes, then
 " hit the appropriate leader key sequence (e.g., \g for git blame)
 " Update: For Git blame, just do :Gblame from vim-fugitive
