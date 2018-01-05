@@ -86,10 +86,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "let g:ctrlp_switch_buffer = 0
 
 " Run your favorite search tool from Vim, with an enhanced results list.
-" Supports Silver Searcher `ag`
+" Supports Silver Searcher `ag`. Use with:
+" :Ack [options] {pattern} [{directories}]
 Plugin 'mileszs/ack.vim'
 " apt install silversearcher-ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+    "let g:ackprg = 'ag --nogroup --nocolor --column'
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
