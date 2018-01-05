@@ -72,6 +72,11 @@ let NERDTreeIgnore = ['\.pyc$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
+" Rooter changes the working directory to the project root when you open a
+" file or directory. Useful when using fzf for example.
+Plugin 'airblade/vim-rooter'
+
+
 " Full path fuzzy file, buffer, mru, tag, ... finder
 " Quickly open files, fuzzy search on name
 "Plugin 'ctrlpvim/ctrlp.vim'
