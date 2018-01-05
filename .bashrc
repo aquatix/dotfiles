@@ -214,3 +214,5 @@ export NVM_DIR="${HOME}/.nvm"
 
 # QT autoscaling, helpful for hidpi systems
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
