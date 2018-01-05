@@ -99,8 +99,9 @@ endif
 set rtp+=~/workspace/projects/others/fzf
 Plugin 'junegunn/fzf.vim'
 nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
+nmap <Leader>c :Commits<CR>
 
 
 " Web Development/Filetype icons
