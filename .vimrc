@@ -79,16 +79,16 @@ Plugin 'airblade/vim-rooter'
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
 " Quickly open files, fuzzy search on name
-"Plugin 'ctrlpvim/ctrlp.vim'
-"let g:ctrlp_map = '<c-p>'
+Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
 " Search in Files, Buffers and MRU files at the same time:
-"let g:ctrlp_cmd = 'CtrlPMixed'
-"let g:ctrlp_match_window_bottom = 1
-"let g:ctrlp_match_window_reversed = 0
-"let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-"let g:ctrlp_working_path_mode = 0
-"let g:ctrlp_dotfiles = 0
-"let g:ctrlp_switch_buffer = 0
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " Run your favorite search tool from Vim, with an enhanced results list.
 " Supports Silver Searcher `ag`. Use with:
