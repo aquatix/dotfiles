@@ -6,7 +6,7 @@ if [ -n "$1" ]; then
   cd "$GITDIR" || exit
   DATETIME=$(date +%Y%m%d\ %H:%M:%S)
   #git pull
-  RESULT=$(git commit "$*" -m "Autosave at $DATETIME")
+  RESULT=$(git commit $* -m "Autosave at $DATETIME")
   echo "$RESULT"
   #zenity --info --text=$RESULT
   git push
