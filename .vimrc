@@ -127,6 +127,10 @@ Plugin 'jamessan/vim-gnupg'
 " can handle embedded syntax.
 Plugin 'tomtom/tcomment_vim'
 
+" Typescript syntax file and more
+Plugin 'leafgarland/typescript-vim'
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+
 " Automatically insert matching close bracket where it belongs
 "Plugin 'seletskiy/vim-autosurround'
 "inoremap  ( (<C-O>:call AutoSurround(")")<CR>
