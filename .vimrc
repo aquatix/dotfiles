@@ -131,6 +131,10 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'leafgarland/typescript-vim'
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
+" handling column separated data (csv)
+Plugin 'chrisbra/csv.vim'
+autocmd BufNewFile,BufRead *.csv setlocal filetype=csv
+
 " Automatically insert matching close bracket where it belongs
 "Plugin 'seletskiy/vim-autosurround'
 "inoremap  ( (<C-O>:call AutoSurround(")")<CR>
@@ -311,6 +315,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"filetype plugin on
 
 " Enable line numbers, highlighting of current line and syntax highlighting by default
 set number
