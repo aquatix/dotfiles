@@ -37,6 +37,12 @@ syntax region todoDay start=/\v\=\=\ / skip=/\v\\./ end=/\v\ \=\=\=\=\=\=/
 hi link todoDay Delimiter
 
 
+" Show -scratched out- parts of a line as darker text (Delimiter colour)
+syntax region scratchThis start=/\v -/ skip=/\v\\./ end=/\v-\ / oneline
+
+hi link scratchThis Delimiter
+
+
 " Generic operators
 syntax match todoOperator "\v\*"
 syntax match todoOperator "\v/"
