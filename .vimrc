@@ -309,7 +309,10 @@ Plugin 'lepture/vim-jinja'
 " easytags highlighting is slow
 "let g:easytags_auto_highlight = 0
 
+" Automatic generation of tags file (ctags: Exhuberant Ctags)
 Plugin 'ludovicchabant/vim-gutentags'
+" know when Gutentags is generating tags (prints 'TAGS' in status-line)
+set statusline+=%{gutentags#statusline()}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
