@@ -265,6 +265,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Do not fold markdown files by default
 let g:vim_markdown_folding_disabled = 1
+set nofoldenable
+" Use filetype name as fenced code block languages for syntax highlighting
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'python=python']
 
 if v:version >= 704
     " Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
@@ -274,6 +277,7 @@ endif
 
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
 Plugin 'mikewest/vimroom'
+let g:vimroom_width = 120
 
 " undotree.vim : Display your undo history in a graph.
 Plugin 'mbbill/undotree'
