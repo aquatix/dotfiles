@@ -9,6 +9,7 @@ set -g theme_nerd_fonts yes
 set -g theme_show_exit_status yes
 set -g theme_date_format "+%a %Y-%m-%d %H:%M:%S"
 set -g theme_avoid_ambiguous_glyphs yes
+set -g theme_color_scheme "zenburn"
 
 # If you use virtualenv, you will probably need to disable the default virtualenv prompt, since it doesn't play nice with fish
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
