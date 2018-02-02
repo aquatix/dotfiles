@@ -435,3 +435,7 @@ set autoindent
 
 " Django html template highlighting by default
 au BufNewFile,BufRead *.html set filetype=htmldjango
+
+" Italics
+let &t_ZH = "\e[3m"
+let &t_ZR = "\e[23m"
