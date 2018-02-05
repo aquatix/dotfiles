@@ -276,8 +276,8 @@ if v:version >= 704
 endif
 
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
-Plugin 'mikewest/vimroom'
-let g:vimroom_width = 120
+Plugin 'junegunn/goyo.vim'
+let g:goyo_width = 120
 
 " undotree.vim : Display your undo history in a graph.
 Plugin 'mbbill/undotree'
