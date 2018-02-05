@@ -275,9 +275,24 @@ if v:version >= 704
     Plugin 'vim-pandoc/vim-pandoc'
 endif
 
+
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
 Plugin 'junegunn/goyo.vim'
 let g:goyo_width = 120
+
+" Help focus on text by dimming other parts a bit
+Plugin 'junegunn/limelight.vim'
+let g:limelight_conceal_ctermfg = 'Grey69'
+let g:limelight_conceal_ctermfg = 145
+
+" Helps with writing prose (better line breaks, agnostic on soft line wraps vs
+" hard line breaks etc)
+Plugin 'reedes/vim-pencil'
+
+" Toggle Gogo with Limelight and Pencil together with Ctrl+F11
+"map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
+nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
+
 
 " undotree.vim : Display your undo history in a graph.
 Plugin 'mbbill/undotree'
