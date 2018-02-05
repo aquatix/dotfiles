@@ -75,6 +75,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Rooter changes the working directory to the project root when you open a
 " file or directory. Useful when using fzf for example.
 Plugin 'airblade/vim-rooter'
+" Do not echo the project directory
+let g:rooter_silent_chdir = 1
 
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
