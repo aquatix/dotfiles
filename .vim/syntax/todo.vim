@@ -95,8 +95,6 @@ highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 syntax match timeslot "\v\[.*-.*\] " nextgroup=todoItem skipwhite
 highlight timeslot ctermfg=Magenta
 
-"syn keyword todoType note todoStatusDone todoStatusCancelled todoStatusDoing todoStatusTest todoStatusImportant nextgroup=todoItem skipwhite
-"syn match VarName '\i\+' contained
 syn match todoItem '\i\+:' contained
 hi todoItem ctermfg=Blue
 
