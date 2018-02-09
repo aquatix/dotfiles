@@ -95,6 +95,7 @@ highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 syntax match timeslot "\v\[.*-.*\] " nextgroup=todoItem skipwhite
 highlight timeslot ctermfg=Magenta
 
+" A todoItem has a subject (e.g., a word that's followed by a ':')
 syn match todoItem '\i\+:' contained
 hi todoItem ctermfg=Blue
 
