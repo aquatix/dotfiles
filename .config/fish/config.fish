@@ -65,7 +65,7 @@ alias gt 'git tag|less'
 #alias gad 'git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
 
 ## SSH, for compatibility, as our terminfo now is non-standard 'tmux-256color-italic' in tmux
-alias ssh 'TERM=xterm ssh'
+alias ssh 'env TERM=xterm ssh'
 
 ## Grepping
 alias findfile 'find . | grep -v .svn | grep -v .hg | grep -v .git | grep'
