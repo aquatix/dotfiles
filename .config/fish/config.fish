@@ -64,6 +64,8 @@ alias gl "git log"
 alias gt 'git tag|less'
 #alias gad 'git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
 
+alias ffnightly 'env MOZ_USE_XINPUT2=1 /usr/local/bin/firefoxnightly/firefox'
+
 ## SSH, for compatibility, as our terminfo now is non-standard 'tmux-256color-italic' in tmux
 alias ssh 'env TERM=xterm-256color ssh'
 
