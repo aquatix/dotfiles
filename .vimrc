@@ -290,6 +290,9 @@ let g:limelight_conceal_ctermfg = 145
 " Helps with writing prose (better line breaks, agnostic on soft line wraps vs
 " hard line breaks etc)
 Plugin 'reedes/vim-pencil'
+" Disable automatic formatting, as this automatically merges lines devided by
+" 1 hard enter only, which can be annoying
+let g:pencil#autoformat = 0
 
 " Toggle Gogo with Limelight and Pencil together with Ctrl+F11
 "map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
