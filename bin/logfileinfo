@@ -1,0 +1,32 @@
+from urllib.parse import urlparse
+
+domains = {}
+privacy_domains = {}
+
+#with open('consent_20180227_1055.log', encoding='latin1') as pf:
+with open('20180313_1532.log') as pf:
+    logdata = pf.readlines()
+
+    for line in logdata:
+        url = line.split(' ')[10]
+        url = url[1:-1]  # Strip quotes
+        domain = urlparse(url).netloc
+        if domain not in domains:
+            domains[domain] = 0
+        domains[domain] += 1
+
+        url = line.split(' ')[6]
+        #print(url)
+        domain = urlparse(url).netloc
+        if domain not in privacy_domains:
+            privacy_domains[domain] = 0
+        privacy_domains[domain] += 1
+
+print('== Referrers ======')
+for key in sorted(domains, key=domains.__getitem__, reverse=True):
+    print('{:6} {}'.format(domains[key], key))
+
+print()
+print('== Domains ======')
+for key in sorted(privacy_domains, key=privacy_domains.__getitem__, reverse=True):
+    print('{:6} {}'.format(privacy_domains[key], key))
