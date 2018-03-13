@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 from urllib.parse import urlparse
 
 domains = {}
 privacy_domains = {}
 
 #with open('consent_20180227_1055.log', encoding='latin1') as pf:
-with open('20180313_1532.log') as pf:
+with open('logfile.log') as pf:
     logdata = pf.readlines()
 
     for line in logdata:
