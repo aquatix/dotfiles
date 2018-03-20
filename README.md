@@ -10,7 +10,7 @@ mkdir ~/.dot
 cd ~/.dot
 clone <url>
 cd dotfiles    # this takes you to the freshly cloned ~/.dot/dotfiles
-sh install.sh  # install the files in the homedir
+sh install.sh  # follow the instructions and install the files in the homedir
 ```
 
 # Fix for shift+F6 in tmux (and screen probably)
@@ -19,7 +19,7 @@ In tmux, do `infocmp > screen-256color`. Add the line `kf16=\E[17;2~,` and compi
 
 # ~/.git_repos config file
 
-The update_repos script takes the ~/.git_repos config file and lets you update and clone your projects automatically (or at least in a batch). In the example the first four repos are located in ~/workspace/projects/github, and the other two in workspace/projects/others and workspace/projects/private respectively; then the workspace and group are empty, so mydocs is cloned into the homedir. At the moment, only paths relative to the user's homedir are supported.
+The `update_repos` script takes the `~/.git_repos` config file and lets you update and clone your projects automatically (or at least in a batch). In the example the first four repos are located in ~/workspace/projects/github, and the other two in workspace/projects/others and workspace/projects/private respectively; then the workspace and group are empty, so mydocs is cloned into the homedir. At the moment, only paths relative to the user's homedir are supported.
 
 ```
 workspace=workspace/projects
@@ -56,3 +56,4 @@ ssh://myserver/srv/git/mydocs.git
 | git_autosave     | Simple script to call from crontab or something to commit certain files in Git and push |
 | git_clean        | Clean the Git tree                                                                      |
 | sorter           | Sort files in newly created subdirectories, based on pre- or postfixes                  |
+| update_repos     | Update a bunch of Git repos at once, like all your project. Config with ~/.git_repos    |
