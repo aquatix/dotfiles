@@ -43,12 +43,16 @@ ssh://myserver/srv/git/mydocs.git
 
 # Interesting scripts
 
-| ./bin/   | description     |
-|----------|-----------------|
-| calibre_update  | Update (or install) ebook manager Calibre |
-| clean_mac_files | Remove those DS_Store and other dirs |
-| clean_project   | Remove compiled Python files, vim swp files |
-| clean_pyc       | Remove compiled Python files|
-| fixpermissions   | chmod dirs to 755, files to 644  |
-| fixpictimestamps | Change file ctime to datetime from EXIF |
-| fontupdate       | Update nerd-fonts; whole repo on server, link font files to ~/.local/share/fonts |
+| ./bin/           | description                                                                             |
+|------------------|-----------------------------------------------------------------------------------------|
+| calibre_update   | Update (or install) ebook manager Calibre                                               |
+| clean_mac_files  | Remove those DS_Store and other dirs                                                    |
+| clean_project    | Remove compiled Python files, vim swp files                                             |
+| clean_pyc        | Remove compiled Python files                                                            |
+| fixpermissions   | chmod dirs to 755, files to 644                                                         |
+| fixpictimestamps | Change file ctime to datetime from EXIF                                                 |
+| fontupdate       | Update nerd-fonts; whole repo on server, link font files to ~/.local/share/fonts        |
+| fuz              | Simple note-taking 'app' based on FZF and vim                                           |
+| git_autosave     | Simple script to call from crontab or something to commit certain files in Git and push |
+| git_clean        | Clean the Git tree                                                                      |
+| sorter           | Sort files in newly created subdirectories, based on pre- or postfixes                  |
