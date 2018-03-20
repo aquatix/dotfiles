@@ -1,7 +1,9 @@
 dotfiles
 ========
 
-After having my homedirs in subversion for years, move to Git.
+After having my homedirs in subversion for years, moved this collection to Git in 2014 and standardised over all my machines.
+
+To install:
 
 ```
 mkdir ~/.dot
@@ -38,3 +40,14 @@ workspace=
 group=
 ssh://myserver/srv/git/mydocs.git
 ```
+
+# Interesting scripts
+
+| ./bin/   | description     |
+|:--------:|:---------------:|
+| calibre_update  | Update (or install) ebook manager Calibre |
+| clean_mac_files | Remove those DS_Store and other dirs |
+| clean_project   | Remove compiled Python files, vim swp files |
+| clean_pyc       | Remove compiled Python files|
+| fixpermissions   | chmod dirs to 755, files to 644  |
+| fixpictimestamps | Change file ctime to datetime from EXIF |
