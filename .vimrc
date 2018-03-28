@@ -189,6 +189,10 @@ set complete+=kspell
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
 
+" For example in termux, ycm does not want to compile, don't load it there
+" with ~/.dot_no_ycm
+let skip_ycm=fnamemodify(expand("$MYVIMRC"), ":p:h") . "/.dot_no_ycm"
+if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not exist
 " code-completion engine
 " sudo apt-get install build-essential cmake
 " sudo apt-get install python-dev
@@ -202,6 +206,7 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3'
 " Debug stuff
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
+endif
 
 " Improved Django handling
 Plugin 'tweekmonster/django-plus.vim'
