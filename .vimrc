@@ -296,6 +296,9 @@ Plugin 'reedes/vim-pencil'
 " 1 hard enter only, which can be annoying
 let g:pencil#autoformat = 0
 
+" Do not insert hard line breaks in the middle of a sentence
+let g:pencil#wrapModeDefault = 'soft'  " default is 'hard'
+
 " Toggle Gogo with Limelight and Pencil together with Ctrl+F11
 "map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
