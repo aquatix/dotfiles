@@ -6,6 +6,8 @@
 
 set shell=/bin/bash
 
+set encoding=utf-8
+
 " change the <Leader> key from \ to ,
 let mapleader=","
 
