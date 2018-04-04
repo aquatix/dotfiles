@@ -13,10 +13,10 @@ function install_font {
 
 IFS=$'\n'
 
-FONTS_CODING=$'Hack/Bold/complete/Knack Bold Nerd Font Complete Mono.ttf
-Hack/Regular/complete/Knack Regular Nerd Font Complete Mono.ttf
-Hack/BoldItalic/complete/Knack Bold Italic Nerd Font Complete Mono.ttf
-Hack/Italic/complete/Knack Italic Nerd Font Complete Mono.ttf'
+FONTS_CODING=$'Hack/Bold/complete/Hack Bold Nerd Font Complete Mono.ttf
+Hack/Regular/complete/Hack Regular Nerd Font Complete Mono.ttf
+Hack/BoldItalic/complete/Hack Bold Italic Nerd Font Complete Mono.ttf
+Hack/Italic/complete/Hack Italic Nerd Font Complete Mono.ttf'
 
 FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
 Futura-Std-Bold-Oblique_19041.ttf
@@ -58,7 +58,11 @@ Sauce Code Pro Medium Plus Nerd File Types Mono Plus Font Awesome Plus Octicons 
 Knack Bold Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
 Knack Plus Nerd File Types Mono Plus Font Awesome Plus Octicons Plus Pomicons.ttf
 Knack BoldOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
-Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf'
+Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus Pomicons.ttf
+Knack Bold Nerd Font Complete Mono.ttf
+Knack Regular Nerd Font Complete Mono.ttf
+Knack Bold Italic Nerd Font Complete Mono.ttf
+Knack Italic Nerd Font Complete Mono.ttf'
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
