@@ -5,8 +5,14 @@ set EDITOR vim
 eval (python -m virtualfish compat_aliases)
 
 # Theme options for bobthefish
+set -g theme_nerd_fonts yes
 set -g theme_show_exit_status yes
 set -g theme_date_format "+%a %Y-%m-%d %H:%M:%S"
+set -g theme_avoid_ambiguous_glyphs yes
+#set -g theme_color_scheme "zenburn"
+
+# If you use virtualenv, you will probably need to disable the default virtualenv prompt, since it doesn't play nice with fish
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # grc colouriser
 set -U grcplugin_ls --color
@@ -33,6 +39,12 @@ end
 # QT autoscaling, helpful for hidpi systems
 set -x QT_AUTO_SCREEN_SCALE_FACTOR 1
 
+# SilverSearcher 'ag' ('ack' and 'grep' replacement)
+#set -gx FZF_DEFAULT_COMMAND 'ag -g ""'
+set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!*.pyc"'
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -gx FZF_ALT_C_COMMAND "$FZF_DEFAULT_COMMAND"
+
 # Aliases
 ## Listing
 alias ll 'ls -alF'
@@ -52,6 +64,11 @@ alias ga "git add -A"
 alias gl "git log"
 alias gt 'git tag|less'
 #alias gad 'git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
+
+alias ffnightly 'env MOZ_USE_XINPUT2=1 /usr/local/bin/firefoxnightly/firefox'
+
+## SSH, for compatibility, as our terminfo now is non-standard 'tmux-256color-italic' in tmux
+alias ssh 'env TERM=xterm-256color ssh'
 
 ## Grepping
 alias findfile 'find . | grep -v .svn | grep -v .hg | grep -v .git | grep'

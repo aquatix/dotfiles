@@ -1,0 +1,12 @@
+#!/bin/bash
+read -p "Close vim and stop running (Python) processes. Type 'c' to continue after doing so, any other key to abort. " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Cc]$ ]]
+then
+    # do semi-dangerous stuff
+    find . -name "*.pyc" -type f -delete
+    find . -name "*.swp" -type f -delete
+    find . -name "*.swo" -type f -delete
+else
+    echo "aborted"
+fi

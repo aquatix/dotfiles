@@ -6,6 +6,8 @@
 
 set shell=/bin/bash
 
+set encoding=utf-8
+
 " change the <Leader> key from \ to ,
 let mapleader=","
 
@@ -67,15 +69,21 @@ Plugin 'jnurmine/Zenburn.git'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'tags']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+" Rooter changes the working directory to the project root when you open a
+" file or directory. Useful when using fzf for example.
+Plugin 'airblade/vim-rooter'
+" Do not echo the project directory
+let g:rooter_silent_chdir = 1
 
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
 " Quickly open files, fuzzy search on name
 Plugin 'ctrlpvim/ctrlp.vim'
-"let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_map = '<c-p>'
 " Search in Files, Buffers and MRU files at the same time:
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -85,6 +93,24 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+
+" Run your favorite search tool from Vim, with an enhanced results list.
+" Supports Silver Searcher `ag`. Use with:
+" :Ack [options] {pattern} [{directories}]
+Plugin 'mileszs/ack.vim'
+" apt install silversearcher-ag
+if executable('ag')
+    "let g:ackprg = 'ag --nogroup --nocolor --column'
+    let g:ackprg = 'ag --vimgrep'
+endif
+
+" fzf integration for fast fuzzy finding, better and faster than ctrl-p
+set rtp+=~/workspace/projects/others/fzf
+Plugin 'junegunn/fzf.vim'
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
+nmap <Leader>c :Commits<CR>
 
 
 " Web Development/Filetype icons
@@ -97,7 +123,21 @@ Plugin 'ryanoasis/vim-devicons'
 
 " == Content convenience ======
 
+" transparent editing of gpg encrypted files. The filename must have a .gpg,
+" .pgp or .asc suffix.
 Plugin 'jamessan/vim-gnupg'
+
+" tcomment provides easy to use, file-type sensible comments for Vim. It
+" can handle embedded syntax.
+Plugin 'tomtom/tcomment_vim'
+
+" Typescript syntax file and more
+Plugin 'leafgarland/typescript-vim'
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+
+" handling column separated data (csv)
+Plugin 'chrisbra/csv.vim'
+autocmd BufNewFile,BufRead *.csv setlocal filetype=csv
 
 " Automatically insert matching close bracket where it belongs
 "Plugin 'seletskiy/vim-autosurround'
@@ -148,17 +188,32 @@ set complete+=kspell
 " Also, vim-nox-py2 might be needed
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
-let g:ycm_server_python_interpreter = '/usr/bin/python'
 
+" For example in termux, ycm does not want to compile, don't load it there
+" with ~/.dot_no_ycm
+let skip_ycm=fnamemodify(expand("$MYVIMRC"), ":p:h") . "/.dot_no_ycm"
+if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not exist
 " code-completion engine
 " sudo apt-get install build-essential cmake
 " sudo apt-get install python-dev
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py  # For C-style languages: ./install.py --clang-completer
 Plugin 'Valloric/YouCompleteMe'
+" YouCompleteMe interpreter version (should be the same as what YCM was
+" compiled with):
+"let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
+" Debug stuff
+"let g:ycm_server_keep_logfiles = 1
+"let g:ycm_server_log_level = 'debug'
+endif
+
+" Improved Django handling
+Plugin 'tweekmonster/django-plus.vim'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
+"Disabled, using ALE instead (see below); the settings here are not needed
 "Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -201,12 +256,16 @@ let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
 " No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-let g:ale_python_pylint_options="--max-line-length=120 -d C0103,C0111"
+if exists('b:is_django')
+    let g:ale_python_pylint_options="--max-line-length=120 --load-plugins pylint_django --disable=invalid-name,missing-docstring"
+else
+    let g:ale_python_pylint_options="--max-line-length=120 --disable=invalid-name,missing-docstring"
+endif
 " Show errors or warnings in the statusline
 let g:airline#extensions#ale#enabled = 1
 " UI
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '>'
 
 
 " Handy Markdown stuff
@@ -215,6 +274,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Do not fold markdown files by default
 let g:vim_markdown_folding_disabled = 1
+set nofoldenable
+" Use filetype name as fenced code block languages for syntax highlighting
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'python=python']
 
 if v:version >= 704
     " Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
@@ -222,8 +284,30 @@ if v:version >= 704
     Plugin 'vim-pandoc/vim-pandoc'
 endif
 
+
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
-Plugin 'mikewest/vimroom'
+Plugin 'junegunn/goyo.vim'
+let g:goyo_width = 120
+
+" Help focus on text by dimming other parts a bit
+Plugin 'junegunn/limelight.vim'
+let g:limelight_conceal_ctermfg = 'Grey69'
+let g:limelight_conceal_ctermfg = 145
+
+" Helps with writing prose (better line breaks, agnostic on soft line wraps vs
+" hard line breaks etc)
+Plugin 'reedes/vim-pencil'
+" Disable automatic formatting, as this automatically merges lines devided by
+" 1 hard enter only, which can be annoying
+let g:pencil#autoformat = 0
+
+" Do not insert hard line breaks in the middle of a sentence
+let g:pencil#wrapModeDefault = 'soft'  " default is 'hard'
+
+" Toggle Gogo with Limelight and Pencil together with Ctrl+F11
+"map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
+nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
+
 
 " undotree.vim : Display your undo history in a graph.
 Plugin 'mbbill/undotree'
@@ -254,15 +338,22 @@ Plugin 'lepture/vim-jinja'
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
 " Automatic generation of tags file (ctags), in a central place (~/.vimtags)
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
 " easytags highlighting is slow
-let g:easytags_auto_highlight = 0
+"let g:easytags_auto_highlight = 0
+
+" Automatic generation of tags file (ctags: Exhuberant Ctags)
+Plugin 'ludovicchabant/vim-gutentags'
+" know when Gutentags is generating tags (prints 'TAGS' in status-line)
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"filetype plugin on
 
 " Enable line numbers, highlighting of current line and syntax highlighting by default
 set number
@@ -309,7 +400,7 @@ set hidden
 set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
-if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen"
+if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
     set t_Co=256
     colorscheme zenburn
 
@@ -337,6 +428,9 @@ iab <expr> timeh strftime("## %Y%m%d %a %H:%M:%S")
 
 " Fly through buffers instead of cycling
 nnoremap <leader>l :ls<cr>:b<space>
+
+" Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
+nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
 
 " Git and Mercurial 'blame' command. First select lines in visual modes, then
 " hit the appropriate leader key sequence (e.g., \g for git blame)
@@ -371,3 +465,7 @@ set autoindent
 
 " Django html template highlighting by default
 au BufNewFile,BufRead *.html set filetype=htmldjango
+
+" Italics
+let &t_ZH = "\e[3m"
+let &t_ZR = "\e[23m"
