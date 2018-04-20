@@ -98,3 +98,4 @@ alias pypi_sanoma 'python setup.py sdist --formats=zip upload -r sanoma'
 alias youtube-dl 'youtube-dl -t -f bestvideo+bestaudio/best --merge-output-format mp4'
 
 alias weather 'ansiweather'
+alias wttr 'curl -s wttr.in/Beverwijk | head -17'
