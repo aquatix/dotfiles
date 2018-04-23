@@ -107,11 +107,20 @@ endif
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
 Plugin 'junegunn/fzf.vim'
+
+" :Find term where term is the string you want to search, this will open up a
+" window similar to :Files but will only list files that contain the term
+" searched
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+" Simply type ; to search through buffers, leader-o to search through file
+" names, \t for tags, \c for (Git) commits and \f to search through contents
+" of files
 nmap ; :Buffers<CR>
-nmap <Leader>f :Files<CR>
+nmap <Leader>o :Files<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>c :Commits<CR>
-
+nmap <Leader>f :Find<CR>
 
 " Web Development/Filetype icons
 " Needs a font like found at
