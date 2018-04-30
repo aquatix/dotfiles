@@ -103,6 +103,9 @@ if executable('ag')
     "let g:ackprg = 'ag --nogroup --nocolor --column'
     let g:ackprg = 'ag --vimgrep'
 endif
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep'
+endif
 
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
@@ -112,6 +115,16 @@ Plugin 'junegunn/fzf.vim'
 " window similar to :Files but will only list files that contain the term
 " searched
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+" Handy search stuff
+" https://github.com/BurntSushi/ripgrep/issues/425
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+"nnoremap <Leader>g :silent lgrep<Space>
+nnoremap <silent> [f :lprevious<CR>
+nnoremap <silent> ]f :lnext<CR>
+
+" F8 search for word under the cursor recursively , :copen , to close -> :ccl
+nnoremap <F8> :grep! "\<<cword>\>" . -r<CR>:copen 33<CR>
 
 " Simply type ; to search through buffers, leader-o to search through file
 " names, \t for tags, \c for (Git) commits and \f to search through contents
