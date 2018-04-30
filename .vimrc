@@ -103,28 +103,37 @@ if executable('ag')
     "let g:ackprg = 'ag --nogroup --nocolor --column'
     let g:ackprg = 'ag --vimgrep'
 endif
+" https://github.com/BurntSushi/ripgrep/releases
 if executable('rg')
-    let g:ackprg = 'rg --vimgrep'
+"    let g:ackprg = 'rg --vimgrep'
+    set grepprg=rg\ --vimgrep
 endif
 
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
 Plugin 'junegunn/fzf.vim'
 
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 " :Find term where term is the string you want to search, this will open up a
 " window similar to :Files but will only list files that contain the term
 " searched
+" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-
-" Handy search stuff
-" https://github.com/BurntSushi/ripgrep/issues/425
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-"nnoremap <Leader>g :silent lgrep<Space>
-nnoremap <silent> [f :lprevious<CR>
-nnoremap <silent> ]f :lnext<CR>
-
-" F8 search for word under the cursor recursively , :copen , to close -> :ccl
-nnoremap <F8> :grep! "\<<cword>\>" . -r<CR>:copen 33<CR>
 
 " Simply type ; to search through buffers, leader-o to search through file
 " names, \t for tags, \c for (Git) commits and \f to search through contents
@@ -134,6 +143,10 @@ nmap <Leader>o :Files<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>c :Commits<CR>
 nmap <Leader>f :Find<CR>
+nmap <Leader>l :Lines<CR>
+
+nnoremap <silent> [f :lprevious<CR>
+nnoremap <silent> ]f :lnext<CR>
 
 " Web Development/Filetype icons
 " Needs a font like found at
@@ -449,7 +462,7 @@ iab <expr> dayh strftime("== %Y%m%d %A ======")
 iab <expr> timeh strftime("## %Y%m%d %a %H:%M:%S")
 
 " Fly through buffers instead of cycling
-nnoremap <leader>l :ls<cr>:b<space>
+" nnoremap <leader>l :ls<cr>:b<space>
 
 " Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
 nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
