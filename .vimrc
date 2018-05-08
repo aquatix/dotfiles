@@ -383,7 +383,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 " know when Gutentags is generating tags (prints 'TAGS' in status-line)
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
-let g:gutentags_trace = 1
+"let g:gutentags_trace = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
