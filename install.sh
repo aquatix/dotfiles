@@ -50,7 +50,7 @@ DATETIME=$(date +%Y%m%d_%H%M)
 cd
 
 # Symlink all the things
-for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
+for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .ignore .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
 do
   cd
   echo $TARGET
