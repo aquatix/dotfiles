@@ -366,8 +366,9 @@ Plugin 'digitaltoad/vim-pug'
 " Highlight nginx
 Plugin 'chr4/nginx.vim'
 
-" Highlight jinja templates
+" Highlight jinja templates (e.g., .j2 files) and do proper indenting
 Plugin 'lepture/vim-jinja'
+au BufNewFile,BufRead *.j2 set ft=jinja
 
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
