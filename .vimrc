@@ -370,6 +370,9 @@ Plugin 'chr4/nginx.vim'
 Plugin 'lepture/vim-jinja'
 au BufNewFile,BufRead *.j2 set ft=jinja
 
+" Highlight special comments better
+Plugin 'jbgutierrez/vim-better-comments'
+
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
