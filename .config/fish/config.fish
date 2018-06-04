@@ -98,3 +98,12 @@ alias pypi_sanoma 'python setup.py sdist --formats=zip upload -r sanoma'
 alias youtube-dl 'youtube-dl -t -f bestvideo+bestaudio/best --merge-output-format mp4'
 
 alias weather 'ansiweather'
+alias wttr 'curl -s wttr.in/Beverwijk | head -17'
+
+# https://www.reddit.com/r/vim/comments/7axmsb/i_cant_believe_how_good_fzf_is/?st=jgm7kba5&sh=590aa1e0
+function rgvim
+    set choice (rg -il $argv | fzf -0 -1 --ansi --preview "cat {} | rg $argv --context 3")
+    if [ $choice ]
+        vim "+/"(to_lower $argv) $choice
+    end
+end

@@ -103,15 +103,50 @@ if executable('ag')
     "let g:ackprg = 'ag --nogroup --nocolor --column'
     let g:ackprg = 'ag --vimgrep'
 endif
+" https://github.com/BurntSushi/ripgrep/releases
+if executable('rg')
+"    let g:ackprg = 'rg --vimgrep'
+    set grepprg=rg\ --vimgrep
+endif
 
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
 Plugin 'junegunn/fzf.vim'
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" :Find term where term is the string you want to search, this will open up a
+" window similar to :Files but will only list files that contain the term
+" searched
+" https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!**.git/*" --glob "!*.swp" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+" Simply type ; to search through buffers, leader-o to search through file
+" names, \t for tags, \c for (Git) commits and \f to search through contents
+" of files
 nmap ; :Buffers<CR>
-nmap <Leader>f :Files<CR>
+nmap <Leader>o :Files<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>c :Commits<CR>
+nmap <Leader>f :Find<CR>
+nmap <Leader>l :Lines<CR>
 
+nnoremap <silent> [f :lprevious<CR>
+nnoremap <silent> ]f :lnext<CR>
 
 " Web Development/Filetype icons
 " Needs a font like found at
@@ -331,8 +366,12 @@ Plugin 'digitaltoad/vim-pug'
 " Highlight nginx
 Plugin 'chr4/nginx.vim'
 
-" Highlight jinja templates
+" Highlight jinja templates (e.g., .j2 files) and do proper indenting
 Plugin 'lepture/vim-jinja'
+au BufNewFile,BufRead *.j2 set ft=jinja
+
+" Highlight special comments better
+Plugin 'jbgutierrez/vim-better-comments'
 
 " CSV filetype plugin
 "Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
@@ -347,7 +386,8 @@ Plugin 'lepture/vim-jinja'
 Plugin 'ludovicchabant/vim-gutentags'
 " know when Gutentags is generating tags (prints 'TAGS' in status-line)
 set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
+let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*"]
+"let g:gutentags_trace = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -427,7 +467,7 @@ iab <expr> dayh strftime("== %Y%m%d %A ======")
 iab <expr> timeh strftime("## %Y%m%d %a %H:%M:%S")
 
 " Fly through buffers instead of cycling
-nnoremap <leader>l :ls<cr>:b<space>
+" nnoremap <leader>l :ls<cr>:b<space>
 
 " Close Location windows, if exist, switch to the previous view buffer, and then close the last switched buffer.
 nnoremap <silent> <leader>q :lclose<bar>b#<bar>bd #<CR>
