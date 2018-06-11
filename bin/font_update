@@ -135,15 +135,12 @@ else
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_VARIOUS"
-        # Just to be sure, clear your font cache and restart Firefox
         if [ ! -e "${HOME}/.config/fontconfig" ]; then
             mkdir -p "${HOME}/.config/fontconfig"
         fi
         if [ ! -e "${HOME}/.config/fontconfig/fonts.conf" ]; then
             ln -s "${SOURCE_DIR}/fonts.conf" "${HOME}/.config/fontconfig/"
         fi
-        fc-cache -f -v
-        echo 'You might want to restart your browser'
         # Delete obsolete fonts
         while read -r FONT; do
             if [ -L "$DEST_DIR/$FONT" ]; then
@@ -151,6 +148,9 @@ else
                 rm "$DEST_DIR/$FONT"
             fi
         done <<< "$FONTS_DELETE"
+        # Just to be sure, clear and refresh your font cache and restart Firefox
+        fc-cache -f -v
+        echo 'You might want to restart your browser'
     else
         echo "$SOURCE_DIR not found, aborting"
     fi
