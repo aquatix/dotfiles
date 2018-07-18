@@ -19,7 +19,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" == UI ======
+" == Window chrome =============================================================
 
 " Display tags of the current file ordered by scope
 " You need ctags: `sudo apt-get install exuberant-ctags` or
@@ -163,8 +163,15 @@ Plugin 'ryanoasis/vim-devicons'
 " Set guifont when using gvim:
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
+"
+" undotree.vim : Display your undo history in a graph.
+Plugin 'mbbill/undotree'
+nnoremap <Leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
+                                    " wants to interact with it.
 
-" == Content convenience ======
+
+" == Content convenience =======================================================
 
 " transparent editing of gpg encrypted files. The filename must have a .gpg,
 " .pgp or .asc suffix.
@@ -294,6 +301,8 @@ if v:version >= 704
 endif
 
 
+" == Writing prose =============================================================
+
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
 Plugin 'junegunn/goyo.vim'
 let g:goyo_width = 120
@@ -317,12 +326,6 @@ let g:pencil#wrapModeDefault = 'soft'  " default is 'hard'
 "map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 
-
-" undotree.vim : Display your undo history in a graph.
-Plugin 'mbbill/undotree'
-nnoremap <Leader>u :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
-                                    " wants to interact with it.
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
