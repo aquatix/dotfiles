@@ -11,7 +11,8 @@ set encoding=utf-8
 " change the <Leader> key from \ to ,
 let mapleader=","
 
-" Vundle manages the plugins
+
+" == Vundle manages the plugins ================================================
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -41,6 +42,7 @@ Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
 Plugin 'mhinz/vim-signify'
 
+
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 " fugitive git bindings
@@ -60,6 +62,13 @@ nnoremap <space>gb :Git branch<Space>
 nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
+
+
+" Better matching of code pairs
+Plugin 'andymass/vim-matchup'
+" Deferred highlighting improves cursor movement performance
+let g:matchup_matchparen_deferred = 1
+
 
 " Think of sensible.vim as one step above 'nocompatible' mode: a universal
 " set of defaults that (hopefully) everyone can agree on.
@@ -258,8 +267,10 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3'
 "let g:ycm_server_log_level = 'debug'
 endif
 
+
 " Improved Django handling
 Plugin 'tweekmonster/django-plus.vim'
+
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
@@ -366,9 +377,12 @@ set statusline+=%{gutentags#statusline()}
 let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*"]
 "let g:gutentags_trace = 1
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+" == End of plugins ============================================================
+
 
 "filetype plugin on
 
