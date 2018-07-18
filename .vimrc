@@ -256,40 +256,6 @@ Plugin 'tweekmonster/django-plus.vim'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
-"Disabled, using ALE instead (see below); the settings here are not needed
-"Plugin 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-
-"let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_python_checkers = ['pylint', 'flake8', 'pyflakes']
-
-" No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-"let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django -d C0103,C0111"
-let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
-
-" Use the virtualenv's Python interpreter
-"if $VIRTUAL_ENV != ''
-"    let g:syntastic_python_python_exec = '$VIRTUAL_ENV/bin/python'
-"endif
-
-"let g:syntastic_python_checkers=['pylint']
-"let g:syntastic_python_python_exec = 'python'
-"let g:syntastic_python_pylint_exe = 'python -m pylint'
-"let g:syntastic_python_pylint_exe = 'python $(which pylint)'
-
-
-" Code checker. For python, install flake8 or pylint, preferably in the
-" virtualenv. For Django support, install pylint-django
 Plugin 'w0rp/ale'
 nmap <leader>= <Plug>(ale_fix)
 " Quickly open the loclist to see syntax errors
