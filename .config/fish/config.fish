@@ -18,6 +18,10 @@ set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -U grcplugin_ls --color
 
 # PATH
+## If the 'user base' binary directory exists, add it to PATH
+if test -x ~/.local/bin
+    set PATH $PATH ~/.local/bin
+end
 if test -x ~/.dot/dotfiles/bin
     set PATH $PATH ~/.dot/dotfiles/bin
 end
