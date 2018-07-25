@@ -78,10 +78,10 @@ syntax match todoStatusTodo "\v^- " nextgroup=todoItem skipwhite
 syntax match todoStatusTodo "\v  .*- " nextgroup=todoItem skipwhite
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
-syntax match todoStatusImportant "\v^\> .*$"
-syntax match todoStatusImportant "\v  \> .*$"
-syntax match todoStatusImportant "\v^! .*$"
-syntax match todoStatusImportant "\v  ! .*$"
+syntax match todoStatusImportant "\v^\> .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v  \> .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v^! .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v  ! .*$" nextgroup=todoItem skipwhite
 "highlight todoStatusImportant ctermfg=131 guifg=#af5f5f
 highlight todoStatusImportant ctermfg=167 guifg=#d75f5f
 
