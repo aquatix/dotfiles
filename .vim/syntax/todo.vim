@@ -75,7 +75,7 @@ syntax match todoStatusTest "\v  t " nextgroup=todoItem skipwhite
 highlight todoStatusTest ctermfg=darkcyan guifg=#6666ff
 
 syntax match todoStatusTodo "\v^- " nextgroup=todoItem skipwhite
-syntax match todoStatusTodo "\v  - " nextgroup=todoItem skipwhite
+syntax match todoStatusTodo "\v  .*- " nextgroup=todoItem skipwhite
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
 syntax match todoStatusImportant "\v^\> .*$"
