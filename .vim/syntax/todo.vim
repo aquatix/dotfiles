@@ -96,7 +96,7 @@ syntax match timeslot "\v\[.*-.*\] " nextgroup=todoItem skipwhite
 highlight timeslot ctermfg=Magenta
 
 " A todoItem has a subject (e.g., a word that's followed by a ':')
-syn match todoItem '\i\+:' contained
+syn match todoItem '[a-zA-Z0-9\-_]\+:' contained
 hi todoItem ctermfg=Blue
 
 highlight link todoStatusDone PreProc
