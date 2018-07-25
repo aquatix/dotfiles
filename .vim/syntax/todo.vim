@@ -101,6 +101,8 @@ hi todoItem ctermfg=Blue
 
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
+highlight link todoStatusCancelled PreProc
+highlight link todoStatusTest PreProc
 highlight link todoStatusTodo PreProc
 highlight link todoStatusImportant PreProc
 highlight link todoStatusQuestion PreProc
