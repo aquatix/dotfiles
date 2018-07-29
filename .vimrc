@@ -65,9 +65,9 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 
 
 " Better matching of code pairs
-Plugin 'andymass/vim-matchup'
+"Plugin 'andymass/vim-matchup'
 " Deferred highlighting improves cursor movement performance
-let g:matchup_matchparen_deferred = 1
+"let g:matchup_matchparen_deferred = 1
 
 
 " Think of sensible.vim as one step above 'nocompatible' mode: a universal
