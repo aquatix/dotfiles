@@ -2,7 +2,7 @@
 set EDITOR vim
 
 # Virtualenv support with virtualfish
-eval (python -m virtualfish compat_aliases)
+eval (python3 -m virtualfish compat_aliases)
 
 # Theme options for bobthefish
 set -g theme_nerd_fonts yes
