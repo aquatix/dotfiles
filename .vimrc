@@ -74,7 +74,7 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 " set of defaults that (hopefully) everyone can agree on.
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
-Plugin 'jnurmine/Zenburn.git'
+Plugin 'fenetikm/falcon'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
@@ -433,7 +433,7 @@ set cryptmethod=blowfish2
 " Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
     set t_Co=256
-    colorscheme zenburn
+    colorscheme falcon
 
     " create a bar for airline
     set laststatus=2
