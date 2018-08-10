@@ -440,6 +440,7 @@ if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &te
 endif
 
 " This is what sets vim to use 24-bit colors. It will also work for any version of neovim
+" newer than 0.1.4.
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
