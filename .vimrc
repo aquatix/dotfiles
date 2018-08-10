@@ -431,22 +431,20 @@ set hidden
 set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
-"if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
-    "set t_Co=256
-    " The "^[" is a single character. You enter it by pressing Ctrl+v and then ESC.
-    set t_8f=^[[38;2;%lu;%lu;%lum
-    set t_8b=^[[48;2;%lu;%lu;%lum
-
+if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
     colorscheme falcon
-
-    " This is what sets vim to use 24-bit colors. It will also work for any version of neovim
-    " newer than 0.1.4.
-    set termguicolors
 
     " create a bar for airline
     set laststatus=2
     let g:airline_powerline_fonts = 1
-"endif
+endif
+
+" This is what sets vim to use 24-bit colors. It will also work for any version of neovim
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " Toggle paste and autoindent mode (enable paste so no indention weirdness
 " happens when pasting into the current file)

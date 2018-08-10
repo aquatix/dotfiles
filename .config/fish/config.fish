@@ -88,7 +88,7 @@ function grepl
 end
 
 ## Various
-alias tmux 'tmux -2'
+#alias tmux 'tmux -2'
 alias tmux_reload "tmux source-file ~/.tmux.conf"
 alias tmux_takeover "tmux detach -a"
 
