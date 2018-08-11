@@ -83,12 +83,15 @@ let NERDTreeIgnore = ['\.pyc$', 'tags']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
-" Easily change position of windows
-"<c-w>gh: soft move left
-"<c-w>gj: soft move down
-"<c-w>gk: soft move up
-"<c-w>gl: soft move right
-Plugin 'andymass/vim-tradewinds'
+if has('patch-8.0-1364')
+    " Easily change position of windows
+    " Requires vim 8.0.1364 or neovim (exact version uncertain).
+    "<c-w>gh: soft move left
+    "<c-w>gj: soft move down
+    "<c-w>gk: soft move up
+    "<c-w>gl: soft move right
+    Plugin 'andymass/vim-tradewinds'
+endif
 
 
 " Rooter changes the working directory to the project root when you open a
