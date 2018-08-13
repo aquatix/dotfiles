@@ -53,10 +53,10 @@ highlight link todoOperator Operator
 
 
 " Task statuses
-syntax match note "\v^n .*$"
-syntax match note "\v n .*$"
-syntax match note "\v  .*$"
-highlight note ctermfg=Grey guifg=#eeeeee
+syntax match todoNote "\v^n .*$" nextgroup=todoNote
+syntax match todoNote "\v n .*$" nextgroup=todoNote
+syntax match todoNote "\v  .*$" nextgroup=todoNote
+highlight todoNote ctermfg=Grey guifg=#eeeeee
 
 syntax match todoStatusDone "\v^v " nextgroup=todoItem skipwhite
 syntax match todoStatusDone "\v  v " nextgroup=todoItem skipwhite
@@ -75,13 +75,13 @@ syntax match todoStatusTest "\v  t " nextgroup=todoItem skipwhite
 highlight todoStatusTest ctermfg=darkcyan guifg=#6666ff
 
 syntax match todoStatusTodo "\v^- " nextgroup=todoItem skipwhite
-syntax match todoStatusTodo "\v  - " nextgroup=todoItem skipwhite
+syntax match todoStatusTodo "\v  .*- " nextgroup=todoItem skipwhite
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
-syntax match todoStatusImportant "\v^\> .*$"
-syntax match todoStatusImportant "\v  \> .*$"
-syntax match todoStatusImportant "\v^! .*$"
-syntax match todoStatusImportant "\v  ! .*$"
+syntax match todoStatusImportant "\v^\> .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v  \> .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v^! .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v  ! .*$" nextgroup=todoItem skipwhite
 "highlight todoStatusImportant ctermfg=131 guifg=#af5f5f
 highlight todoStatusImportant ctermfg=167 guifg=#d75f5f
 
@@ -93,14 +93,16 @@ highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 "syntax match brack /[\[\]]/ | hi brack ctermfg=DarkMagenta
 
 syntax match timeslot "\v\[.*-.*\] " nextgroup=todoItem skipwhite
-highlight timeslot ctermfg=Magenta
+highlight timeslot ctermfg=Magenta guifg=#d700af
 
 " A todoItem has a subject (e.g., a word that's followed by a ':')
-syn match todoItem '\i\+:' contained
-hi todoItem ctermfg=Blue
+syn match todoItem '[a-zA-Z0-9\-_]\+:' contained
+hi todoItem ctermfg=Blue guifg=#87d7ff
 
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
+highlight link todoStatusCancelled PreProc
+highlight link todoStatusTest PreProc
 highlight link todoStatusTodo PreProc
 highlight link todoStatusImportant PreProc
 highlight link todoStatusQuestion PreProc

@@ -2,7 +2,7 @@
 set EDITOR vim
 
 # Virtualenv support with virtualfish
-eval (python -m virtualfish compat_aliases)
+eval (python3 -m virtualfish compat_aliases)
 
 # Theme options for bobthefish
 set -g theme_nerd_fonts yes
@@ -18,6 +18,10 @@ set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 set -U grcplugin_ls --color
 
 # PATH
+## If the 'user base' binary directory exists, add it to PATH
+if test -x ~/.local/bin
+    set PATH $PATH ~/.local/bin
+end
 if test -x ~/.dot/dotfiles/bin
     set PATH $PATH ~/.dot/dotfiles/bin
 end
@@ -62,6 +66,7 @@ alias gd "git diff"
 alias gst "git status"
 alias ga "git add -A"
 alias gl "git log"
+alias gls "git shortlog --summary"
 alias gt 'git tag|less'
 #alias gad 'git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
 
@@ -83,7 +88,7 @@ function grepl
 end
 
 ## Various
-alias tmux 'tmux -2'
+#alias tmux 'tmux -2'
 alias tmux_reload "tmux source-file ~/.tmux.conf"
 alias tmux_takeover "tmux detach -a"
 

@@ -11,7 +11,8 @@ set encoding=utf-8
 " change the <Leader> key from \ to ,
 let mapleader=","
 
-" Vundle manages the plugins
+
+" == Vundle manages the plugins ================================================
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -19,7 +20,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" == UI ======
+" == Window chrome =============================================================
 
 " Display tags of the current file ordered by scope
 " You need ctags: `sudo apt-get install exuberant-ctags` or
@@ -41,6 +42,7 @@ Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
 Plugin 'mhinz/vim-signify'
 
+
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 " fugitive git bindings
@@ -61,17 +63,40 @@ nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
 
+
+" Better matching of code pairs
+"Plugin 'andymass/vim-matchup'
+" Deferred highlighting improves cursor movement performance
+"let g:matchup_matchparen_deferred = 1
+
+
 " Think of sensible.vim as one step above 'nocompatible' mode: a universal
 " set of defaults that (hopefully) everyone can agree on.
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
-Plugin 'jnurmine/Zenburn.git'
+"Plugin 'jnurmine/Zenburn'
+Plugin 'fenetikm/falcon'
+"Plugin 'phanviet/vim-monokai-pro'
+"Plugin 'dracula/vim'
+"Plugin 'sonph/onehalf'
+"Plugin 'jacoborus/tender.vim'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'tags']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+if has('patch-8.0-1364')
+    " Easily change position of windows
+    " Requires vim 8.0.1364 or neovim (exact version uncertain).
+    "<c-w>gh: soft move left
+    "<c-w>gj: soft move down
+    "<c-w>gk: soft move up
+    "<c-w>gl: soft move right
+    Plugin 'andymass/vim-tradewinds'
+endif
 
 
 " Rooter changes the working directory to the project root when you open a
@@ -155,8 +180,15 @@ Plugin 'ryanoasis/vim-devicons'
 " Set guifont when using gvim:
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
+"
+" undotree.vim : Display your undo history in a graph.
+Plugin 'mbbill/undotree'
+nnoremap <Leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
+                                    " wants to interact with it.
 
-" == Content convenience ======
+
+" == Content convenience =======================================================
 
 " transparent editing of gpg encrypted files. The filename must have a .gpg,
 " .pgp or .asc suffix.
@@ -243,41 +275,9 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3'
 "let g:ycm_server_log_level = 'debug'
 endif
 
+
 " Improved Django handling
 Plugin 'tweekmonster/django-plus.vim'
-
-" Code checker. For python, install flake8 or pylint, preferably in the
-" virtualenv. For Django support, install pylint-django
-"Disabled, using ALE instead (see below); the settings here are not needed
-"Plugin 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-
-"let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_python_checkers = ['pylint', 'flake8', 'pyflakes']
-
-" No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-"let g:syntastic_python_pylint_post_args="--max-line-length=120 --load-plugins pylint_django -d C0103,C0111"
-let g:syntastic_python_pylint_post_args="--max-line-length=120 -d C0103,C0111"
-
-" Use the virtualenv's Python interpreter
-"if $VIRTUAL_ENV != ''
-"    let g:syntastic_python_python_exec = '$VIRTUAL_ENV/bin/python'
-"endif
-
-"let g:syntastic_python_checkers=['pylint']
-"let g:syntastic_python_python_exec = 'python'
-"let g:syntastic_python_pylint_exe = 'python -m pylint'
-"let g:syntastic_python_pylint_exe = 'python $(which pylint)'
 
 
 " Code checker. For python, install flake8 or pylint, preferably in the
@@ -320,6 +320,8 @@ if v:version >= 704
 endif
 
 
+" == Writing prose =============================================================
+
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
 Plugin 'junegunn/goyo.vim'
 let g:goyo_width = 120
@@ -343,12 +345,6 @@ let g:pencil#wrapModeDefault = 'soft'  " default is 'hard'
 "map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 
-
-" undotree.vim : Display your undo history in a graph.
-Plugin 'mbbill/undotree'
-nnoremap <Leader>u :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
-                                    " wants to interact with it.
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
@@ -389,9 +385,12 @@ set statusline+=%{gutentags#statusline()}
 let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*"]
 "let g:gutentags_trace = 1
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+" == End of plugins ============================================================
+
 
 "filetype plugin on
 
@@ -441,12 +440,24 @@ set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
-    set t_Co=256
-    colorscheme zenburn
+    "colorscheme zenburn
+    colorscheme falcon
+    "colorscheme monokai_pro
+    "colorscheme dracula
+    "colorscheme onehalfdark
+    "colorscheme tender
 
     " create a bar for airline
     set laststatus=2
     let g:airline_powerline_fonts = 1
+endif
+
+" This is what sets vim to use 24-bit colors. It will also work for any version of neovim
+" newer than 0.1.4.
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 " Toggle paste and autoindent mode (enable paste so no indention weirdness
