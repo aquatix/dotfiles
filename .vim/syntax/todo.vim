@@ -93,11 +93,11 @@ highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 "syntax match brack /[\[\]]/ | hi brack ctermfg=DarkMagenta
 
 syntax match timeslot "\v\[.*-.*\] " nextgroup=todoItem skipwhite
-highlight timeslot ctermfg=Magenta
+highlight timeslot ctermfg=Magenta guifg=#d700af
 
 " A todoItem has a subject (e.g., a word that's followed by a ':')
 syn match todoItem '[a-zA-Z0-9\-_]\+:' contained
-hi todoItem ctermfg=Blue
+hi todoItem ctermfg=Blue guifg=#87d7ff
 
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
