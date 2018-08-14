@@ -240,19 +240,13 @@ if !exists( "b:myLang" )
   endif
 endif
 
-" Try to override colours for highlighting misspelled and mis-capitalised words
-hi clear SpellBad
-hi clear SpellCap
-hi SpellBad ctermfg=red ctermbg=NONE guifg=#af5f00 guibg=NONE
-hi SpellCap term=reverse cterm=undercurl gui=undercurl guisp=#eeee00
+" Word completion from dictionary (on ctrl+space)
+set complete+=kspell
 
 " Map <F9> to show the highlight group under the cursor (mainly for debugging)
 map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Word completion from dictionary (on ctrl+space)
-set complete+=kspell
 
 " Python virtualenv support
 "Plugin 'jmcantrell/vim-virtualenv'
