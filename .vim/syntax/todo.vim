@@ -38,9 +38,9 @@ hi link todoDay Delimiter
 
 
 " Show -scratched out- parts of a line as darker text (Delimiter colour)
-syntax region scratchThis start=/\v -/ skip=/\v\\./ end=/\v-\ / oneline
+syntax region scratchThis start=/\v --/ skip=/\v\\./ end=/\v--\ / oneline
 
-hi link scratchThis Delimiter
+highlight scratchThis ctermfg=Grey guifg=#666666
 
 
 " Generic operators
