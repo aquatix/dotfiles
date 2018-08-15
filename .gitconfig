@@ -18,6 +18,9 @@
 	br = branch
 	c = commit -am
 	shame = blame
+	r = !GIT_NO_PAGER=1 git l -30
+	l = "!. ~/.githelpers && pretty_git_log"
+
 
 [push]
 	default = simple
