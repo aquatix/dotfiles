@@ -7,7 +7,7 @@ install_hg()
     touch ~/.dot_has_hg
     HGDIR=~/workspace/application_addons/mercurial
     mkdir -p $HGDIR
-    cd $HGDIR
+    cd $HGDIR || exit
 
     for REPO in Mekk/mercurial_keyring sjl/hg-prompt durin42/hg-git yujiewu/hgflow
     do
@@ -17,7 +17,7 @@ install_hg()
             hg clone http://bitbucket.org/$REPO
             #echo  http://bitbucket.org/$REPO
         else
-            cd $HGDIR/$REPODIR
+            cd $HGDIR/$REPODIR || exit
             #echo $HGDIR/$REPODIR
             hg pull -u
         fi
@@ -47,12 +47,12 @@ echo "Installing from $DIR"
 DATETIME=$(date +%Y%m%d_%H%M)
 
 # Go home
-cd
+cd || exit
 
 # Symlink all the things
 for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .ignore .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
 do
-  cd
+  cd || exit
   echo $TARGET
   if [ "$(readlink $TARGET)" = "$DIR/$TARGET" ]; then
       echo "  symlink exists and is fine, skipping"
@@ -76,7 +76,7 @@ do
   # If link is in a subdir, go there
   DIRNAME=$(dirname ${TARGET})
   if [ "$DIRNAME" != "." ]; then
-      cd "$DIRNAME"
+      cd "$DIRNAME" || exit
   fi
   # Create the symlink
   ln -s "$DIR/$TARGET"
@@ -93,9 +93,9 @@ if [ ! -d "${HOME}/.vim/bundle/Vundle.vim" ]; then
     mkdir -p ~/.vim/bundle
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 else
-    cd ~/.vim/bundle/Vundle.vim
+    cd ~/.vim/bundle/Vundle.vim || exit
     git pull
-    cd
+    cd || exit
 fi
 
 echo "INFO: Vundle Install"
