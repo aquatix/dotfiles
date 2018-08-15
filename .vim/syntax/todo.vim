@@ -54,9 +54,9 @@ highlight link todoOperator Operator
 
 " Task statuses
 syntax match todoNote "\v^n .*$" nextgroup=todoNote
-syntax match todoNote "\v n .*$" nextgroup=todoNote
+syntax match todoNote "\v  .*n .*$" nextgroup=todoNote
 syntax match todoNote "\v  .*$" nextgroup=todoNote
-highlight todoNote ctermfg=Grey guifg=#eeeeee
+highlight todoNote ctermfg=Grey guifg=#666666
 
 syntax match todoStatusDone "\v^v " nextgroup=todoItem skipwhite
 syntax match todoStatusDone "\v  .*v " nextgroup=todoItem skipwhite
