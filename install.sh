@@ -111,18 +111,18 @@ vim +BundleInstall +qall
 
 make_link ${HOME}/.vim/bundle/falcon/.githelpers ${HOME}
 
-if [ -e ~/.dot_has_hg ]; then
-    install_hg
-elif [ ! -e ~/.dot_no_hg ]; then
-    echo
-    echo "Do you wish to install mercurial stuff?"
-    select yn in "Yes" "No"; do
-        case $yn in
-            Yes ) install_hg; break;;
-            No ) touch ~/.dot_no_hg; break;;
-        esac
-    done
-fi
+#if [ -e ~/.dot_has_hg ]; then
+#    install_hg
+#elif [ ! -e ~/.dot_no_hg ]; then
+#    echo
+#    echo "Do you wish to install mercurial stuff?"
+#    select yn in "Yes" "No"; do
+#        case $yn in
+#            Yes ) install_hg; break;;
+#            No ) touch ~/.dot_no_hg; break;;
+#        esac
+#    done
+#fi
 
 if [ -e ~/.dot/.dot_has_fish ]; then
     install_hg
