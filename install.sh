@@ -41,22 +41,15 @@ install_fish()
     echo
 }
 
-# Get the directory the dotfiles have been cloned into
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo "Installing from $DIR"
-DATETIME=$(date +%Y%m%d_%H%M)
-
-# Go home
-cd || exit
-
-# Symlink all the things
-for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .ignore .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
-do
+make_link()
+{
+  DIR="$1"
+  TARGET="$2"
   cd || exit
   echo $TARGET
   if [ "$(readlink $TARGET)" = "$DIR/$TARGET" ]; then
       echo "  symlink exists and is fine, skipping"
-      continue
+      return
   elif [ -e $TARGET ] || [ -L $TARGET ] && [ "$(readlink $TARGET)" != "$DIR/$TARGET" ]; then
       echo "  exists, moving out of the way"
       if [ ! -d "workspace/backup/dotfiles_$DATETIME" ]; then
@@ -81,6 +74,21 @@ do
   # Create the symlink
   ln -s "$DIR/$TARGET"
   #echo "ln -s $DIR/$TARGET"
+
+}
+
+# Get the directory the dotfiles have been cloned into
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo "Installing from $DIR"
+DATETIME=$(date +%Y%m%d_%H%M)
+
+# Go home
+cd || exit
+
+# Symlink all the things
+for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .ignore .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
+do
+    make_link $DIR $TARGET
 done
 
 echo "INFO: Init submodules"
