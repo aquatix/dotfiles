@@ -59,11 +59,11 @@ syntax match todoNote "\v  .*$" nextgroup=todoNote
 highlight todoNote ctermfg=Grey guifg=#eeeeee
 
 syntax match todoStatusDone "\v^v " nextgroup=todoItem skipwhite
-syntax match todoStatusDone "\v  v " nextgroup=todoItem skipwhite
+syntax match todoStatusDone "\v  .*v " nextgroup=todoItem skipwhite
 highlight todoStatusDone ctermfg=green guifg=#00ff00
 
 syntax match todoStatusCancelled "\v^x " nextgroup=todoItem skipwhite
-syntax match todoStatusCancelled "\v  x " nextgroup=todoItem skipwhite
+syntax match todoStatusCancelled "\v  .*x " nextgroup=todoItem skipwhite
 highlight todoStatusCancelled ctermfg=DarkGreen
 
 syntax match todoStatusDoing "\v^d .*$" nextgroup=todoItem skipwhite
@@ -79,9 +79,9 @@ syntax match todoStatusTodo "\v  .*- " nextgroup=todoItem skipwhite
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
 syntax match todoStatusImportant "\v^\> .*$" nextgroup=todoItem skipwhite
-syntax match todoStatusImportant "\v  \> .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v  .*\> .*$" nextgroup=todoItem skipwhite
 syntax match todoStatusImportant "\v^! .*$" nextgroup=todoItem skipwhite
-syntax match todoStatusImportant "\v  ! .*$" nextgroup=todoItem skipwhite
+syntax match todoStatusImportant "\v  .*! .*$" nextgroup=todoItem skipwhite
 "highlight todoStatusImportant ctermfg=131 guifg=#af5f5f
 highlight todoStatusImportant ctermfg=167 guifg=#d75f5f
 
