@@ -109,7 +109,11 @@ fi
 echo "INFO: Vundle Install"
 vim +BundleInstall +qall
 
-make_link ${HOME}/.vim/bundle/falcon/.githelpers ${HOME}
+if [ ! -e ${HOME}/.githelpers ]; then
+    ln -s ${HOME}/.vim/bundle/falcon/.githelpers ${HOME}/.githelpers
+else
+    echo "${HOME}/.githelpers exists, skipping"
+fi
 
 #if [ -e ~/.dot_has_hg ]; then
 #    install_hg
