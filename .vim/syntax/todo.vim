@@ -44,39 +44,29 @@ highlight scratchThis ctermfg=Grey guifg=#666666
 
 
 " Task statuses
-syntax match todoNote "\v^n .*$" nextgroup=todoNote
 syntax match todoNote "\v^\s{-}n .*$" nextgroup=todoNote
 syntax match todoNote "\v^  .*$" nextgroup=todoNote
 highlight todoNote ctermfg=Grey guifg=#666666
 
-syntax match todoStatusDone "\v^v " nextgroup=todoItem skipwhite
 syntax match todoStatusDone "\v^\s{-}v " nextgroup=todoItem skipwhite
 highlight todoStatusDone ctermfg=green guifg=#00ff00
 
-syntax match todoStatusCancelled "\v^x .*$" nextgroup=todoItem skipwhite
 syntax match todoStatusCancelled "\v^\s{-}x .*$" nextgroup=todoItem skipwhite
 highlight todoStatusCancelled ctermfg=DarkGreen guifg=#005f00
 
-syntax match todoStatusDoing "\v^d .*$" nextgroup=todoItem skipwhite
 syntax match todoStatusDoing "\v^\s{-}d .*$" nextgroup=todoItem skipwhite
 highlight todoStatusDoing ctermfg=223 guifg=#f0dfaf
 
-syntax match todoStatusTest "\v^t " nextgroup=todoItem skipwhite
 syntax match todoStatusTest "\v^\s{-}t " nextgroup=todoItem skipwhite
 highlight todoStatusTest ctermfg=darkcyan guifg=#6666ff
 
-syntax match todoStatusTodo "\v^- " nextgroup=todoItem skipwhite
 syntax match todoStatusTodo "\v^\s{-}- " nextgroup=todoItem skipwhite
 highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
-syntax match todoStatusImportant "\v^\> .*$" nextgroup=todoItem skipwhite
 syntax match todoStatusImportant "\v^\s{-}\> .*$" nextgroup=todoItem skipwhite
-syntax match todoStatusImportant "\v^! .*$" nextgroup=todoItem skipwhite
 syntax match todoStatusImportant "\v^\s{-}! .*$" nextgroup=todoItem skipwhite
-"highlight todoStatusImportant ctermfg=131 guifg=#af5f5f
 highlight todoStatusImportant ctermfg=167 guifg=#d75f5f
 
-syntax match todoStatusQuestion "\v^\? " nextgroup=todoItem skipwhite
 syntax match todoStatusQuestion "\v^\s{-}\? " nextgroup=todoItem skipwhite
 highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 
