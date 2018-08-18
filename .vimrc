@@ -441,6 +441,8 @@ set cryptmethod=blowfish2
 " Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
     colorscheme falcon
+    " Ignore the background setting, as falcon's dark blue is a bit much IMHO
+    hi Normal guibg=NONE ctermbg=NONE
 
     " create a bar for airline
     set laststatus=2
