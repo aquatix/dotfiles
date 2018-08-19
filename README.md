@@ -13,6 +13,16 @@ cd dotfiles    # this takes you to the freshly cloned ~/.dot/dotfiles
 sh install.sh  # follow the instructions and install the files in the homedir
 ```
 
+
+# Dependency on `fzf` and ripgrep `rg`
+
+Both the shell configuration and vim make use of `fzf`. [fzf is a general-purpose command-line fuzzy finder](https://github.com/junegunn/fzf) and helps one 'grep' really fast through filenames. It's an alternative for the well-known `find`. Install it by cloning the repository and running the install script ([check the Installation notes too](https://github.com/junegunn/fzf#installation)).
+
+[ripgrep, `rg`](https://github.com/BurntSushi/ripgrep) is a line-oriented search tool that recursively searches your current directory for a regex pattern while respecting your gitignore rules. Basically, a really fast (and clever) `grep`.
+
+If your distribution does not provide a package, [get yours from the releases page](https://github.com/BurntSushi/ripgrep/releases) (there's a .deb for 64-bit systems).
+
+
 # Fix for shift+F6 in tmux (and screen probably)
 
 In tmux, do `infocmp > screen-256color`. Add the line `kf16=\E[17;2~,` and compile the file with tic. This will result in `~/.terminfo/s/screen-256color` with the correct keycode for shift+F6. `.tmux.conf` needs the line `setw -g xterm-keys on` for it to register correctly.
