@@ -171,7 +171,7 @@ if [ -e ~/.ssh/config.d ]; then
     #if find ~/.ssh/config.d -mindepth 1 -print -quit | grep -q .; then
     # Do we have config files in that directory?
     if find ~/.ssh/config.d -print -quit | grep -q .; then
-        newestconfig=$(find ~/.ssh/config.d/* -printf '%Tc %p\n' | sort -r | head -n1 | awk '{print $3}')
+        newestconfig=$(find ~/.ssh/config.d/* -printf '%TY-%Tm-%Td %.8TT %p\n' | sort -r | head -n1 | awk '{print $3}')
         if [ "$newestconfig" -nt ~/.ssh/config ]; then
             # We found a config that's newer than the generated config file, re-generate
             [ -e ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date -Ins)
