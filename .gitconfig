@@ -21,6 +21,18 @@
 	r = !GIT_NO_PAGER=1 git l -30
 	l = "!. ~/.githelpers && pretty_git_log"
 
+	# Some inspiration from https://gist.github.com/mwhite/6887990
+	# list branches sorted by last modified
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+	# https://www.commandlinefu.com/commands/view/4519/list-all-authors-of-a-particular-git-project
+	authorstats = "!git log --format='%aN <%aE>' | awk '{arr[$0]++} END{for (i in arr){print arr[i], i;}}' | sort -rn"
+	authors = !git log --format='%aN' | sort -u
+	authorsemail = !git log --all --format='%cN <%cE>' | sort -u
+
+	# list aliases
+	la = "!git config -l | grep alias | cut -c 7-"
+
 
 [push]
 	default = simple
