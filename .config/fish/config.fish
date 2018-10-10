@@ -1,6 +1,15 @@
 # Set editor to vim
 set EDITOR vim
 
+set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+
+if not functions -q fisher
+    echo "Installing fisher for the first time..." >&2
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fisher
+end
+
 # Virtualenv support with virtualfish
 eval (python3 -m virtualfish compat_aliases)
 
