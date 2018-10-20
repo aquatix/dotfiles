@@ -33,12 +33,14 @@
 	# list aliases
 	la = "!git config -l | grep alias | cut -c 7-"
 
-
 [push]
 	default = simple
 
 [core]
 	editor = vim
+
+[diff]
+	wsErrorHighlight = all
 
 [url "git@github.com:"]
 	insteadOf = "gh:"
