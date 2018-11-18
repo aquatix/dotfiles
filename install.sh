@@ -4,8 +4,8 @@
 install_hg()
 {
     # Mercurial extensions
-    touch ~/.dot_has_hg
-    HGDIR=~/workspace/application_addons/mercurial
+    touch "${HOME}/.dot_has_hg"
+    HGDIR="${HOME}/workspace/application_addons/mercurial"
     mkdir -p $HGDIR
     cd $HGDIR || exit
 
@@ -36,9 +36,9 @@ install_fish()
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/mux.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/tmuxinator.fish" "${HOME}/.config/fish/completions"
     echo
-    echo "You might want to install Fisherman:"
-    echo "curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman"
-    echo "And some plugins: fisher install bobthefish shark omf/grc"
+    echo "You might want to install Fisher:"
+    echo "curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish"
+    echo "And some plugins: fisher"
     echo
 }
 
