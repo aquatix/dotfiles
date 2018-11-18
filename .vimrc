@@ -275,6 +275,22 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3'
 "let g:ycm_server_log_level = 'debug'
 endif
 
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+" deoplete language plugins
+" https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
+" python:
+Plugin 'zchee/deoplete-jedi'
+" Many, based on syntax files
+Plugin 'Shougo/neco-syntax'
+
+let g:deoplete#enable_at_startup = 1
+
 
 " Improved Django handling
 Plugin 'tweekmonster/django-plus.vim'
