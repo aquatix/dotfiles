@@ -275,6 +275,7 @@ let g:ycm_server_python_interpreter = '/usr/bin/python3'
 "let g:ycm_server_log_level = 'debug'
 endif
 
+if filereadable(skip_ycm)  " Only load if YouCompleteMe is not loaded
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -290,6 +291,7 @@ Plugin 'zchee/deoplete-jedi'
 Plugin 'Shougo/neco-syntax'
 
 let g:deoplete#enable_at_startup = 1
+endif
 
 
 " Improved Django handling
