@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/mydocs/work/sanoma
+cd ~/mydocs/work/divault
 git pull
 #vim -c ":vsp planning_2015.todo" notes_2015.md notes_2014.md
-vim -c "set nofoldenable" planning_2018.todo startpagina_notes.md cs_notes.md cs_howtos.md dcp_notes.md dcp_howtos.md planning_2017.todo
+vim -c "set nofoldenable" planning_2019.todo notes.md
