@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>Home', '<Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Primary>F1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Primary>F2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Primary>F3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Primary>F4']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Primary>F5']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Primary>F6']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Primary>F7']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Primary>F8']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Primary>F9']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Primary>F10']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-11 "['<Primary>F11']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-12 "['<Primary>F12']"
