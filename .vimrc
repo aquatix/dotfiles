@@ -268,8 +268,12 @@ if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not 
 Plugin 'Valloric/YouCompleteMe'
 " YouCompleteMe interpreter version (should be the same as what YCM was
 " compiled with):
-"let g:ycm_server_python_interpreter = '/usr/bin/python'
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+if filereadable('/data/data/com.termux/files/usr/bin/python3')
+    " Running in Termux
+    let g:ycm_server_python_interpreter = '/data/data/com.termux/files/usr/bin/python3'
+else
+    let g:ycm_server_python_interpreter = '/usr/bin/python3'
+endif
 " Debug stuff
 "let g:ycm_server_keep_logfiles = 1
 "let g:ycm_server_log_level = 'debug'
