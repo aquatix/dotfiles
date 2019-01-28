@@ -34,7 +34,7 @@ highlight link todoComment Comment
 " Heading (day) delimiters
 syntax region todoDay start=/\v\=\=\ / skip=/\v\\./ end=/\v\ \=\=\=\=\=\=/
 
-hi link todoDay Delimiter
+highlight link todoDay Delimiter
 
 
 " Show -scratched out- parts of a line as darker text (Delimiter colour)
@@ -82,8 +82,8 @@ highlight todoTitledItem ctermfg=172 guifg=#d78700
 "highlight todoTitledItem ctermfg=130 guifg=#af5f00  " DarkOrange
 
 " A todoItem has a subject (e.g., a word that's followed by a ':')
-syn match todoItem '[a-zA-Z0-9\-_]\+:' contained
-hi todoItem ctermfg=Blue guifg=#87d7ff
+syntax match todoItem '[a-zA-Z0-9\-_]\+:' contained
+highlight todoItem ctermfg=Blue guifg=#87d7ff
 
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
