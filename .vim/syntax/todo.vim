@@ -76,6 +76,11 @@ highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
 syntax match timeslot "\v\[.*-.*\] " nextgroup=todoItem skipwhite
 highlight timeslot ctermfg=Magenta guifg=#d700af
 
+" Match items starting with a <keyword-or-date-or-something>:
+syntax match todoTitledItem /^[a-zA-Z0-9\-_]*: / nextgroup=todoItem skipwhite
+highlight todoTitledItem ctermfg=172 guifg=#d78700
+"highlight todoTitledItem ctermfg=130 guifg=#af5f00  " DarkOrange
+
 " A todoItem has a subject (e.g., a word that's followed by a ':')
 syn match todoItem '[a-zA-Z0-9\-_]\+:' contained
 hi todoItem ctermfg=Blue guifg=#87d7ff
