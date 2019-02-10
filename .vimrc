@@ -313,11 +313,8 @@ let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
 " No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-if exists('b:is_django')
-    let g:ale_python_pylint_options="--max-line-length=120 --load-plugins pylint_django --disable=invalid-name,missing-docstring"
-else
-    let g:ale_python_pylint_options="--max-line-length=120 --disable=invalid-name,missing-docstring"
-endif
+"let g:ale_python_pylint_options="--max-line-length=120 --disable=invalid-name,missing-docstring"
+" VIMHOME/after/ftplugin/python.vim takes care of this
 " Show errors or warnings in the statusline
 let g:airline#extensions#ale#enabled = 1
 " UI
