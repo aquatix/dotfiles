@@ -396,8 +396,8 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'chr4/nginx.vim'
 
 " Highlight jinja templates (e.g., .j2 files) and do proper indenting
-Plugin 'lepture/vim-jinja'
-au BufNewFile,BufRead *.j2 set ft=jinja
+Plugin 'Glench/Vim-Jinja2-Syntax'
+au BufNewFile,BufRead *.j2,*.jinja2 set ft=jinja
 
 " Highlight special comments better
 "Plugin 'jbgutierrez/vim-better-comments'
