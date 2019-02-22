@@ -1,3 +1,5 @@
+" Taken from http://code.lardcave.net/2018/09/09/1/ Thanks!
+" Fixed for Python3's importlib
 python3 <<EOF
 import vim
 from importlib.util import find_spec

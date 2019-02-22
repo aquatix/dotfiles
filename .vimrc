@@ -322,9 +322,10 @@ let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can
 let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
-" No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
-"let g:ale_python_pylint_options="--max-line-length=120 --disable=invalid-name,missing-docstring"
-" VIMHOME/after/ftplugin/python.vim takes care of this
+
+" See VIMHOME/after/ftplugin/python.vim for some pylint configuration, also checking whether a
+" project uses Django
+
 " Show errors or warnings in the statusline
 let g:airline#extensions#ale#enabled = 1
 " UI
