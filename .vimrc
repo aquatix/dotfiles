@@ -293,6 +293,12 @@ endif
 Plugin 'zchee/deoplete-jedi'
 " Many, based on syntax files
 Plugin 'Shougo/neco-syntax'
+" Flow autocompletion for deoplete
+Plugin 'wokalski/autocomplete-flow'
+
+" You will also need the following for function argument completion:
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
 let g:deoplete#enable_at_startup = 1
 
