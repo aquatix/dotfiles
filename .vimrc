@@ -328,6 +328,7 @@ let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can
 let g:ale_fixers = {}
 " Python specific settings
 let g:ale_fixers.python = ['isort']
+let g:ale_fixers.javascript = ['eslint']
 
 " See VIMHOME/after/ftplugin/python.vim for some pylint configuration, also checking whether a
 " project uses Django
