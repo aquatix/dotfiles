@@ -24,14 +24,46 @@ def find_virtualenv(virtualenv_names):
 
 virtualenv_path = find_virtualenv(['virtualenv', 'venv'])  #vim.eval('ale_virtualenv_dir_names')
 
+# Detect the various linters and plugins
 if virtualenv_path:
     has_pylint_django = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/pylint_django'))
+    has_pylint = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/pylint'))
+    has_flake8 = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/flake8'))
+    has_bandit = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/bandit'))
 else:
     try:
         find_spec('pylint_django')
         has_pylint_django = True
     except ImportError:
         has_pylint_django = False
+
+    try:
+        find_spec('pylint')
+        has_pylint = True
+    except ImportError:
+        has_pylint = False
+
+    try:
+        find_spec('flake8')
+        has_flake8 = True
+    except ImportError:
+        has_flake8 = False
+
+    try:
+        find_spec('bandit')
+        has_bandit = True
+    except ImportError:
+        has_bandit = False
+
+linters = []
+if has_pylint:
+    linters.append('pylint')
+if has_flake8:
+    linters.append('flake8')
+if has_bandit:
+    linters.append('bandit')
+
+vim.command("let b:ale_linters = {}".format(linters))
 
 if has_pylint_django:
     # No silly 80-char line limit. Sorry pep-8. Also, Django support. Disable 'invalid name', 'missing docstring'
