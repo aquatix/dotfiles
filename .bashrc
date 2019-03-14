@@ -211,6 +211,7 @@ PATH=$PATH:/usr/local/bin/android-sdk-linux/platform-tools:/usr/local/bin/androi
 # nvm node.js package manager virtualenv thing
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # QT autoscaling, helpful for hidpi systems
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
