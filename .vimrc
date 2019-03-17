@@ -164,11 +164,16 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+" Files command with preview window
+command! -bang -nargs=? -complete=dir FilesPreview
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 " Simply type ; to search through buffers, leader-o to search through file
-" names, \t for tags, \c for (Git) commits and \f to search through contents
-" of files
+" names, leader-O to search through file names, showing a preview window,
+" \t for tags, \c for (Git) commits and \f to search through contents of files
 nmap ; :Buffers<CR>
 nmap <Leader>o :Files<CR>
+nmap <Leader>O :FilesPreview<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>c :Commits<CR>
 nmap <Leader>f :Find<CR>
