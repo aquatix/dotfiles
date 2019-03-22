@@ -249,6 +249,13 @@ if !exists( "b:myLang" )
   endif
 endif
 
+" Correct previous spelling error with Ctrl+l. jumps to the previous
+" spelling mistake [s, then picks the first suggestion 1z=, and then
+" jumps back `]a. The <c-g>u in the middle make it possible to undo
+" the spelling correction quickly.
+" https://castel.dev/post/lecture-notes-1/
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 " Word completion from dictionary (on ctrl+space)
 set complete+=kspell
 
