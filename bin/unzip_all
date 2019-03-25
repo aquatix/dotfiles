@@ -1,0 +1,11 @@
+#!/bin/bash
+
+find . -type f -name '*.zip' -exec sh -c '
+  for file do
+    echo "$file"
+    zipdir=$(basename "$file" .zip)
+    #echo "$zipdir $file"
+    unzip -d "$zipdir" "$file"
+    read line </dev/tty
+  done
+' sh {} +
