@@ -74,7 +74,8 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 " set of defaults that (hopefully) everyone can agree on.
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
-Plugin 'fenetikm/falcon'
+"Plugin 'fenetikm/falcon'
+Plugin 'Rigellute/shades-of-purple.vim'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
@@ -502,9 +503,12 @@ set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
-    colorscheme falcon
+    "colorscheme falcon
+    colorscheme shades_of_purple
     " Ignore the background setting, as falcon's dark blue is a bit much IMHO
-    hi Normal guibg=NONE ctermbg=NONE
+    "hi Normal guibg=NONE ctermbg=NONE
+    let g:shades_of_purple_airline = 1
+    let g:airline_theme='shades_of_purple'
 
     " create a bar for airline
     set laststatus=2
