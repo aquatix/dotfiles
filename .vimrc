@@ -37,6 +37,8 @@ nmap <F8> :TagbarToggle<CR>
 " looking result
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" Disable showing current function in airline
+let g:airline#extensions#tagbar#enabled = 0
 " Better showing of open buffers (open files)
 Plugin 'bling/vim-bufferline'
 " Version control notes in the line number bar
