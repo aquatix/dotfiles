@@ -267,6 +267,10 @@ map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" Show indentation marks
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = '┊'
+
 " Python virtualenv support
 "Plugin 'jmcantrell/vim-virtualenv'
 
