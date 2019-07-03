@@ -97,6 +97,10 @@ function grepl
     grep --color=always -ir $argv | less -R
 end
 
+function rgl
+    rg -p $argv | less -RFX
+end
+
 ## Various
 #alias tmux 'tmux -2'
 alias tmux_reload "tmux source-file ~/.tmux.conf"
