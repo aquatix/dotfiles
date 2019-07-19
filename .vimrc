@@ -85,6 +85,8 @@ let NERDTreeIgnore = ['\.pyc$', 'tags']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 
 if has('patch-8.0-1364')
     " Easily change position of windows
