@@ -272,6 +272,10 @@ map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 
+" Colour-match brackets
+Plugin 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
 " Python virtualenv support
 "Plugin 'jmcantrell/vim-virtualenv'
 
