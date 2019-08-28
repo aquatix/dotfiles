@@ -296,7 +296,7 @@ let g:rainbow_conf = {
 Plugin 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
 
-" For example in termux, ycm does not want to compile, don't load it there
+" Even though in termux, ycm now compiles, one might want to not load it there
 " with ~/.dot_no_ycm
 let skip_ycm=fnamemodify(expand("$MYVIMRC"), ":p:h") . "/.dot_no_ycm"
 if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not exist
@@ -305,7 +305,7 @@ if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not 
 " sudo apt-get install python-dev
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py  # For C-style languages: ./install.py --clang-completer
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 " YouCompleteMe interpreter version (should be the same as what YCM was
 " compiled with):
 if filereadable('/data/data/com.termux/files/usr/bin/python3')
