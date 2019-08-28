@@ -37,6 +37,7 @@ nmap <F8> :TagbarToggle<CR>
 " looking result
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme = "hybrid"
 " Disable showing current function in airline
 let g:airline#extensions#tagbar#enabled = 0
 " Better showing of open buffers (open files)
@@ -76,7 +77,7 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 " set of defaults that (hopefully) everyone can agree on.
 Plugin 'tpope/vim-sensible'
 " Nice colour scheme
-Plugin 'fenetikm/falcon'
+Plugin 'kristijanhusak/vim-hybrid-material'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
@@ -514,9 +515,12 @@ set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
 if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
-    colorscheme falcon
-    " Ignore the background setting, as falcon's dark blue is a bit much IMHO
-    hi Normal guibg=NONE ctermbg=NONE
+
+    set background=dark
+    let g:enable_bold_font = 1
+    let g:enable_italic_font = 1
+    let g:hybrid_transparent_background = 1
+    colorscheme hybrid_material
 
     " create a bar for airline
     set laststatus=2
