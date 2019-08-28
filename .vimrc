@@ -276,6 +276,12 @@ let g:indentLine_char = '┊'
 " Colour-match brackets
 Plugin 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+" Do not use rainbow parentheses in these file types:
+let g:rainbow_conf = {
+\  'separately': {
+\    'todo': 0
+\  },
+\}
 
 " Python virtualenv support
 "Plugin 'jmcantrell/vim-virtualenv'
