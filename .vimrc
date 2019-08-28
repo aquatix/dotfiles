@@ -385,12 +385,12 @@ let g:ale_linters = {
 
 
 " Handy Markdown stuff
-"Plugin 'tpope/vim-markdown'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
 " Do not fold markdown files by default
 let g:vim_markdown_folding_disabled = 1
 set nofoldenable
+let g:vim_markdown_conceal = 0
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " Use filetype name as fenced code block languages for syntax highlighting
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'python=python']
 
