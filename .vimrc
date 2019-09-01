@@ -80,6 +80,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'kristijanhusak/vim-hybrid-material'
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'tags']
 " close vim if the only window left open is a NERDTree
