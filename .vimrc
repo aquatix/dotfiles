@@ -136,6 +136,7 @@ endif
 
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
+set rtp+=/data/data/com.termux/files/usr/bin/fzf
 Plugin 'junegunn/fzf.vim'
 
 " Customize fzf colors to match your color scheme
