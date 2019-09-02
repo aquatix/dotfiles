@@ -76,6 +76,7 @@ alias gst "git status"
 alias ga "git add -A"
 alias gl "git log"
 alias gls "git shortlog --summary"
+alias gld "git log --follow -p -- "  # Shows history with diffs for the filename provided
 alias gr "git reflog"
 alias gt 'git tag|less'
 #alias gad 'git log --pretty='"'"'%at'"'"' | while read d; do date -d "@$d"; done | awk '"'"'{print $1}'"'"' | sort | uniq -c'
