@@ -53,6 +53,17 @@ Go-Regular.ttf
 Go-Smallcaps-Italic.ttf
 Go-Smallcaps.ttf'
 
+FONTS_RUBIK=$'Rubik-BlackItalic.ttf
+Rubik-Black.ttf
+Rubik-BoldItalic.ttf
+Rubik-Bold.ttf
+Rubik-Italic.ttf
+Rubik-LightItalic.ttf
+Rubik-Light.ttf
+Rubik-MediumItalic.ttf
+Rubik-Medium.ttf
+Rubik-Regular.ttf'
+
 # https://github.com/eosrei/emojione-color-font/
 FONTS_VARIOUS=$'EmojiOneColor-SVGinOT.ttf'
 
@@ -136,6 +147,9 @@ else
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_GO"
+        while read -r FONT; do
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
+        done <<< "$FONTS_RUBIK"
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_VARIOUS"
