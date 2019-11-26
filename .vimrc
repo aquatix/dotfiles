@@ -271,9 +271,11 @@ map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Show indentation marks
+" Show indentation marks, enables conceallevel 2, so for example hides quotes
+" in json files
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
+"let g:indentLine_setConceal = 0
 
 " Colour-match brackets
 Plugin 'luochen1990/rainbow'
