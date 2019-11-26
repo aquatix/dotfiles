@@ -365,7 +365,7 @@ Plugin 'tweekmonster/django-plus.vim'
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
-Plugin 'w0rp/ale'
+Plugin 'dense-analysis/ale'
 nmap <leader>= <Plug>(ale_fix)
 " Quickly open the loclist to see syntax errors
 nmap <leader>; :lopen<CR>
