@@ -42,8 +42,15 @@ let g:airline_theme = "hybrid"
 let g:airline#extensions#tagbar#enabled = 0
 " Better showing of open buffers (open files)
 Plugin 'bling/vim-bufferline'
+
 " Version control notes in the line number bar
-Plugin 'mhinz/vim-signify'
+if has('nvim') || has('patch-8.0.902')
+  Plugin 'mhinz/vim-signify'
+else
+  Plugin 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+" default updatetime 4000ms is not good for async update
+set updatetime=100
 
 
 " Git wrapper
