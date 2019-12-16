@@ -127,3 +127,8 @@ function rgvim
         vim "+/"(to_lower $argv) $choice
     end
 end
+
+function jl
+    # Pretty print the json file used as argument, and feed it in colour to less
+    jq -C --indent 2 . $argv | less -R
+end
