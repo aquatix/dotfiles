@@ -19,8 +19,10 @@ Hack/BoldItalic/complete/Hack Bold Italic Nerd Font Complete Mono.ttf
 Hack/Italic/complete/Hack Italic Nerd Font Complete Mono.ttf
 FiraCode/Bold/complete/Fira Code Bold Nerd Font Complete Mono.ttf
 FiraCode/Regular/complete/Fira Code Regular Nerd Font Complete Mono.ttf
-FiraCode/BoldItalic/complete/Fira Code Bold Italic Nerd Font Complete Mono.ttf
-FiraCode/Italic/complete/Fira Code Italic Nerd Font Complete Mono.ttf'
+SourceCodePro/Bold/complete/Sauce Code Pro Bold Nerd Font Complete Mono.ttf
+SourceCodePro/Regular/complete/Sauce Code Pro Nerd Font Complete Mono.ttf
+SourceCodePro/Light/complete/Sauce Code Pro Light Nerd Font Complete Mono.ttf
+SourceCodePro/Light-Italic/complete/Sauce Code Pro Light Italic Nerd Font Complete Mono.ttf'
 
 FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
 Futura-Std-Bold-Oblique_19041.ttf
