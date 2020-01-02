@@ -229,6 +229,9 @@ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 Plugin 'chrisbra/csv.vim'
 autocmd BufNewFile,BufRead *.csv setlocal filetype=csv
 
+" .tmux.conf highlighting, help- and command integration
+Plugin 'tmux-plugins/vim-tmux'
+
 " Automatically insert matching close bracket where it belongs
 "Plugin 'seletskiy/vim-autosurround'
 "inoremap  ( (<C-O>:call AutoSurround(")")<CR>
