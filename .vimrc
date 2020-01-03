@@ -12,44 +12,46 @@ set encoding=utf-8
 let mapleader=","
 
 
-" == Vundle manages the plugins ================================================
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" == vim-plug manages the plugins ================================================
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
+
 
 " == Window chrome =============================================================
 
 " Display tags of the current file ordered by scope
 " You need ctags: `sudo apt-get install exuberant-ctags` or
 " `brew install ctags` for example
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme = "hybrid"
 " Disable showing current function in airline
 let g:airline#extensions#tagbar#enabled = 0
 " Better showing of open buffers (open files), integrates with airline
-Plugin 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 
 " Version control notes in the line number bar
 if has('nvim') || has('patch-8.0.902')
-  Plugin 'mhinz/vim-signify'
+  Plug 'mhinz/vim-signify'
 else
-  Plugin 'mhinz/vim-signify', { 'branch': 'legacy' }
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
 " default updatetime 4000ms is not good for async update
 set updatetime=100
 
 
 " Git wrapper
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " fugitive git bindings
 " borrowed from https://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
 nnoremap <space>ga :Git add %:p<CR><CR>
@@ -71,19 +73,19 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 
 " Think of sensible.vim as one step above 'nocompatible' mode: a universal
 " set of defaults that (hopefully) everyone can agree on.
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " Nice colour scheme
-Plugin 'kristijanhusak/vim-hybrid-material'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 " Quick file system tree, mapped to Ctrl+n for quick toggle
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'tags']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 
 if has('patch-8.0-1364')
@@ -93,20 +95,20 @@ if has('patch-8.0-1364')
     "  <c-w>gj: soft move down
     "  <c-w>gk: soft move up
     "  <c-w>gl: soft move right
-    Plugin 'andymass/vim-tradewinds'
+    Plug 'andymass/vim-tradewinds'
 endif
 
 
 " Rooter changes the working directory to the project root when you open a
 " file or directory. Useful when using fzf for example.
-Plugin 'airblade/vim-rooter'
+Plug 'airblade/vim-rooter'
 " Do not echo the project directory
 let g:rooter_silent_chdir = 1
 
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
 " Quickly open files, fuzzy search on name
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 " Search in Files, Buffers and MRU files at the same time:
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -120,7 +122,7 @@ let g:ctrlp_switch_buffer = 0
 " Run your favorite search tool from Vim, with an enhanced results list.
 " Supports Silver Searcher `ag`. Use with:
 " :Ack [options] {pattern} [{directories}]
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " apt install silversearcher-ag
 if executable('ag')
     "let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -135,7 +137,7 @@ endif
 " fzf integration for fast fuzzy finding, better and faster than ctrl-p
 set rtp+=~/workspace/projects/others/fzf
 set rtp+=/data/data/com.termux/files/usr/bin/fzf
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -189,13 +191,13 @@ nnoremap <silent> ]f :lnext<CR>
 " Web Development/Filetype icons
 " Needs a font like found at
 " https://github.com/ryanoasis/nerd-fonts
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 " Set guifont when using gvim:
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
 "
 " undotree.vim : Display your undo history in a graph.
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
                                     " wants to interact with it.
@@ -205,25 +207,25 @@ let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
 
 " transparent editing of gpg encrypted files. The filename must have a .gpg,
 " .pgp or .asc suffix.
-Plugin 'jamessan/vim-gnupg'
+Plug 'jamessan/vim-gnupg'
 
 " tcomment provides easy to use, file-type sensible comments for Vim. It
 " can handle embedded syntax.
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
 " Typescript syntax file and more
-Plugin 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " handling column separated data (csv)
-Plugin 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim'
 autocmd BufNewFile,BufRead *.csv setlocal filetype=csv
 
 " .tmux.conf highlighting, help- and command integration
-Plugin 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 
 " Automatically insert matching close bracket where it belongs
-"Plugin 'seletskiy/vim-autosurround'
+"Plug 'seletskiy/vim-autosurround'
 "inoremap  ( (<C-O>:call AutoSurround(")")<CR>
 
 " Spell Check (http://vim.wikia.com/wiki/Toggle_spellcheck_with_function_keys)
@@ -273,13 +275,13 @@ map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 
 " Show indentation marks, enables conceallevel 2, so for example hides quotes
 " in json files
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 "let g:indentLine_setConceal = 0
 let g:indentLine_conceallevel = 1
 
 " Colour-match brackets
-Plugin 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 " Do not use rainbow parentheses in these file types:
 let g:rainbow_conf = {
@@ -289,13 +291,13 @@ let g:rainbow_conf = {
 \}
 
 " Python goodness
-"Plugin 'klen/python-mode'
+Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
 
 " Python autocompletion
 " On a machine with a Python3-only vim, use system packages like:
 " python-jedi python3-jedi to keep jedi working for Python 2 and 3.
 " Also, vim-nox-py2 might be needed
-Plugin 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
 "let g:jedi#force_py_version = 2
 
 " Even though in termux, ycm now compiles, one might want to not load it there
@@ -307,7 +309,7 @@ if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not 
 " sudo apt-get install python-dev
 " cd ~/.vim/bundle/YouCompleteMe
 " ./install.py  # For C-style languages: ./install.py --clang-completer
-Plugin 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 " YouCompleteMe interpreter version (should be the same as what YCM was
 " compiled with):
 if filereadable('/data/data/com.termux/files/usr/bin/python3')
@@ -323,24 +325,24 @@ endif
 
 if filereadable(skip_ycm)  " Only load if YouCompleteMe is not loaded
 if has('nvim')
-  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 " deoplete language plugins
 " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 " python:
-Plugin 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi'
 " Many, based on syntax files
-Plugin 'Shougo/neco-syntax'
+Plug 'Shougo/neco-syntax'
 " Flow autocompletion for deoplete
-Plugin 'wokalski/autocomplete-flow'
+Plug 'wokalski/autocomplete-flow'
 
 " You will also need the following for function argument completion:
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 let g:deoplete#enable_at_startup = 1
 
@@ -357,12 +359,12 @@ endif
 
 
 " Improved Django handling
-Plugin 'tweekmonster/django-plus.vim'
+Plug 'tweekmonster/django-plus.vim'
 
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
-Plugin 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 nmap <leader>= <Plug>(ale_fix)
 " Quickly open the loclist to see syntax errors
 nmap <leader>; :lopen<CR>
@@ -392,32 +394,32 @@ let g:vim_markdown_folding_disabled = 1
 set nofoldenable
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 " Use filetype name as fenced code block languages for syntax highlighting
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'python=python']
 
 if v:version >= 704
     " Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
     " stuff. Works with vim >= 7.4
-    Plugin 'vim-pandoc/vim-pandoc'
+    Plug 'vim-pandoc/vim-pandoc'
 endif
 
 
 " == Writing prose =============================================================
 
 " Distraction-free writing, start with <Leader>V (\V or ,V in this config)
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
 let g:goyo_width = 120
 
 " Help focus on text by dimming other parts a bit
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/limelight.vim'
 let g:limelight_conceal_ctermfg = 'Grey69'
 let g:limelight_conceal_ctermfg = 145
 
 " Helps with writing prose (better line breaks, agnostic on soft line wraps vs
 " hard line breaks etc)
-Plugin 'reedes/vim-pencil'
+Plug 'reedes/vim-pencil'
 " Disable automatic formatting, as this automatically merges lines devided by
 " 1 hard enter only, which can be annoying
 let g:pencil#autoformat = 0
@@ -432,56 +434,53 @@ nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " Highlight colours in CSS (and html) files
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " Highlight colours in fish shell files
-Plugin 'dag/vim-fish'
+Plug 'dag/vim-fish'
 
 " Highlight colours in jade/pug templates
-Plugin 'digitaltoad/vim-pug'
+Plug 'digitaltoad/vim-pug'
 
 " Highlight nginx
-Plugin 'chr4/nginx.vim'
+Plug 'chr4/nginx.vim'
 
 " Highlight jinja templates (e.g., .j2 files) and do proper indenting
-Plugin 'Glench/Vim-Jinja2-Syntax'
+Plug 'Glench/Vim-Jinja2-Syntax'
 au BufNewFile,BufRead *.j2,*.jinja2 set ft=jinja
 
 " Highlight special comments better
-"Plugin 'jbgutierrez/vim-better-comments'
+"Plug 'jbgutierrez/vim-better-comments'
 
 " CSV filetype plugin
-"Plugin 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
+"Plug 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
 
 " Automatic generation of tags file (ctags), in a central place (~/.vimtags)
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-easytags'
 " easytags highlighting is slow
 "let g:easytags_auto_highlight = 0
 
 " Automatic generation of tags file (ctags: Exhuberant Ctags)
-Plugin 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 " know when Gutentags is generating tags (prints 'TAGS' in status-line)
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*"]
 "let g:gutentags_trace = 1
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" All of the plugins must be added before the following line
+call plug#end()
 " == End of plugins ============================================================
 
 
-"filetype plugin on
-
-" Enable line numbers, highlighting of current line and syntax highlighting by default
+" Enable line numbers, highlighting of current line by default; syntax
+" highlighting is enabled by vim-plug
 set number
 set cursorline
-syntax on
 
 if has('patch-7.4-338')
     " automatically indents wrapped lines up to the previous line. You can also
