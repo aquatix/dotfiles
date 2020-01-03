@@ -398,12 +398,6 @@ Plug 'plasticboy/vim-markdown'
 " Use filetype name as fenced code block languages for syntax highlighting
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'python=python']
 
-if v:version >= 704
-    " Pandoc, for stuff like autocompletion of citations from bibtex, other LaTeX
-    " stuff. Works with vim >= 7.4
-    Plug 'vim-pandoc/vim-pandoc'
-endif
-
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
