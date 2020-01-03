@@ -27,11 +27,6 @@ Plugin 'VundleVim/Vundle.vim'
 " `brew install ctags` for example
 Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
-" The unite or unite.vim plug-in can search and display information from
-" arbitrary sources like files, buffers, recently used files or registers.
-"Plugin 'Shougo/unite.vim'
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"nnoremap <leader>r :<C-u>Unite -start-insert file_rec<CR>
 
 " Nice statusbar, alternative for powerline. Get powerline font for best
 " looking result
@@ -40,7 +35,7 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = "hybrid"
 " Disable showing current function in airline
 let g:airline#extensions#tagbar#enabled = 0
-" Better showing of open buffers (open files)
+" Better showing of open buffers (open files), integrates with airline
 Plugin 'bling/vim-bufferline'
 
 " Version control notes in the line number bar
@@ -74,17 +69,13 @@ nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
 
 
-" Better matching of code pairs
-"Plugin 'andymass/vim-matchup'
-" Deferred highlighting improves cursor movement performance
-"let g:matchup_matchparen_deferred = 1
-
-
 " Think of sensible.vim as one step above 'nocompatible' mode: a universal
 " set of defaults that (hopefully) everyone can agree on.
 Plugin 'tpope/vim-sensible'
+
 " Nice colour scheme
 Plugin 'kristijanhusak/vim-hybrid-material'
+
 " Quick file system tree, mapped to Ctrl+n for quick toggle
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -92,17 +83,16 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'tags']
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 
 if has('patch-8.0-1364')
     " Easily change position of windows
     " Requires vim 8.0.1364 or neovim (exact version uncertain).
-    "<c-w>gh: soft move left
-    "<c-w>gj: soft move down
-    "<c-w>gk: soft move up
-    "<c-w>gl: soft move right
+    "  <c-w>gh: soft move left
+    "  <c-w>gj: soft move down
+    "  <c-w>gk: soft move up
+    "  <c-w>gl: soft move right
     Plugin 'andymass/vim-tradewinds'
 endif
 
@@ -297,9 +287,6 @@ let g:rainbow_conf = {
 \    'todo': 0
 \  },
 \}
-
-" Python virtualenv support
-"Plugin 'jmcantrell/vim-virtualenv'
 
 " Python goodness
 "Plugin 'klen/python-mode'
