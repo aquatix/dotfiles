@@ -79,7 +79,7 @@ Plug 'tpope/vim-sensible'
 Plug 'kristijanhusak/vim-hybrid-material'
 
 " Quick file system tree, mapped to Ctrl+n for quick toggle
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', 'tags']
@@ -208,10 +208,6 @@ let g:undotree_SetFocusWhenToggle=1 " if undotree is opened, it is likely one
 " transparent editing of gpg encrypted files. The filename must have a .gpg,
 " .pgp or .asc suffix.
 Plug 'jamessan/vim-gnupg'
-
-" tcomment provides easy to use, file-type sensible comments for Vim. It
-" can handle embedded syntax.
-Plug 'tomtom/tcomment_vim'
 
 " Typescript syntax file and more
 Plug 'leafgarland/typescript-vim'
@@ -434,7 +430,14 @@ nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
+" Align line-wise comment delimiters flush left instead of following code
+" indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 
 " Highlight colours in CSS (and html) files
 Plug 'ap/vim-css-color'
@@ -451,18 +454,6 @@ Plug 'chr4/nginx.vim'
 " Highlight jinja templates (e.g., .j2 files) and do proper indenting
 Plug 'Glench/Vim-Jinja2-Syntax'
 au BufNewFile,BufRead *.j2,*.jinja2 set ft=jinja
-
-" Highlight special comments better
-"Plug 'jbgutierrez/vim-better-comments'
-
-" CSV filetype plugin
-"Plug 'chrisbra/csv.vim'  " apparently doesn't work this way ;)
-
-" Automatic generation of tags file (ctags), in a central place (~/.vimtags)
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-easytags'
-" easytags highlighting is slow
-"let g:easytags_auto_highlight = 0
 
 " Automatic generation of tags file (ctags: Exhuberant Ctags)
 Plug 'ludovicchabant/vim-gutentags'
