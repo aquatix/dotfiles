@@ -12,7 +12,7 @@ set encoding=utf-8
 let mapleader=","
 
 
-" == vim-plug manages the plugins ================================================
+" == vim-plug manages the plugins ==============================================
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -20,6 +20,20 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin('~/.vim/plugged')
+
+
+" == Basics ====================================================================
+
+" Think of sensible.vim as one step above 'nocompatible' mode: a universal
+" set of defaults that (hopefully) everyone can agree on.
+Plug 'tpope/vim-sensible'
+
+
+" Rooter changes the working directory to the project root when you open a
+" file or directory. Useful when using fzf for example.
+Plug 'airblade/vim-rooter'
+" Do not echo the project directory
+let g:rooter_silent_chdir = 1
 
 
 " == Window chrome =============================================================
@@ -71,10 +85,6 @@ nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
 
 
-" Think of sensible.vim as one step above 'nocompatible' mode: a universal
-" set of defaults that (hopefully) everyone can agree on.
-Plug 'tpope/vim-sensible'
-
 " Nice colour scheme
 Plug 'kristijanhusak/vim-hybrid-material'
 
@@ -97,13 +107,6 @@ if has('patch-8.0-1364')
     "  <c-w>gl: soft move right
     Plug 'andymass/vim-tradewinds'
 endif
-
-
-" Rooter changes the working directory to the project root when you open a
-" file or directory. Useful when using fzf for example.
-Plug 'airblade/vim-rooter'
-" Do not echo the project directory
-let g:rooter_silent_chdir = 1
 
 
 " Full path fuzzy file, buffer, mru, tag, ... finder
@@ -300,57 +303,57 @@ Plug 'davidhalter/jedi-vim'
 " with ~/.dot_no_ycm
 let skip_ycm=fnamemodify(expand("$MYVIMRC"), ":p:h") . "/.dot_no_ycm"
 if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not exist
-" code-completion engine
-" sudo apt-get install build-essential cmake
-" sudo apt-get install python-dev
-" cd ~/.vim/bundle/YouCompleteMe
-" ./install.py  # For C-style languages: ./install.py --clang-completer
-Plug 'ycm-core/YouCompleteMe'
-" YouCompleteMe interpreter version (should be the same as what YCM was
-" compiled with):
-if filereadable('/data/data/com.termux/files/usr/bin/python3')
-    " Running in Termux
-    let g:ycm_server_python_interpreter = '/data/data/com.termux/files/usr/bin/python3'
-else
-    let g:ycm_server_python_interpreter = '/usr/bin/python3'
-endif
-" Debug stuff
-"let g:ycm_server_keep_logfiles = 1
-"let g:ycm_server_log_level = 'debug'
+    " code-completion engine
+    " sudo apt-get install build-essential cmake
+    " sudo apt-get install python-dev
+    " cd ~/.vim/bundle/YouCompleteMe
+    " ./install.py  # For C-style languages: ./install.py --clang-completer
+    Plug 'ycm-core/YouCompleteMe'
+    " YouCompleteMe interpreter version (should be the same as what YCM was
+    " compiled with):
+    if filereadable('/data/data/com.termux/files/usr/bin/python3')
+        " Running in Termux
+        let g:ycm_server_python_interpreter = '/data/data/com.termux/files/usr/bin/python3'
+    else
+        let g:ycm_server_python_interpreter = '/usr/bin/python3'
+    endif
+    " Debug stuff
+    "let g:ycm_server_keep_logfiles = 1
+    "let g:ycm_server_log_level = 'debug'
 endif
 
 if filereadable(skip_ycm)  " Only load if YouCompleteMe is not loaded
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" deoplete language plugins
-" https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-" python:
-Plug 'zchee/deoplete-jedi'
-" Many, based on syntax files
-Plug 'Shougo/neco-syntax'
-" Flow autocompletion for deoplete
-Plug 'wokalski/autocomplete-flow'
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    " deoplete language plugins
+    " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
+    " python:
+    Plug 'zchee/deoplete-jedi'
+    " Many, based on syntax files
+    Plug 'Shougo/neco-syntax'
+    " Flow autocompletion for deoplete
+    Plug 'wokalski/autocomplete-flow'
 
-" You will also need the following for function argument completion:
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+    " You will also need the following for function argument completion:
+    Plug 'Shougo/neosnippet'
+    Plug 'Shougo/neosnippet-snippets'
 
-let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_at_startup = 1
 
-" Enable tab complete
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
+    " Enable tab complete
+    function! s:check_back_space() abort "{{{
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction"}}}
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ deoplete#manual_complete()
 endif
 
 
@@ -402,32 +405,6 @@ if v:version >= 704
 endif
 
 
-" == Writing prose =============================================================
-
-" Distraction-free writing, start with <Leader>V (\V or ,V in this config)
-Plug 'junegunn/goyo.vim'
-let g:goyo_width = 120
-
-" Help focus on text by dimming other parts a bit
-Plug 'junegunn/limelight.vim'
-let g:limelight_conceal_ctermfg = 'Grey69'
-let g:limelight_conceal_ctermfg = 145
-
-" Helps with writing prose (better line breaks, agnostic on soft line wraps vs
-" hard line breaks etc)
-Plug 'reedes/vim-pencil'
-" Disable automatic formatting, as this automatically merges lines devided by
-" 1 hard enter only, which can be annoying
-let g:pencil#autoformat = 0
-
-" Do not insert hard line breaks in the middle of a sentence
-let g:pencil#wrapModeDefault = 'soft'  " default is 'hard'
-
-" Toggle Gogo with Limelight and Pencil together with Ctrl+F11
-"map <C-F11> :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
-nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
-
-
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
 Plug 'preservim/nerdcommenter'
@@ -461,6 +438,30 @@ Plug 'ludovicchabant/vim-gutentags'
 set statusline+=%{gutentags#statusline()}
 let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*"]
 "let g:gutentags_trace = 1
+
+
+" == Writing prose =============================================================
+
+" Distraction-free writing, start with <Leader>V (\V or ,V in this config)
+Plug 'junegunn/goyo.vim'
+let g:goyo_width = 120
+
+" Help focus on text by dimming other parts a bit
+Plug 'junegunn/limelight.vim'
+let g:limelight_conceal_ctermfg = 'Grey69'
+let g:limelight_conceal_ctermfg = 145
+
+" Helps with writing prose (better line breaks, agnostic on soft line wraps vs
+" hard line breaks etc)
+Plug 'reedes/vim-pencil'
+" Disable automatic formatting, as this automatically merges lines devided by
+" 1 hard enter only, which can be annoying
+let g:pencil#autoformat = 0
+" Do not insert hard line breaks in the middle of a sentence
+let g:pencil#wrapModeDefault = 'soft'  " default is 'hard'
+
+" Toggle Gogo with Limelight and Pencil together with ,V
+nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 
 
 " All of the plugins must be added before the following line
