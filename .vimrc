@@ -290,7 +290,7 @@ let g:rainbow_conf = {
 \}
 
 " Python goodness
-Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
+" Plug 'python-mode/python-mode', {'for': 'python', 'branch': 'develop'}
 
 " Python autocompletion
 " On a machine with a Python3-only vim, use system packages like:
