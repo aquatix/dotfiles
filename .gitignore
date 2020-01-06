@@ -5,3 +5,8 @@
 
 # Tags file
 tags
+
+# vim plugin-manager managed directories
+.vim/autoload
+.vim/bundle
+.vim/plugged
