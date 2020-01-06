@@ -98,22 +98,9 @@ git submodule init
 echo "INFO: Update submodules"
 git submodule update
 
-if [ ! -d "${HOME}/.vim/bundle/Vundle.vim" ]; then
-    mkdir -p ~/.vim/bundle
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-else
-    cd ~/.vim/bundle/Vundle.vim || exit
-    git pull
-    cd || exit
-fi
-
-echo "INFO: Vundle Install"
-vim +BundleInstall +qall
-
-if [ ! -e ${HOME}/.githelpers ]; then
-    ln -s ${HOME}/.vim/bundle/falcon/.githelpers ${HOME}/.githelpers
-else
-    echo "${HOME}/.githelpers exists, skipping"
+if [ ! -d "${HOME}/.vim/autoload/plug.vim" ]; then
+    echo "INFO: vim-plug install by running vim"
+    vim
 fi
 
 #if [ -e ~/.dot_has_hg ]; then
