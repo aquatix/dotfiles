@@ -397,6 +397,9 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " Use filetype name as fenced code block languages for syntax highlighting
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'python=python']
+" Preview markdown files with :PreviewMarkdown - needs mdr from
+" https://github.com/MichaelMure/mdr
+Plug 'skanehira/preview-markdown.vim'
 
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
