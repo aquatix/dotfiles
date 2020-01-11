@@ -52,7 +52,8 @@ let g:airline_theme = "hybrid"
 " Disable showing current function in airline
 let g:airline#extensions#tagbar#enabled = 0
 " Better showing of open buffers (open files), integrates with airline
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
+" Plug 'alisnic/vim-bufferline'
 
 " Version control notes in the line number bar
 if has('nvim') || has('patch-8.0.902')
