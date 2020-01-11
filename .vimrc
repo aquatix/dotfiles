@@ -437,7 +437,7 @@ au BufNewFile,BufRead *.j2,*.jinja2 set ft=jinja
 Plug 'ludovicchabant/vim-gutentags'
 " know when Gutentags is generating tags (prints 'TAGS' in status-line)
 set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*"]
+let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*", "*.vim/plugged/*"]
 "let g:gutentags_trace = 1
 
 
@@ -451,6 +451,8 @@ let g:goyo_width = 120
 Plug 'junegunn/limelight.vim'
 let g:limelight_conceal_ctermfg = 'Grey69'
 let g:limelight_conceal_ctermfg = 145
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = '#b0b0b0'
 
 " Helps with writing prose (better line breaks, agnostic on soft line wraps vs
 " hard line breaks etc)
