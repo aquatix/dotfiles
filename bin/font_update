@@ -46,6 +46,15 @@ overpass-semibold.otf
 overpass-thin-italic.otf
 overpass-thin.otf'
 
+FONTS_JETBRAINS=$'JetBrainsMono-Bold-Italic.ttf
+JetBrainsMono-Bold.ttf
+JetBrainsMono-ExtraBold-Italic.ttf
+JetBrainsMono-ExtraBold.ttf
+JetBrainsMono-Italic.ttf
+JetBrainsMono-Medium-Italic.ttf
+JetBrainsMono-Medium.ttf
+JetBrainsMono-Regular.ttf'
+
 FONTS_GO=$'Go-Bold-Italic.ttf
 Go-Bold.ttf
 Go-Italic.ttf
@@ -98,6 +107,21 @@ if [ -e ~/.dot_is_server ]; then
     fi
 
     # Update from the repo
+    echo "== Jetbrains Mono ======"
+    SOURCE_DIR="/stuff/system/fonts/JetBrainsMono/ttf"
+    DEST_DIR="/stuff/system/sync/fonts/active"
+    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+        cd "$SOURCE_DIR"
+        git pull --all
+        while read -r FONT; do
+            echo "Copied font: $FONT"
+            cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
+        done <<< "$FONTS_JETBRAINS"
+    else
+        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+    fi
+
+    # Update from the repo
     echo "== Overpass ======"
     SOURCE_DIR="/stuff/system/fonts/Overpass/desktop-fonts/overpass"
     DEST_DIR="/stuff/system/sync/fonts/active"
@@ -140,6 +164,9 @@ else
             FONT_FILE=$(basename "${SOURCE_DIR}/${FONT}")
             install_font "$SOURCE_DIR/$FONT_FILE" "$DEST_DIR/$FONT_FILE"
         done <<< "$FONTS_CODING"
+        while read -r FONT; do
+            install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
+        done <<< "$FONTS_JETBRAINS"
         while read -r FONT; do
             install_font "$SOURCE_DIR/$FONT" "$DEST_DIR/$FONT"
         done <<< "$FONTS_FUTURA"
