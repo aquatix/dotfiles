@@ -165,19 +165,20 @@ let g:fzf_colors =
 " https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
-" Alternative, not enabled for the moment, as it also searches part of the
-" file name
+" Search contents of files with ripgrep
+" https://sidneyliebrand.io/blog/how-fzf-and-ripgrep-improved-my-workflow
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
 
 " Files command with preview window
 command! -bang -nargs=? -complete=dir FilesPreview
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+" Mapping the above functions to more easily accessible hotkeys.
 " Simply type ; to search through buffers, leader-o to search through file
 " names, leader-O to search through file names, showing a preview window,
 " \t for tags, \c for (Git) commits and \f to search through contents of files
@@ -186,8 +187,10 @@ nmap <Leader>o :Files<CR>
 nmap <Leader>O :FilesPreview<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>c :Commits<CR>
-nmap <Leader>f :Find<CR>
+" nmap <Leader>f :Find<CR>
+nmap <Leader>f :Rg<CR>
 nmap <Leader>l :Lines<CR>
+" nmap <Leader>g :Rg<CR>
 
 nnoremap <silent> [f :lprevious<CR>
 nnoremap <silent> ]f :lnext<CR>
