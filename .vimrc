@@ -408,7 +408,7 @@ let g:preview_markdown_vertical = 1
 
 " Navigate through and from markdown files
 "Plug 'chmp/mdnav'
-Plug 'aquatix/mdnav', { 'branch': 'python3' }
+Plug 'aquatix/mdnav', { 'branch': 'fixes' }
 
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
