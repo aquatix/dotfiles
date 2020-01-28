@@ -406,6 +406,10 @@ let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=do
 Plug 'skanehira/preview-markdown.vim'
 let g:preview_markdown_vertical = 1
 
+" Navigate through and from markdown files
+"Plug 'chmp/mdnav'
+Plug 'aquatix/mdnav', { 'branch': 'python3' }
+
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
