@@ -397,6 +397,7 @@ let g:vim_markdown_folding_disabled = 1
 set nofoldenable
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_new_list_item_indent = 2
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " Use filetype name as fenced code block languages for syntax highlighting
