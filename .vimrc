@@ -410,6 +410,8 @@ let g:preview_markdown_vertical = 1
 " Navigate through and from markdown files
 "Plug 'chmp/mdnav'
 Plug 'aquatix/mdnav', { 'branch': 'fixes' }
+" Only open these local files in vim, use pyfile for all others:
+let g:mdnav#Extensions = 'md, MD, markdown, todo, txt, rst'
 
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
