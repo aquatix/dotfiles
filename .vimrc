@@ -498,6 +498,14 @@ set listchars=tab:▸\ ,trail:·
 " Display whitespace
 set list
 
+" Trim trailing whitespace with :TrimWhitespace
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+command! TrimWhitespace call TrimWhitespace()
+
 " enable words completion
 set dictionary+=/usr/share/dict/words
 " use ctrl-n ctrl-n instead of ctrl-x ctrl-k
