@@ -421,6 +421,14 @@ let wiki_1.path = '~/phren/'
 let wiki_1.syntax = 'markdown'
 let wiki_1.ext = '.md'
 
+" vimwiki-markdown
+let wiki_1.template_path = '~/phren/templates/'
+let wiki_1.template_default = 'default'
+let wiki_1.path_html = '~/phren/site_html/'
+let wiki_1.custom_wiki2html = 'vimwiki_markdown'
+let wiki_1.template_ext = '.tpl'
+let $VIMWIKI_MARKDOWN_EXTENSIONS = 'wikilinks'
+
 let g:vimwiki_list = [wiki_1]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 " Do not use vimwiki magic on non-wiki (markdown) files
