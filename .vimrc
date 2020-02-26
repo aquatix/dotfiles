@@ -438,6 +438,12 @@ let g:vimwiki_global_ext = 0
 nmap <leader>wb :VimwikiBacklinks <CR>
 
 
+" notational velocity with fzf: quickly search and open notes
+Plug 'https://github.com/alok/notational-fzf-vim'
+let g:nv_search_paths = ['~/phren', '~/mydocs']
+nmap <leader>n :NV <CR>
+
+
 " The NERD Commenter: A plugin that allows for easy commenting of code for
 " many filetypes.
 Plug 'preservim/nerdcommenter'
