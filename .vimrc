@@ -440,7 +440,9 @@ nmap <leader>wb :VimwikiBacklinks <CR>
 
 " notational velocity with fzf: quickly search and open notes
 Plug 'https://github.com/alok/notational-fzf-vim'
-let g:nv_search_paths = ['~/phren', '~/mydocs']
+let g:nv_search_paths = ['~/phren', '~/mydocs', '~/.dot/caplog']
+let g:nv_ignore_pattern = ['*.xml', '*.svg']
+" Quickly open the search with this shortcut
 nmap <leader>n :NV <CR>
 
 
