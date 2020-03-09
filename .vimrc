@@ -415,7 +415,7 @@ let g:mdnav#Extensions = '.md, .MD, .markdown, .todo, .txt, .rst'
 
 
 " vimwiki
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+"Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 let wiki_1 = {}
 let wiki_1.path = '~/phren/'
 let wiki_1.syntax = 'markdown'
