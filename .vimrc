@@ -440,12 +440,14 @@ let g:vimwiki_markdown_link_ext = 1
 nmap <leader>wb :VimwikiBacklinks <CR>
 
 
-" notational velocity with fzf: quickly search and open notes
-Plug 'https://github.com/alok/notational-fzf-vim'
-let g:nv_search_paths = ['~/phren', '~/mydocs', '~/.dot/caplog']
-let g:nv_ignore_pattern = ['*.xml', '*.svg']
-" Quickly open the search with this shortcut
-nmap <leader>n :NV <CR>
+if $USER != 'root'
+    " notational velocity with fzf: quickly search and open notes
+    Plug 'https://github.com/alok/notational-fzf-vim'
+    let g:nv_search_paths = ['~/phren', '~/mydocs', '~/.dot/caplog']
+    let g:nv_ignore_pattern = ['*.xml', '*.svg']
+    " Quickly open the search with this shortcut
+    nmap <leader>n :NV <CR>
+endif
 
 
 " The NERD Commenter: A plugin that allows for easy commenting of code for
