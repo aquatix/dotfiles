@@ -10,9 +10,6 @@ if not functions -q fisher
     fish -c fisher
 end
 
-# Virtualenv support with virtualfish
-eval (python3 -m virtualfish compat_aliases)
-
 # Theme options for bobthefish
 set -g theme_nerd_fonts yes
 set -g theme_show_exit_status yes
