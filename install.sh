@@ -87,7 +87,7 @@ DATETIME=$(date +%Y%m%d_%H%M)
 cd || exit
 
 # Symlink all the things
-for TARGET in .bash_aliases .bashrc bin .gitconfig .gitmodules .hgauthors.txt .hgignore .hgrc .ideavimrc .ignore .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
+for TARGET in .bash_aliases .bashrc bin .gitconfig .gitignore_global .gitmodules .hgauthors.txt .hgignore .hgrc .ideavimrc .ignore .screenrc .terminfo .tmux.conf .vim .vimrc install.sh
 do
     make_link $DIR $TARGET
 done
