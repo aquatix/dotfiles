@@ -63,3 +63,5 @@
 
 [url "git://bitbucket.org/"]
 	insteadOf = "bitbucket:"
+[pull]
+	rebase = false
