@@ -103,6 +103,8 @@ function rgl
 end
 
 ## Various
+alias ip 'ip -c'
+
 #alias tmux 'tmux -2'
 alias tmux_reload "tmux source-file ~/.tmux.conf"
 alias tmux_takeover "tmux detach -a"
