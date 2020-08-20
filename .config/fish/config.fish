@@ -98,6 +98,9 @@ function grepl
     grep --color=always -ir $argv | less -R
 end
 
+# Sometimes `bat` has the binary `batcat`, like on Debian or Ubuntu
+alias bat (command -v batcat || echo bat)
+
 function rgl
     rg -p $argv | less -RFX
 end

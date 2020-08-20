@@ -22,6 +22,11 @@ alias lll='ls --color=always -alF | less -R'
 # append history instead of overwriting:
 shopt -s histappend
 
+if command -v batcat &> /dev/null; then
+    # Sometimes `bat` has the binary `batcat`, like on Debian or Ubuntu
+    alias bat='batcat'
+fi
+
 alias findphp='find . -name "*.php" | xargs grep --color=auto'
 alias findjs='find . -name "*.js" | xargs grep --color=auto'
 alias findcss='find . -name "*.css" | xargs grep --color=auto'
