@@ -201,9 +201,8 @@ nnoremap <silent> ]f :lnext<CR>
 " https://github.com/ryanoasis/nerd-fonts
 Plug 'ryanoasis/vim-devicons'
 " Set guifont when using gvim:
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+set guifont=Hack\ Nerd\ Font\ Mono\ 10
 
-"
 " undotree.vim : Display your undo history in a graph.
 Plug 'mbbill/undotree'
 nnoremap <Leader>u :UndotreeToggle<CR>
@@ -572,7 +571,7 @@ set hidden
 set cryptmethod=blowfish2
 
 " Ensure 256 colour support if the terminal supports it
-if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
+if has("gui_running") || &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &term == "screen-256color" || &term == "screen" || &term == "tmux-256color-italic"
 
     set background=dark
     let g:enable_bold_font = 1
@@ -583,6 +582,9 @@ if &term == "xterm" || &term == "xterm-256color" || &term == "screen-bce" || &te
     " create a bar for airline
     set laststatus=2
     let g:airline_powerline_fonts = 1
+
+    " ensure black background in gvim
+    highlight Normal guibg=black
 endif
 
 " This is what sets vim to use 24-bit colors. It will also work for any version of neovim
