@@ -414,6 +414,16 @@ Plug 'aquatix/mdnav', { 'branch': 'fixes' }
 let g:mdnav#Extensions = '.md, .MD, .markdown, .todo, .txt, .rst'
 
 
+" wiki.vim
+Plug 'lervag/wiki.vim'
+" let g:wiki_root = '~/wiki'
+let g:wiki_root = '~/phren'
+let g:wiki_filetypes = ['md']
+let g:wiki_link_extension = '.md'
+let g:wiki_link_target_type = 'md'
+" let g:wiki_mappings_use_defaults = 1
+
+
 " vimwiki
 "Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 let wiki_1 = {}
