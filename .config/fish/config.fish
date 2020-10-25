@@ -55,6 +55,9 @@ set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx FZF_ALT_C_COMMAND "$FZF_DEFAULT_COMMAND"
 
+# Set HOSTNAME to the hostname of the device, without trailing domain name
+set -x HOSTNAME (hostname | string split -m1 '.')[1]
+
 # Aliases
 ## Listing
 alias ll 'ls -alF'
@@ -130,6 +133,24 @@ function rgvim
     set choice (rg -il $argv | fzf -0 -1 --ansi --preview "cat {} | rg $argv --context 3")
     if [ $choice ]
         vim "+/"(to_lower $argv) $choice
+    end
+end
+
+function imready
+    # Get return status and run time of last command, to be used with long-running jobs
+    # e.g.: longrunning.sh; imready
+    set laststatus $status
+    if test $status = 0
+        set result "success"
+    else
+        set result "failed with result $laststatus"
+    end
+    set duration (echo "$CMD_DURATION 1000" | awk '{printf "%.3fs", $1 / $2}')
+    set resulttext "Result of command: $result (took: $duration)"
+
+    # Send a push message with summary
+    if test -f "$HOME/workspace/projects/others/pushover.sh/pushover.sh"
+        $HOME/workspace/projects/others/pushover.sh/pushover.sh -t "[$HOSTNAME] command finished" "$resulttext"
     end
 end
 
