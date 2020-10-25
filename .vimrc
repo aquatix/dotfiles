@@ -422,32 +422,16 @@ let g:wiki_filetypes = ['md']
 let g:wiki_link_extension = '.md'
 let g:wiki_link_target_type = 'md'
 " let g:wiki_mappings_use_defaults = 1
-
-
-" vimwiki
-"Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-let wiki_1 = {}
-let wiki_1.path = '~/phren/'
-let wiki_1.syntax = 'markdown'
-let wiki_1.ext = '.md'
-
-" vimwiki-markdown
-let wiki_1.template_path = '~/phren/templates/'
-let wiki_1.template_default = 'default'
-let wiki_1.path_html = '~/phren/site_html/'
-let wiki_1.custom_wiki2html = 'vimwiki_markdown'
-let wiki_1.template_ext = '.tpl'
-let $VIMWIKI_MARKDOWN_EXTENSIONS = 'wikilinks'
-
-let g:vimwiki_list = [wiki_1]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-" Do not use vimwiki magic on non-wiki (markdown) files
-let g:vimwiki_global_ext = 0
-" Be smarter with file extensions
-let g:vimwiki_markdown_link_ext = 1
-
-" Quick way of opening a window with backlinks to the current document
-nmap <leader>wb :VimwikiBacklinks <CR>
+"support for #tag style tags instead of :tag:
+let g:wiki_tags_format_pattern = '\v%(^|\s)#\zs[^# ]+'
+" number of lines from the top to scan for tags
+let g:wiki_tags_scan_num_lines = 500
+" search through the tags in the wiki
+nmap <leader>wf :WikiFzfTags <CR>
+" find backlinks to this document
+nmap <leader>wb :WikiGraphFindBacklinks <CR>
+" find in ToC/structure of the (markdown) file
+nmap <leader>ft :WikiFzfToc <CR>
 
 
 if $USER != 'root'
