@@ -13,6 +13,10 @@ cd dotfiles    # this takes you to the freshly cloned ~/.dot/dotfiles
 sh install.sh  # follow the instructions and install the files in the homedir
 ```
 
+Extra's:
+
+[virtualfish](https://virtualfish.readthedocs.io/en/latest/install.html) for virtualenv(wrapper) integration in `fish` shell.
+
 
 ## Dependency on `fzf` and ripgrep `rg`
 
