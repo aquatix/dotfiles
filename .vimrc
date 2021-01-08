@@ -312,7 +312,13 @@ if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not 
     " sudo apt-get install python-dev
     " cd ~/.vim/bundle/YouCompleteMe
     " ./install.py  # For C-style languages: ./install.py --clang-completer
-    Plug 'ycm-core/YouCompleteMe'
+    if has('patch-8.1.2269')
+        " Latest YCM needs at least this version of vim
+        Plug 'ycm-core/YouCompleteMe'
+    else
+        " Version compatible with the vim in Debian 10 buster
+        Plug 'ycm-core/YouCompleteMe', { 'commit':'d98f896' }
+    endif
     " YouCompleteMe interpreter version (should be the same as what YCM was
     " compiled with):
     if filereadable('/data/data/com.termux/files/usr/bin/python3')
