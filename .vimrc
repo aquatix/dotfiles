@@ -185,7 +185,10 @@ command! -bang -nargs=? -complete=dir FilesPreview
 " \t for tags, \c for (Git) commits and \f to search through contents of files
 nmap ; :Buffers<CR>
 nmap <Leader>o :Files<CR>
-nmap <Leader>O :FilesPreview<CR>
+"nmap <Leader>O :FilesPreview<CR>
+" Git files, takes .gitignore into account
+nmap <Leader>O :GFiles<CR>
+nmap <Leader>b :Buffers<CR>
 nmap <Leader>t :Tags<CR>
 nmap <Leader>c :Commits<CR>
 " nmap <Leader>f :Find<CR>
