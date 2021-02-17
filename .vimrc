@@ -320,7 +320,8 @@ if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not 
         Plug 'ycm-core/YouCompleteMe'
     else
         " Version compatible with the vim in Debian 10 buster
-        Plug 'ycm-core/YouCompleteMe', { 'commit':'d98f896' }
+        " Plug 'ycm-core/YouCompleteMe', { 'commit':'d98f896' }
+        Plug 'ycm-core/YouCompleteMe', { 'branch':'legacy-vim' }
     endif
     " YouCompleteMe interpreter version (should be the same as what YCM was
     " compiled with):
