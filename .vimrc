@@ -374,6 +374,9 @@ endif
 " Improved Django handling
 Plug 'tweekmonster/django-plus.vim'
 
+" requirements.txt highlighter
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+
 
 " Code checker. For python, install flake8 or pylint, preferably in the
 " virtualenv. For Django support, install pylint-django
