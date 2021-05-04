@@ -285,6 +285,8 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 "let g:indentLine_setConceal = 0
 let g:indentLine_conceallevel = 1
+" Do not conceal LaTeX symbols
+let g:tex_conceal=""
 
 " Colour-match brackets
 Plug 'luochen1990/rainbow'

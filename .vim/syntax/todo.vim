@@ -2,6 +2,11 @@ if exists("b:current_syntax")
     finish
 endif
 
+runtime! syntax/html.vim
+unlet! b:current_syntax
+
+"runtime! syntax/markdown.vim
+"unlet! b:current_syntax
 
 " Keywords that we want to emphasize
 "syntax keyword todoKeyword todo done important
@@ -85,6 +90,19 @@ highlight todoTitledItem ctermfg=172 guifg=#d78700
 syntax match todoItem '[a-zA-Z0-9\-_]\+:' contained
 highlight todoItem ctermfg=Blue guifg=#87d7ff
 
+
+syn region markdownIdDeclaration matchgroup=markdownLinkDelimiter start="^ \{0,3\}!\=\[" end="\]:" oneline keepend nextgroup=markdownUrl skipwhite
+syn match markdownUrl "\S\+" nextgroup=markdownUrlTitle skipwhite contained
+syn region markdownUrl matchgroup=markdownUrlDelimiter start="<" end=">" oneline keepend nextgroup=markdownUrlTitle skipwhite contained
+syn region markdownUrlTitle matchgroup=markdownUrlTitleDelimiter start=+"+ end=+"+ keepend contained
+syn region markdownUrlTitle matchgroup=markdownUrlTitleDelimiter start=+'+ end=+'+ keepend contained
+syn region markdownUrlTitle matchgroup=markdownUrlTitleDelimiter start=+(+ end=+)+ keepend contained
+
+syn region markdownLinkText matchgroup=markdownLinkTextDelimiter start="!\=\[\%(\_[^]]*]\%( \=[[(]\)\)\@=" end="\]\%( \=[[(]\)\@=" nextgroup=markdownLink,markdownId skipwhite contains=@markdownInline,markdownLineStart
+syn region markdownLink matchgroup=markdownLinkDelimiter start="(" end=")" contains=markdownUrl keepend contained
+syn region markdownId matchgroup=markdownIdDelimiter start="\[" end="\]" keepend contained
+syn region markdownAutomaticLink matchgroup=markdownUrlDelimiter start="<\%(\w\+:\|[[:alnum:]_+-]\+@\)\@=" end=">" keepend oneline
+
 highlight link todoStatusDone PreProc
 highlight link todoStatusDoing PreProc
 highlight link todoStatusCancelled PreProc
@@ -93,6 +111,18 @@ highlight link todoStatusTodo PreProc
 highlight link todoStatusImportant PreProc
 highlight link todoStatusQuestion PreProc
 
+hi def link markdownLinkText              htmlLink
+hi def link markdownIdDeclaration         Typedef
+hi def link markdownId                    Type
+hi def link markdownAutomaticLink         markdownUrl
+hi def link markdownUrl                   Float
+hi def link markdownUrlTitle              String
+hi def link markdownIdDelimiter           markdownLinkDelimiter
+hi def link markdownUrlDelimiter          htmlTag
+hi def link markdownUrlTitleDelimiter     Delimiter
+
+" runtime! syntax/markdown.vim
+" unlet! b:current_syntax
 
 " Syntax highlighting scheme name
 let b:current_syntax = "todo"
