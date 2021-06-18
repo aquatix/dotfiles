@@ -1,0 +1,15 @@
+directory: /stuff/music/beets
+library: /stuff/music/musiclibrary.db
+
+plugins: discogs duplicates importadded the
+
+importadded:
+  preserve_mtimes: yes
+  preserve_write_mtimes: yes
+
+paths:
+  # default: $albumartist/$year - $album/$track $artist - $title
+  default: %the{$albumartist}/$year - $album/$track $artist - $title
+  singleton: Singletons/$artist - $title
+  comp: $genre/$album/$track $title
+  albumtype:soundtrack: Soundtracks/$album/$track $title
