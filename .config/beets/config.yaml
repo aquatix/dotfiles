@@ -1,14 +1,37 @@
 directory: /stuff/beets/music
 library: /stuff/beets/musiclibrary.db
 
+art_filename: cover
+asciify_paths: yes
+per_disc_numbering: yes
+threaded: yes
+
 paths:
   # default: $albumartist/$year - $album/$track $artist - $title
-  default: %the{$albumartist}/$year - $album/$track $artist - $title
+  default: %the{$albumartist}/$year - $album%aunique{}/$track $artist - $title
   singleton: Singletons/$artist - $title
-  comp: $genre/$album/$track $title
-  albumtype:soundtrack: Soundtracks/$album/$track $artist - $title
+  comp: Compilations/$album%aunique{}/$track $artist - $title
+  albumtype:soundtrack: Soundtracks/$album%aunique{}/$track $artist - $title
 
-plugins: discogs duplicates fetchart importadded the
+import:
+  write: yes
+  copy: yes
+  move: no
+  resume: ask
+  incremental: yes
+  log: beetslog.log
+
+ignore: .AppleDouble ._* *~ .DS_Store
+
+plugins: [
+  discogs,
+  duplicates,
+  embedart,
+  fetchart,
+  ftintitle,
+  importadded,
+  the,
+]
 
 discogs:
   # pip install discogs-client
@@ -18,6 +41,10 @@ discogs:
 fetchart:
   # pip install requests
   cautious: true
+
+ftintitle:
+  auto: yes
+  format: (feat. {0})
 
 importadded:
   preserve_mtimes: yes
