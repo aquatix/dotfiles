@@ -8,17 +8,17 @@ threaded: yes
 
 paths:
   # default: $albumartist/$year - $album/$track $artist - $title
-  default: %the{$albumartist}/$year - $album%aunique{}/$track $artist - $title
+  default: %the{$albumartist}/$year - $album%aunique{}/%if{$multidisc,$disc-}$track $artist - $title
   singleton: Singletons/$artist - $title
-  comp: Compilations/$album%aunique{}/$track $artist - $title
-  albumtype:soundtrack: Soundtracks/$album%aunique{}/$track $artist - $title
+  comp: Compilations/$album%aunique{}/%if{$multidisc,$disc-}$track $artist - $title
+  albumtype:soundtrack: Soundtracks/$album%aunique{}/%if{$multidisc,$disc-}$track $artist - $title
 
 import:
   write: yes
   copy: yes
   move: no
   resume: ask
-  incremental: yes
+  #incremental: yes
   log: beetslog.log
 
 ignore: .AppleDouble ._* *~ .DS_Store
@@ -30,6 +30,7 @@ plugins: [
   fetchart,
   ftintitle,
   importadded,
+  inline,
   the,
 ]
 
@@ -49,3 +50,6 @@ ftintitle:
 importadded:
   preserve_mtimes: yes
   preserve_write_mtimes: yes
+
+item_fields:
+  multidisc: 1 if disctotal > 1 else 0
