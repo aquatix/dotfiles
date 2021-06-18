@@ -9,7 +9,8 @@ threaded: yes
 paths:
   # default: $albumartist/$year - $album/$track $artist - $title
   default: %the{$albumartist}/$year - $album%aunique{}/%if{$multidisc,$disc-}$track $artist - $title
-  singleton: Singletons/$artist - $title
+  #singleton: Singletons/$artist - $title
+  singleton: %the{$albumartist}/single - $artist - $title/$artist - $title
   comp: Compilations/$album%aunique{}/%if{$multidisc,$disc-}$track $artist - $title
   albumtype:soundtrack: Soundtracks/$album%aunique{}/%if{$multidisc,$disc-}$track $artist - $title
 
