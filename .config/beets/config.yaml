@@ -1,7 +1,8 @@
-directory: /stuff/music/beets
-library: /stuff/music/musiclibrary.db
+directory: /stuff/beets/music
+library: /stuff/beets/musiclibrary.db
 
 plugins: discogs duplicates importadded the
+# pip install discogs-client
 
 importadded:
   preserve_mtimes: yes
@@ -12,4 +13,4 @@ paths:
   default: %the{$albumartist}/$year - $album/$track $artist - $title
   singleton: Singletons/$artist - $title
   comp: $genre/$album/$track $title
-  albumtype:soundtrack: Soundtracks/$album/$track $title
+  albumtype:soundtrack: Soundtracks/$album/$track $artist - $title
