@@ -30,7 +30,7 @@ install_fish()
     mkdir -p "${HOME}/.config/fish/completions"
     curl -sL get.fisherman.sh | fish
     ln -s "${HOME}/.dot/dotfiles/.config/fish/config.fish" "${HOME}/.config/fish/"
-    ln -s "${HOME}/.dot/dotfiles/.config/fish/fishfile" "${HOME}/.config/fish/"
+    ln -s "${HOME}/.dot/dotfiles/.config/fish/fish_plugins" "${HOME}/.config/fish/"
     ln -s "${HOME}/.dot/dotfiles/.config/fish/completions/terrible_job.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/git-flow-completion/git.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/mux.fish" "${HOME}/.config/fish/completions"
