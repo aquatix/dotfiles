@@ -31,14 +31,13 @@ install_fish()
     curl -sL get.fisherman.sh | fish
     ln -s "${HOME}/.dot/dotfiles/.config/fish/config.fish" "${HOME}/.config/fish/"
     ln -s "${HOME}/.dot/dotfiles/.config/fish/fish_plugins" "${HOME}/.config/fish/"
-    ln -s "${HOME}/.dot/dotfiles/.config/fish/completions/terrible_job.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/git-flow-completion/git.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/mux.fish" "${HOME}/.config/fish/completions"
     ln -s "${HOME}/workspace/application_addons/cli/tmuxinator/completion/tmuxinator.fish" "${HOME}/.config/fish/completions"
     echo
     echo "You might want to install Fisher:"
-    echo "curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish"
-    echo "And some plugins: fisher"
+    echo "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+    echo "fisher update"
     echo
 }
 
