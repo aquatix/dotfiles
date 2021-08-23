@@ -1,5 +1,6 @@
 # Vim
 .vim/bundle
+*.spl
 *.swp
 *.swo
 
