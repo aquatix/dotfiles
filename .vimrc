@@ -461,7 +461,7 @@ nmap <leader>ft :WikiFzfToc <CR>
 if $USER != 'root'
     " notational velocity with fzf: quickly search and open notes
     Plug 'https://github.com/alok/notational-fzf-vim'
-    let g:nv_search_paths = ['~/phren', '~/mydocs', '~/.dot/caplog']
+    let g:nv_search_paths = ['~/phren', '~/mydocs', '~/.dot/caplog', '~/divaultphren']
     let g:nv_ignore_pattern = ['*.xml', '*.svg']
     " Quickly open the search with this shortcut
     nmap <leader>n :NV <CR>
