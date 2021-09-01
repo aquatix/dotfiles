@@ -448,6 +448,12 @@ let g:wiki_link_target_type = 'md'
 " let g:wiki_mappings_use_defaults = 1
 "support for #tag style tags instead of :tag:
 let g:wiki_tags_format_pattern = '\v%(^|\s)#\zs[^# ]+'
+" parse tags in lines that match "tags: keyword1, keyword2" in addition to the default parser:
+let g:wiki_tags_parsers = [
+            \ g:wiki#tags#default_parser,
+            \ { 'match': {x -> x =~# '^tags: '},
+            \ 'parse': {x -> split(matchstr(x, '^tags:\zs.*'), '[ ,]\+')}}
+            \ ]
 " number of lines from the top to scan for tags
 let g:wiki_tags_scan_num_lines = 500
 " search through the tags in the wiki
