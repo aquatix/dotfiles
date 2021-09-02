@@ -440,28 +440,7 @@ let g:mdnav#Extensions = '.md, .MD, .markdown, .todo, .txt, .rst'
 
 " wiki.vim
 Plug 'lervag/wiki.vim'
-" let g:wiki_root = '~/wiki'
-let g:wiki_root = '~/phren'
-let g:wiki_filetypes = ['md']
-let g:wiki_link_extension = '.md'
-let g:wiki_link_target_type = 'md'
-" let g:wiki_mappings_use_defaults = 1
-"support for #tag style tags instead of :tag:
-let g:wiki_tags_format_pattern = '\v%(^|\s)#\zs[^# ]+'
-" parse tags in lines that match "tags: keyword1, keyword2" in addition to the default parser:
-let g:wiki_tags_parsers = [
-            \ g:wiki#tags#default_parser,
-            \ { 'match': {x -> x =~# '^tags: '},
-            \ 'parse': {x -> split(matchstr(x, '^tags:\zs.*'), '[ ,]\+')}}
-            \ ]
-" number of lines from the top to scan for tags
-let g:wiki_tags_scan_num_lines = 500
-" search through the tags in the wiki
-nmap <leader>wf :WikiFzfTags <CR>
-" find backlinks to this document
-nmap <leader>wb :WikiGraphFindBacklinks <CR>
-" find in ToC/structure of the (markdown) file
-nmap <leader>ft :WikiFzfToc <CR>
+" Config below, after plug#end()
 
 
 if $USER != 'root'
@@ -539,6 +518,37 @@ nmap <leader>V :Goyo <bar> :Limelight!! <bar> :TogglePencil <CR>
 
 " All of the plugins must be added before the following line
 call plug#end()
+
+
+" wiki.vim config
+let g:wiki_root = '~/phren'
+let g:wiki_filetypes = ['md']
+let g:wiki_link_extension = '.md'
+let g:wiki_link_target_type = 'md'
+" let g:wiki_mappings_use_defaults = 1
+"support for #tag style tags instead of :tag: (hashes instead of colons)
+runtime autoload/wiki/tags.vim
+let s:tag_parser = deepcopy(g:wiki#tags#default_parser)
+let s:tag_parser.re_match = '\v%(^|\s)#\zs[^# ]+'
+let s:tag_parser.re_findstart = '\v%(^|\s)#\zs[^# ]+'
+
+"let g:wiki_tags_format_pattern = '\v%(^|\s)#\zs[^# ]+'
+" parse tags in lines that match "tags: keyword1, keyword2" in addition to the default parser:
+let g:wiki_tag_parsers = [
+            \ s:tag_parser,
+            \ {'match': {x -> x =~# '^tags: '},
+            \  'parse': {x -> split(matchstr(x, '^tags:\zs.*'), '[ ,]\+')}}
+            \ ]
+" number of lines from the top to scan for tags
+let g:wiki_tag_scan_num_lines = 500
+" search through the tags in the wiki
+nmap <leader>wf :WikiFzfTags <CR>
+" find backlinks to this document
+nmap <leader>wb :WikiGraphFindBacklinks <CR>
+" find in ToC/structure of the (markdown) file
+nmap <leader>ft :WikiFzfToc <CR>
+
+
 " == End of plugins ============================================================
 
 
