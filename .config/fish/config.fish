@@ -27,6 +27,11 @@ set -U grcplugin_ls --color
 if test -x ~/.local/bin
     set PATH $PATH ~/.local/bin
 end
+# Local Rust apps installed through cargo
+if test -x ~/.cargo/bin
+    set PATH $PATH ~/.cargo/bin
+end
+# Scripts from my dotfiles repo
 if test -x ~/.dot/dotfiles/bin
     set PATH $PATH ~/.dot/dotfiles/bin
 end
