@@ -4,4 +4,4 @@ git pull
 cd ~/divaultphren
 git pull
 #vim -c ":vsp planning_2015.todo" notes_2015.md notes_2014.md
-vim -c "set nofoldenable" ~/mydocs/work/divault/planning_2021.todo ~/divaultphren/index.md
+vim -c "set nofoldenable" ~/mydocs/work/divault/planning_2022.todo ~/divaultphren/index.md
