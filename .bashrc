@@ -177,6 +177,7 @@ if [ -e ~/.ssh/config.d ]; then
             [ -e ~/.ssh/config ] && mv ~/.ssh/config ~/.ssh/config.bak.$(date -Is)
             # Lets preserve order, so you can have  00_generic 10_homestuff 20_work1 21_work2  and such
             find ~/.ssh/config.d/* -type f -print0 | sort -z | xargs -0 -n1 cat > ~/.ssh/config
+            chmod 600 ~/.ssh/config
         fi
     fi
 fi
