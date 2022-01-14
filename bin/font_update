@@ -29,22 +29,24 @@ Futura-Std-Bold-Oblique_19041.ttf
 Futura-Std-Book_19044.ttf
 Futura-Std-Book-Oblique_19043.ttf'
 
-FONTS_OVERPASS=$'overpass-bold-italic.otf
-overpass-bold.otf
-overpass-extrabold-italic.otf
-overpass-extrabold.otf
-overpass-extralight-italic.otf
-overpass-extralight.otf
-overpass-heavy-italic.otf
-overpass-heavy.otf
-overpass-italic.otf
-overpass-light-italic.otf
-overpass-light.otf
-overpass-regular.otf
-overpass-semibold-italic.otf
-overpass-semibold.otf
-overpass-thin-italic.otf
-overpass-thin.otf'
+FONTS_OVERPASS=$'Overpass-BlackItalic.ttf
+Overpass-Black.ttf
+Overpass-BoldItalic.ttf
+Overpass-Bold.ttf
+Overpass-ExtraBoldItalic.ttf
+Overpass-ExtraBold.ttf
+Overpass-ExtraLightItalic.ttf
+Overpass-ExtraLight.ttf
+Overpass-Italic.ttf
+Overpass-LightItalic.ttf
+Overpass-Light.ttf
+Overpass-MediumItalic.ttf
+Overpass-Medium.ttf
+Overpass-Regular.ttf
+Overpass-SemiBoldItalic.ttf
+Overpass-SemiBold.ttf
+Overpass-ThinItalic.ttf
+Overpass-Thin.ttf'
 
 FONTS_JETBRAINS=$'JetBrainsMono-Bold-Italic.ttf
 JetBrainsMono-Bold.ttf
@@ -88,7 +90,23 @@ Knack RegularOblique Plus Nerd File Types Plus Font Awesome Plus Octicons Plus P
 Knack Bold Nerd Font Complete Mono.ttf
 Knack Regular Nerd Font Complete Mono.ttf
 Knack Bold Italic Nerd Font Complete Mono.ttf
-Knack Italic Nerd Font Complete Mono.ttf'
+Knack Italic Nerd Font Complete Mono.ttf
+overpass-bold-italic.otf
+overpass-bold.otf
+overpass-extrabold-italic.otf
+overpass-extrabold.otf
+overpass-extralight-italic.otf
+overpass-extralight.otf
+overpass-heavy-italic.otf
+overpass-heavy.otf
+overpass-italic.otf
+overpass-light-italic.otf
+overpass-light.otf
+overpass-regular.otf
+overpass-semibold-italic.otf
+overpass-semibold.otf
+overpass-thin-italic.otf
+overpass-thin.otf'
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
@@ -108,7 +126,7 @@ if [ -e ~/.dot_is_server ]; then
 
     # Update from the repo
     echo "== Jetbrains Mono ======"
-    SOURCE_DIR="/stuff/system/fonts/JetBrainsMono/ttf"
+    SOURCE_DIR="/stuff/system/fonts/JetBrainsMono/fonts/ttf"
     DEST_DIR="/stuff/system/sync/fonts/active"
     if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
         cd "$SOURCE_DIR"
@@ -123,7 +141,7 @@ if [ -e ~/.dot_is_server ]; then
 
     # Update from the repo
     echo "== Overpass ======"
-    SOURCE_DIR="/stuff/system/fonts/Overpass/desktop-fonts/overpass"
+    SOURCE_DIR="/stuff/system/fonts/Overpass/fonts/ttf"
     DEST_DIR="/stuff/system/sync/fonts/active"
     if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
         cd "$SOURCE_DIR"
