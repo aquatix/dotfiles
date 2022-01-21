@@ -69,6 +69,9 @@ alias la 'ls -A'
 alias l 'ls -CF'
 alias lll 'ls --color=always -alF | less -R'
 
+alias exa 'exa --icons --header --group-directories-first'
+alias exatree 'exa --icons --header --group-directories-first --long --tree'
+
 ## Git
 alias gu "git pull --all"
 alias gp "git push; git push --tags"
