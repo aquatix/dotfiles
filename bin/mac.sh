@@ -14,8 +14,20 @@ ouilocation="${HOME}/.dot/oui.txt"
 #################
 
 if [ ! -f "${ouilocation}" ] ; then
-	echo 'OUI location can not be found. Have you updated the config?' 1>&2
-	exit 1
+	echo "OUI location can not be found at ${ouilocation}. Have you updated the config?" 1>&2
+	read -p "Do you want to download it now [y/N]? " -n 1 -r
+	echo    # (optional) move to a new line
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		wget https://standards-oui.ieee.org/oui/oui.txt -O "${ouilocation}"
+	else
+		echo "Aborted"
+		exit 1
+	fi
+fi
+
+if [[ $(find "${ouilocation}" -mtime +30 -print) ]]; then
+	echo "File ${ouilocation} is older than 30 days"
 fi
 
 if [ -z "${1}" ] ; then
