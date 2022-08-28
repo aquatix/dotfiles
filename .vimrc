@@ -486,7 +486,10 @@ au BufNewFile,BufRead *.j2,*.jinja2 set ft=jinja
 Plug 'ludovicchabant/vim-gutentags'
 " know when Gutentags is generating tags (prints 'TAGS' in status-line)
 set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", "tmp", "vendor", "*.vim/bundle/*", "*.vim/plugged/*"]
+let g:gutentags_ctags_exclude = ["*.min.*", "build", ".bundle", ".git", "log", "node_modules", ".obsidian/*", "tmp", "vendor", "*.vim/bundle/*", "*.vim/plugged/*"]
+" use ripgrep to create list of files to index, which should help with
+" ignoring non-versioned files, for example with .gitignore
+let g:gutentags_file_list_command = 'rg --files'
 "let g:gutentags_trace = 1
 
 
