@@ -65,3 +65,9 @@
 	insteadOf = "bitbucket:"
 [pull]
 	rebase = false
+[safe]
+	directory = /storage/emulated/0/Git/phren
+	directory = /storage/emulated/0/Git/divaultphren
+	directory = /storage/emulated/0/Git/mydocs
+	directory = /data/data/com.termux/files/home/.dot/dotfiles/
+	directory = /storage/emulated/0/Git/dammit.nl
