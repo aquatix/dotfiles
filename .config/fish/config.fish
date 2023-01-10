@@ -92,9 +92,9 @@ alias ffnightly 'env MOZ_USE_XINPUT2=1 /usr/local/bin/firefoxnightly/firefox'
 
 ## SSH, for compatibility, as our terminfo now is non-standard 'tmux-256color-italic' in tmux
 #alias ssh 'env TERM=xterm-256color ssh'
-function ssh
-    env TERM=screen-256color ssh $argv
-end
+#function ssh
+#    env TERM=screen-256color ssh $argv
+#end
 
 ## Grepping
 alias findfile 'find . | grep -v .svn | grep -v .hg | grep -v .git | grep'
