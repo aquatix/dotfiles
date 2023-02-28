@@ -48,12 +48,12 @@ Overpass-SemiBold.ttf
 Overpass-ThinItalic.ttf
 Overpass-Thin.ttf'
 
-FONTS_JETBRAINS=$'JetBrainsMono-Bold-Italic.ttf
+FONTS_JETBRAINS=$'JetBrainsMono-BoldItalic.ttf
 JetBrainsMono-Bold.ttf
-JetBrainsMono-ExtraBold-Italic.ttf
+JetBrainsMono-ExtraBoldItalic.ttf
 JetBrainsMono-ExtraBold.ttf
 JetBrainsMono-Italic.ttf
-JetBrainsMono-Medium-Italic.ttf
+JetBrainsMono-MediumItalic.ttf
 JetBrainsMono-Medium.ttf
 JetBrainsMono-Regular.ttf'
 
@@ -111,17 +111,21 @@ overpass-thin.otf'
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
     echo "== Nerd fonts ======"
+    PARENT_DIR="/stuff/system/fonts"
     SOURCE_DIR="/stuff/system/fonts/nerd-fonts/patched-fonts"
     DEST_DIR="/stuff/system/sync/fonts/active"
-    if [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+    #if [ -d "$PARENT_DIR" ] && [ -d "$SOURCE_DIR" ] && [ -d "$DEST_DIR" ]; then
+    if [ -d "$PARENT_DIR" ] && [ -d "$DEST_DIR" ]; then
+        cd "$PARENT_DIR"
+        # git pull --all
+        #git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git
         cd "$SOURCE_DIR"
-        git pull --all
         while read -r FONT; do
             echo "Copied font: $FONT"
             cp -a "$SOURCE_DIR/$FONT" "$DEST_DIR"
         done <<< "$FONTS_CODING"
     else
-        echo "$SOURCE_DIR or $DEST_DIR not found, aborting"
+        echo "$PARENT_DIR, $SOURCE_DIR or $DEST_DIR not found, aborting"
     fi
 
     # Update from the repo
