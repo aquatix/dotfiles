@@ -109,11 +109,6 @@ alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs 
 # 20140908 reload tmux config
 alias tmux_reload="tmux source-file ~/.tmux.conf"
 
-# project-oriented aliases
-alias dcpvag='workon dcp; cd ~/workspace/sanoma/content-library/; vagrant ssh'
-alias dcpsrc='cd ~/development/current/content-library/src/content_library/; . ~/development/env/bin/activate'
-alias dcpcelery='python manage.py celery worker -Q celery -l info'
-
 # update/install Calibre ebook manager
 alias updatecalibre='sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('"'"'Download failed\n'"'"'); exec(sys.stdin.read()); main()"'
 
@@ -125,6 +120,9 @@ alias checkdns='watch -n1 dig '
 alias weather='ansiweather'
 
 alias pypi_up='python setup.py register sdist --formats=zip upload'
+
+# Use midnight commander without mouse being annoying
+alias mc='mc -d'
 
 # if you're really annoyed with a runaway process
 function fuck() {
