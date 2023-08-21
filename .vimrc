@@ -396,12 +396,14 @@ nmap <leader>= <Plug>(ale_fix)
 " Quickly open the loclist to see syntax errors
 nmap <leader>; :lopen<CR>
 let g:ale_maximum_file_size = 500000  " Don't lint large files (> 500KB), it can slow things down
-let g:ale_fixers = {}
+"let g:ale_fixers = {}
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], }
 " Python specific settings
-let g:ale_fixers.python = ['isort']
+let g:ale_fixers.python = ['isort', 'ruff', 'black']
+" JS specific settings
 let g:ale_fixers.javascript = ['eslint', 'prettier']
 
-" See VIMHOME/after/ftplugin/python.vim for some pylint configuration, also checking whether a
+" See VIMHOME/after/ftplugin/python.vim for some linting configuration, also checking whether a
 " project uses Django
 
 " Show errors or warnings in the statusline

@@ -28,6 +28,7 @@ virtualenv_path = find_virtualenv(['virtualenv', 'venv'])  #vim.eval('ale_virtua
 if virtualenv_path:
     has_pylint_django = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/pylint_django'))
     has_pylint = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/pylint'))
+    has_ruff = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/ruff'))
     has_flake8 = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/flake8'))
     has_bandit = glob.glob(os.path.join(virtualenv_path, 'lib/*/site-packages/bandit'))
 else:
@@ -44,6 +45,12 @@ else:
         has_pylint = False
 
     try:
+        find_spec('ruff')
+        has_ruff = True
+    except ImportError:
+        has_ruff = False
+
+    try:
         find_spec('flake8')
         has_flake8 = True
     except ImportError:
@@ -58,6 +65,8 @@ else:
 linters = []
 if has_pylint:
     linters.append('pylint')
+if has_ruff:
+    linters.append('ruff')
 if has_flake8:
     linters.append('flake8')
 if has_bandit:
