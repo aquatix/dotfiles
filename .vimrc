@@ -4,7 +4,7 @@
 " wholesale is generally not a good idea; getting an idea to what things
 " actually mean and are used for is really recommended.
 
-set shell=/bin/bash
+set shell=bash
 
 set encoding=utf-8
 
