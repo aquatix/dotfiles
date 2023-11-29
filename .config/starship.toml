@@ -90,6 +90,7 @@ format = '[ $symbol ($version) ]($style)'
 [git_branch]
 symbol = ""
 style = "bg:#FCA17D"
+truncation_length = 30
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
@@ -147,7 +148,8 @@ format = '[ $symbol ($version) ]($style)'
 
 [cmd_duration]
 min_time = 2000
-format = ' $duration ($style)'
+#format = ' $duration ($style)'
+format = '[](fg:#444444)[$duration](bg:#444444)[](fg:#444444) ($style)'
 
 [time]
 disabled = false
