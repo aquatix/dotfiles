@@ -165,3 +165,6 @@ function jl
     # Pretty print the json file used as argument, and feed it in colour to less
     jq -C --indent 2 . $argv | less -R
 end
+
+# Initialise starship theme
+starship init fish | source
