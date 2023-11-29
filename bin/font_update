@@ -13,7 +13,7 @@ function install_font {
 
 IFS=$'\n'
 
-FONTS_CODING=$'Hack/Bold/complete/Hack Bold Nerd Font Complete Mono.ttf
+FONTS_CODING_OLD=$'Hack/Bold/complete/Hack Bold Nerd Font Complete Mono.ttf
 Hack/Regular/complete/Hack Regular Nerd Font Complete Mono.ttf
 Hack/BoldItalic/complete/Hack Bold Italic Nerd Font Complete Mono.ttf
 Hack/Italic/complete/Hack Italic Nerd Font Complete Mono.ttf
@@ -23,6 +23,21 @@ SourceCodePro/Bold/complete/Sauce Code Pro Bold Nerd Font Complete Mono.ttf
 SourceCodePro/Regular/complete/Sauce Code Pro Nerd Font Complete Mono.ttf
 SourceCodePro/Light/complete/Sauce Code Pro Light Nerd Font Complete Mono.ttf
 SourceCodePro/Light-Italic/complete/Sauce Code Pro Light Italic Nerd Font Complete Mono.ttf'
+
+FONTS_CODING=$'HackNerdFontMono-BoldItalic.ttf
+HackNerdFontMono-Bold.ttf
+HackNerdFontMono-Italic.ttf
+HackNerdFontMono-Regular.ttf
+FiraCodeNerdFontMono-Bold.ttf
+FiraCodeNerdFontMono-Light.ttf
+FiraCodeNerdFontMono-Medium.ttf
+FiraCodeNerdFontMono-Regular.ttf
+FiraCodeNerdFontMono-Retina.ttf
+FiraCodeNerdFontMono-SemiBold.ttf
+MonaspiceNeNerdFontMono-BoldItalic.otf
+MonaspiceNeNerdFontMono-Bold.otf
+MonaspiceNeNerdFontMono-Italic.otf
+MonaspiceNeNerdFontMono-Regular.otf'
 
 FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
 Futura-Std-Bold-Oblique_19041.ttf
@@ -106,7 +121,13 @@ overpass-regular.otf
 overpass-semibold-italic.otf
 overpass-semibold.otf
 overpass-thin-italic.otf
-overpass-thin.otf'
+overpass-thin.otf
+Fira Code Bold Nerd Font Complete Mono.ttf
+Fira Code Bold Nerd Font Complete Mono.ttf
+Hack Bold Nerd Font Complete Mono.ttf
+Hack Regular Nerd Font Complete Mono.ttf
+Hack Bold Italic Nerd Font Complete Mono.ttf
+Hack Italic Nerd Font Complete Mono.ttf'
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
