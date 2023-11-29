@@ -18,6 +18,7 @@ $java\
 $julia\
 $nodejs\
 $nim\
+$python\
 $rust\
 $scala\
 [](fg:#86BBD8 bg:#06969A)\
@@ -25,6 +26,7 @@ $docker_context\
 [](fg:#06969A bg:#33658A)\
 $time\
 [ ](fg:#33658A)\
+$cmd_duration\
 """
 
 # Disable the blank line at the start of the prompt
@@ -33,7 +35,8 @@ $time\
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
 [username]
-show_always = true
+# show_always = true
+show_always = false
 style_user = "bg:#9A348E"
 style_root = "bg:#9A348E"
 format = '[$user ]($style)'
@@ -127,6 +130,11 @@ symbol = "󰆥 "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
+[python]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($virtualenv) ]($style)'
+
 [rust]
 symbol = ""
 style = "bg:#86BBD8"
@@ -137,8 +145,13 @@ symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
+[cmd_duration]
+min_time = 2000
+format = ' $duration ($style)'
+
 [time]
 disabled = false
-time_format = "%R" # Hour:Minute Format
+# time_format = "%R" # Hour:Minute Format
+time_format = "%T" # Hour:Minute:Second Format
 style = "bg:#33658A"
-format = '[  $time ]($style)'
+format = '[ $time ]($style)'
