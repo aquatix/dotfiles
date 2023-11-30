@@ -37,6 +37,8 @@ FiraCodeNerdFontMono-SemiBold.ttf
 MonaspiceNeNerdFontMono-BoldItalic.otf
 MonaspiceNeNerdFontMono-Bold.otf
 MonaspiceNeNerdFontMono-Italic.otf
+MonaspiceNeNerdFontMono-LightItalic.otf
+MonaspiceNeNerdFontMono-Light.otf
 MonaspiceNeNerdFontMono-Regular.otf'
 
 FONTS_FUTURA=$'Futura-Std-Bold_19042.ttf
