@@ -148,8 +148,9 @@ format = '[ $symbol ($version) ]($style)'
 
 [cmd_duration]
 min_time = 2000
+show_milliseconds = true
 #format = ' $duration ($style)'
-format = '[](fg:#444444)[$duration](bg:#444444)[](fg:#444444) ($style)'
+format = '[](fg:#333333)[$duration](bg:#333333)[](fg:#333333) ($style)'
 
 [time]
 disabled = false
