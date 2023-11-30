@@ -34,6 +34,22 @@ FiraCodeNerdFontMono-Medium.ttf
 FiraCodeNerdFontMono-Regular.ttf
 FiraCodeNerdFontMono-Retina.ttf
 FiraCodeNerdFontMono-SemiBold.ttf
+JetBrainsMonoNerdFontMono-BoldItalic.ttf
+JetBrainsMonoNerdFontMono-Bold.ttf
+JetBrainsMonoNerdFontMono-ExtraBoldItalic.ttf
+JetBrainsMonoNerdFontMono-ExtraBold.ttf
+JetBrainsMonoNerdFontMono-ExtraLightItalic.ttf
+JetBrainsMonoNerdFontMono-ExtraLight.ttf
+JetBrainsMonoNerdFontMono-Italic.ttf
+JetBrainsMonoNerdFontMono-LightItalic.ttf
+JetBrainsMonoNerdFontMono-Light.ttf
+JetBrainsMonoNerdFontMono-MediumItalic.ttf
+JetBrainsMonoNerdFontMono-Medium.ttf
+JetBrainsMonoNerdFontMono-Regular.ttf
+JetBrainsMonoNerdFontMono-SemiBoldItalic.ttf
+JetBrainsMonoNerdFontMono-SemiBold.ttf
+JetBrainsMonoNerdFontMono-ThinItalic.ttf
+JetBrainsMonoNerdFontMono-Thin.ttf
 MonaspiceNeNerdFontMono-BoldItalic.otf
 MonaspiceNeNerdFontMono-Bold.otf
 MonaspiceNeNerdFontMono-Italic.otf
@@ -125,11 +141,14 @@ overpass-semibold.otf
 overpass-thin-italic.otf
 overpass-thin.otf
 Fira Code Bold Nerd Font Complete Mono.ttf
-Fira Code Bold Nerd Font Complete Mono.ttf
+Fira Code Regular Nerd Font Complete Mono.ttf
 Hack Bold Nerd Font Complete Mono.ttf
 Hack Regular Nerd Font Complete Mono.ttf
 Hack Bold Italic Nerd Font Complete Mono.ttf
-Hack Italic Nerd Font Complete Mono.ttf'
+Hack Italic Nerd Font Complete Mono.ttf
+JetBrainsMono-Bold-Italic.ttf
+JetBrainsMono-ExtraBold-Italic.ttf
+JetBrainsMono-Medium-Italic.ttf'
 
 if [ -e ~/.dot_is_server ]; then
     # Update from the repo
