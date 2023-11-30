@@ -262,7 +262,8 @@ else
         done <<< "$FONTS_DELETE"
         # Just to be sure, clear and refresh your font cache and restart Firefox
         fc-cache -f -v
-        echo 'You might want to restart your browser'
+        echo
+        echo '/!\ You might want to restart your browser and/or terminals'
     else
         echo "$SOURCE_DIR not found, aborting"
     fi
