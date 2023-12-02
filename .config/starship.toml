@@ -1,5 +1,6 @@
 format = """
 [](#9A348E)\
+$jobs\
 $os\
 $username\
 [](bg:#DA627D fg:#9A348E)\
@@ -31,6 +32,12 @@ $cmd_duration\
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
+
+# Backgrounded processes
+[jobs]
+style = "bg:#9A348E"
+symbol = '✦'
+format = '[$number$symbol ]($style)'
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
