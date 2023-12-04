@@ -30,6 +30,9 @@ $time\
 $cmd_duration\
 """
 
+# Timeout for commands executed by starship (ms)
+command_timeout = 2000
+
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
