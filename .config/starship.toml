@@ -105,8 +105,19 @@ truncation_length = 30
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#FCA17D"
-format = '[$all_status$ahead_behind ]($style)'
+#    
+# style = "bg:#FCA17D"
+style = "bg:#fb7d4b"
+# style = "bg:#fb7d4b fg:#ff0000"
+# style = "fg:#000000 bg:#FCA17D"
+# style = "fg:#ff0000 bg:#FCA17D"
+# staged = ''
+# modified = ''
+# untracked = '?'
+# format = '[$all_status$ahead_behind ]($style)'
+# format = '[$all_status$ahead_behind]($style)[ ](bg:#FCA17D)'
+# format = '[$all_status$ahead_behind]($style)[ ](bg:#FCA17D)'
+format = '[](bg:#fb7d4b fg:#FCA17D)[$all_status$ahead_behind]($style)[](bg:#FCA17D fg:#fb7d4b)'
 
 [golang]
 symbol = " "
