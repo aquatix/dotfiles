@@ -30,6 +30,9 @@ $time\
 $cmd_duration\
 """
 
+# Timeout for commands executed by starship (ms)
+command_timeout = 2000
+
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
@@ -102,8 +105,23 @@ truncation_length = 30
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+#    
 style = "bg:#FCA17D"
-format = '[$all_status$ahead_behind ]($style)'
+# style = "bg:#fb7d4b"
+# style = "bg:#fb7d4b fg:#ff0000"
+# style = "fg:#000000 bg:#FCA17D"
+# style = "fg:#ff0000 bg:#FCA17D"
+# staged = ''
+# modified = ''
+# untracked = '?'
+# format = '[$all_status$ahead_behind ]($style)'
+format = '[$all_status$ahead_behind]($style)'
+# format = '[$all_status$ahead_behind]($style)[ ](bg:#FCA17D)'
+# format = '[$all_status$ahead_behind]($style)[ ](bg:#FCA17D)'
+# format = '[](bg:#fb7d4b fg:#FCA17D)[$all_status$ahead_behind]($style)[](bg:#FCA17D fg:#fb7d4b)'
 
 [golang]
 symbol = " "
