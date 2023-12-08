@@ -74,3 +74,7 @@
 	directory = /mnt/chromeos/PlayFiles/Documents/phren
 	directory = /mnt/chromeos/PlayFiles/Documents/divaultphren
 	directory = /mnt/chromeos/PlayFiles/Documents/mydocs
+#[http]
+#	postBuffer = 1048576000
+#	lowSpeedLimit = 0
+#	lowSpeedTime = 999999
