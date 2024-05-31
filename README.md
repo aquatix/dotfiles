@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-After having my homedirs in subversion for years, moved this collection to Git in 2014 and standardised over all my machines.
+After having my homedirs in subversion for years, moved this collection to Git [in 2014](https://github.com/aquatix/dotfiles/commit/18c02056381e7c44dd220f6cd54182ce3f040104) and standardised over all my machines (servers, desktops, laptops, phones, tablets).
 
 To install:
 
@@ -25,6 +25,18 @@ Both the shell configuration and vim make use of `fzf`. [fzf is a general-purpos
 [ripgrep, `rg`](https://github.com/BurntSushi/ripgrep) is a line-oriented search tool that recursively searches your current directory for a regex pattern while respecting your gitignore rules. Basically, a really fast (and clever) `grep`.
 
 If your distribution does not provide a package, [get yours from the releases page](https://github.com/BurntSushi/ripgrep/releases) (there's a .deb for 64-bit systems).
+
+
+## starship prompt
+
+By default, the included fish shell configuration installs and uses the bobthefish prompt, but I have been using the [starship](https://starship.rs/) prompt [since November 2023](https://github.com/aquatix/dotfiles/commit/3836faaaf1e1207ee122eb3b72aa3cab27b4f1f7) and [configuration is included](https://github.com/aquatix/dotfiles/blob/master/.config/starship.toml).
+
+To use, [install starship](https://starship.rs/#quick-install) and link the configuration to activate the configured prompt:
+
+```bash
+cd ~/.config
+ln -s ../.dot/dotfiles/.config/starship.toml
+```
 
 
 ## vim config
