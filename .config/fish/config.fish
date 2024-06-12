@@ -169,3 +169,6 @@ end
 # Initialise starship theme
 # curl -sS https://starship.rs/install.sh|sh
 starship init fish | source
+
+#  https://direnv.net/
+direnv hook fish | source
