@@ -293,7 +293,8 @@ map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 "let g:indentLine_setConceal = 0
-let g:indentLine_conceallevel = 1
+"let g:indentLine_conceallevel = 1
+let g:indentLine_conceallevel = 0
 " Do not conceal LaTeX symbols
 let g:tex_conceal=""
 
