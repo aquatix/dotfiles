@@ -327,9 +327,13 @@ if !filereadable(skip_ycm)  " Only load YouCompleteMe if ~/.dot_no_ycm does not 
     " sudo apt-get install python-dev
     " cd ~/.vim/bundle/YouCompleteMe
     " ./install.py  # For C-style languages: ./install.py --clang-completer
-    if has('patch-8.1.2269')
+    if has('patch-9.1.0016')
         " Latest YCM needs at least this version of vim
         Plug 'ycm-core/YouCompleteMe'
+    elseif has('8.2.3995')
+        Plug 'ycm-core/YouCompleteMe', { 'branch':'legacy-vim-8.2' }
+    elseif has('8.1.2269')
+        Plug 'ycm-core/YouCompleteMe', { 'branch':'legacy-vim-8.1' }
     else
         " Version compatible with the vim in Debian 10 buster
         " Plug 'ycm-core/YouCompleteMe', { 'commit':'d98f896' }
