@@ -39,6 +39,15 @@ ln -s ../.dot/dotfiles/.config/starship.toml
 ```
 
 
+## All dependencies
+
+To have the full experience, install all of these:
+
+```bash
+sudo apt install git curl vim-nox fzf ripgrep exuberant-ctags fish tmux htop
+```
+
+
 ## vim config
 
 The [.vimrc](https://github.com/aquatix/dotfiles/blob/master/.vimrc) has a lot going on. [Find out more about my tweaks](https://dammit.nl/tag/vim.html) and use `:Maps` in vim itself to see key mappings
