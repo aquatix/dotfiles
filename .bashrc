@@ -220,3 +220,5 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=1
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 [ -f ~/.cargo/env ] && . "$HOME/.cargo/env"
+
+[ -f ~/.local/bin/env ] && . "$HOME/.local/bin/env"
