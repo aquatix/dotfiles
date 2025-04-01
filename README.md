@@ -44,7 +44,7 @@ ln -s ../.dot/dotfiles/.config/starship.toml
 To have the full experience, install all of these:
 
 ```bash
-sudo apt install git curl vim-nox fzf ripgrep exuberant-ctags fish grc tmux htop
+sudo apt install git curl vim-nox fzf ripgrep exuberant-ctags fish grc tmux htop direnv
 # needed for building vim plugins:
 sudo apt install cmake build-essentials
 # also, this classic:
