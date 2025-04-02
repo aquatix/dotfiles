@@ -51,6 +51,8 @@ sudo apt install cmake build-essentials
 sudo apt install mc
 ```
 
+and maybe install a nice colour theme for your terminal from https://gogh-co.github.io/Gogh/ - I use argonaut with a black background myself.
+
 
 ## vim config
 
