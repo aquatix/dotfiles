@@ -132,7 +132,7 @@ echo
 echo "Do you wish to install the starship prompt?"
 select yn in "Yes" "No"; do
     case $yn in
-        Yes ) make_link $DIR ".config/starship.yml"; curl -sS https://starship.rs/install.sh | sh; break;;
+        Yes ) make_link $DIR ".config/starship.toml"; curl -sS https://starship.rs/install.sh | sh; break;;
         No ) break;;
     esac
 done
