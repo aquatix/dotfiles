@@ -1,0 +1,25 @@
+[Palette]
+Name=Diginaut
+Background=#000000
+Foreground=#FFFAF4
+Cursor=#FFFAF4
+Color0=#232323
+Color1=#FF000F
+Color2=#8CE10B
+Color3=#FFB900
+Color4=#008DF8
+Color5=#6D43A6
+Color6=#00D8EB
+Color7=#FFFFFF
+Color8=#444444
+Color9=#FF2740
+Color10=#ABE15B
+Color11=#FFD242
+Color12=#0092FF
+Color13=#9A5FEB
+Color14=#67FFF0
+Color15=#FFFFFF
+
+# This file was generated from https://github.com/Gogh-Co/Gogh/tree/master/themes/Argonaut.yml
+# Modified by aquatix/diginaut
+
