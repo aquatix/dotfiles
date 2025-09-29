@@ -51,16 +51,16 @@ highlight scratchThis ctermfg=Grey guifg=#666666
 " Task statuses
 syntax match todoNote "\v^\s{-}n .*$" nextgroup=todoNote
 syntax match todoNote "\v^  .*$" nextgroup=todoNote
-highlight todoNote ctermfg=Grey guifg=#666666
+highlight todoNote ctermfg=Grey guifg=#666666 cterm=italic
 
 syntax match todoStatusDone "\v^\s{-}v " nextgroup=todoItem skipwhite
 highlight todoStatusDone ctermfg=green guifg=#00ff00
 
 syntax match todoStatusCancelled "\v^\s{-}x .*$" nextgroup=todoItem skipwhite
-highlight todoStatusCancelled ctermfg=DarkGreen guifg=#005f00
+highlight todoStatusCancelled ctermfg=DarkGreen guifg=#005f00 cterm=italic
 
 syntax match todoStatusDoing "\v^\s{-}d .*$" nextgroup=todoItem skipwhite
-highlight todoStatusDoing ctermfg=223 guifg=#f0dfaf
+highlight todoStatusDoing ctermfg=223 guifg=#f0dfaf cterm=italic
 
 syntax match todoStatusTest "\v^\s{-}t " nextgroup=todoItem skipwhite
 highlight todoStatusTest ctermfg=darkcyan guifg=#6666ff
@@ -70,7 +70,7 @@ highlight todoStatusTodo ctermfg=red guifg=#ff0000
 
 syntax match todoStatusImportant "\v^\s{-}\> .*$" nextgroup=todoItem skipwhite
 syntax match todoStatusImportant "\v^\s{-}! .*$" nextgroup=todoItem skipwhite
-highlight todoStatusImportant ctermfg=167 guifg=#d75f5f
+highlight todoStatusImportant ctermfg=167 guifg=#d75f5f cterm=italic
 
 syntax match todoStatusQuestion "\v^\s{-}\? " nextgroup=todoItem skipwhite
 highlight todoStatusQuestion ctermfg=darkcyan guifg=#6666ff
