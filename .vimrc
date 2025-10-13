@@ -449,6 +449,9 @@ let g:mdnav#Extensions = '.md, .MD, .markdown, .todo, .txt, .rst'
 Plug 'lervag/wiki.vim'
 " Config below, after plug#end()
 
+" marksman LSP integration (ALE) for advanced Markdown organising
+Plug 'artempyanykh/marksman'
+
 
 if $USER != 'root'
     " notational velocity with fzf: quickly search and open notes
