@@ -1,3 +1,10 @@
 #!/bin/bash
-wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
-sudo dpkg -i discord.deb
+
+# Use a uniquely named, temporary directory to download to
+TMPDIR=$(mktemp -d)
+
+wget "https://discord.com/api/download?platform=linux&format=deb" -O "${TMPDIR}/discord.deb"
+sudo dpkg -i "${TMPDIR}/discord.deb"
+
+# Clean up
+rm "${TMPDIR}/discord.deb"
